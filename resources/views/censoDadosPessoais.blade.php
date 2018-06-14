@@ -45,29 +45,9 @@
                             @endforelse
                           </select>
                         </div>
-
-                        <div class="col-sm-4" id="hiddenEstado" style="visibility:hidden;">
-                          Estado:
-                          <input class="form-control" name="estado" value="{{old('estado')}}"/>
-                        </div>
-
-                        <div class="col-sm-4" id="hiddenSelEstado" style="visibility:hidden;">
-                          Estado:
-                          <select name="estado"  id="estado" class="form-control">
-                                <option value=""></option>
-                            @forelse($estados as $estado)
-                                <option value="{{$estado->estadoId}}">{{$estado->estadoUf}}</option>
-                            @empty
-                              <option value="0">Nenhum resultado encontrado!</option>
-                            @endforelse
-                          </select>
-                        </div>
-
-                        <div class="col-sm-4" id="hiddenCidade" style="visibility:hidden;">
-                          Cidade de Nascimento:
-                          <input class="form-control" name="cidadeNasc" value="{{old('cidadeNasc')}}"/>
-                        </div>
-                        
+                        <section id="estadosCidades">
+                          
+                        </section>
                       </div>
 
                       <div class="row">
@@ -221,16 +201,33 @@
        function optionCheck(){
          var option = document.getElementById("paisNasc").value;
          if (option != '33'){
-           document.getElementById("hiddenEstado").style.visibility = "visible";
-           document.getElementById("hiddenCidade").style.visibility = "visible";
-           document.getElementById("hiddenSelEstado").style.visibility = "hidden";
-         }else{
-           document.getElementById("hiddenEstado").style.visibility = "hidden";
-           document.getElementById("hiddenCidade").style.visibility = "hidden";
-           document.getElementById("hiddenSelEstado").style.visibility = "visible";
 
+           var inputText = '<div class="col-sm-4" id="estadoNasc">Estado: <input class="form-control" name="estadoNasc"  value="{{old('estado')}}"/></div> <div class="col-sm-4" id="cidadeNasc"> Cidade de Nascimento:<input class="form-control" name="cidadeNasc" value="{{old('cidadeNasc')}}"/></div>'; 
+           $('#estadoNasc').remove();
+           $('#cidadeNasc').remove();
+           $('#estadosCidades').append(inputText);
+    
+         }else{
+           var inputText = '<div class="col-sm-4" id="estadoNasc">Estado:<select name="estado"  id="estado" class="form-control" onchange="optionCidades()"><option value=""></option>@forelse($estados as $estado)<option value="{{$estado->estadoId}}">{{$estado->estadoUf}}</option>@empty<option value="0">Nenhum resultado encontrado!</option>@endforelse</select></div><div class="col-sm-4" id="cidadeNasc">Cidade:<select name="cidade"  id="cidade" class="form-control"></div>'; 
+           $('#estadoNasc').remove();
+           $('#cidadeNasc').remove();
+           $('#estadosCidades').append(inputText);
          }
        }
+
+       function optionCidades(){
+          var es = document.getElementById("estado").value;
+          url = "{{action('censoController@getCidades')}}";
+          //httpRequest.send(JSON.stringify(es));
+          $.get(url, function (cidades){
+           $('select[name=cidade]').empty();
+           $('select[name=cidade]').append("<option value='0' disable select style='display:nome;'> Selecione uma cidade</option>");
+           $.each(cidades, function (key, value){
+             $('select[name=cidade]').append('<option value='+value.cidadeId+'>'+value.cidadeNome+'</option>');
+           }); 
+         });
+
+        }
 
      </script>
    </div>
