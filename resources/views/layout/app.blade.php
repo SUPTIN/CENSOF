@@ -17,10 +17,6 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
   
 
-    
-    <script type="text/javascript" src="js/functions.js"></script>
-
-
     <!--Fonts-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
@@ -100,8 +96,5 @@
  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
-<script class="include" type="text/javascript" src="chart/plot/jquery.jqplot.min.js"></script>
-<link class="include" rel="stylesheet" type="text/css" href="chart/plot/jquery.jqplot.css" />
-<script language="javascript" type="text/javascript" src="chart/plot/plugins/jqplot.pieRenderer.js"></script>
 </body>
 </html>
