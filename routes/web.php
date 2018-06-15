@@ -18,6 +18,7 @@ Route::get('enderecoContatos', 'censoController@enderecoContatos');
 Route::get('documentacao', 'censoController@documentacao');
 Route::get('dependentes', 'censoController@dependentes');
 Route::get('novoDependente', 'censoController@novoDependente');
+Route::get('getCidades', 'censoController@getCidades');
 
 Route::get('/', 'censoController@dadosBase');
 

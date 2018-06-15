@@ -218,14 +218,13 @@
        function optionCidades(){
           var es = document.getElementById("estado").value;
           url = "{{action('censoController@getCidades')}}";
-          //httpRequest.send(JSON.stringify(es));
-          $.get(url, function (cidades){
+          $.get(url, {es: es},function (cidades){
            $('select[name=cidade]').empty();
            $('select[name=cidade]').append("<option value='0' disable select style='display:nome;'> Selecione uma cidade</option>");
            $.each(cidades, function (key, value){
              $('select[name=cidade]').append('<option value='+value.cidadeId+'>'+value.cidadeNome+'</option>');
            }); 
-         });
+         }); 
 
         }
 
