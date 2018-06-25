@@ -13,7 +13,7 @@
 
 Route::get('informacao', 'Controller@informacao');
 
-Route::get('dadosPessoais', 'censoController@dadosPessoais');
+Route::get('{id}/dadosPessoais', 'censoController@dadosPessoais');
 Route::get('enderecoContatos', 'censoController@enderecoContatos');
 Route::get('documentacao', 'censoController@documentacao');
 Route::get('dependentes', 'censoController@dependentes');
