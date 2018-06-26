@@ -11,10 +11,16 @@
                         <h6>Passo 1 de 4</h6>
                       </div>
 
+                      <form method="post" action="iDP">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <input class="form-control" type="hidden" name="_token" value="{{ csrf_token()}}"/>
+                        </div>
+                      </div>
                       <div class="row">
                         <div class="col-sm-12">
                           Nome: 
-                          <input class="form-control" name="nome" value="{{old('nome')}}"/>
+                          <input class="form-control" name="nomeBase" value="{{$infoBase->nomeBase}}"/>
                         </div>
                       </div>
 
@@ -79,7 +85,7 @@
                         </div>
                         <div class="col-sm-6">
                           Data do Casamento:
-                          <input class="form-control" name="dataCasa" value="{{old('dataCasa')}}"/>
+                          <input class="form-control" name="dataCasamento" value="{{old('dataCasamento')}}"/>
                         </div>
                       </div>
 
@@ -186,11 +192,16 @@
 
                       <div class="row">
                         <div class="col-sm-12">
-                          
-                          <a href="enderecoContatos"> Proximo passo</a>
+                          <br/>
                         </div>
                       </div>
 
+                      <div class="row" align="center">
+                        <div class="col-sm-12"> 
+                          <button class="btn btn-primary">Avançar</button>
+                        </div>
+                      </div>
+                    </form>
                 </div>
             </div>
       </div>
@@ -202,27 +213,27 @@
          var option = document.getElementById("paisNasc").value;
          if (option != '33'){
 
-           var inputText = '<div class="col-sm-4" id="estadoNasc">Estado: <input class="form-control" name="estadoNasc"  value="{{old('estado')}}"/></div> <div class="col-sm-4" id="cidadeNasc"> Cidade de Nascimento:<input class="form-control" name="cidadeNasc" value="{{old('cidadeNasc')}}"/></div>'; 
-           $('#estadoNasc').remove();
-           $('#cidadeNasc').remove();
+           var inputText = '<div class="col-sm-4" id="estadoNascCamp">Estado de Nascimento: <input class="form-control" name="estadoNasc"  value="{{old('estadoNasc')}}"/></div> <div class="col-sm-4" id="cidadeNascCamp"> Cidade de Nascimento:<input class="form-control" name="cidadeNasc" value="{{old('cidadeNasc')}}"/></div>'; 
+           $('#estadoNascCamp').remove();
+           $('#cidadeNascCamp').remove();
            $('#estadosCidades').append(inputText);
     
          }else{
-           var inputText = '<div class="col-sm-4" id="estadoNasc">Estado:<select name="estado"  id="estado" class="form-control" onchange="optionCidades()"><option value=""></option>@forelse($estados as $estado)<option value="{{$estado->estadoId}}">{{$estado->estadoUf}}</option>@empty<option value="0">Nenhum resultado encontrado!</option>@endforelse</select></div><div class="col-sm-4" id="cidadeNasc">Cidade:<select name="cidade"  id="cidade" class="form-control"></div>'; 
-           $('#estadoNasc').remove();
-           $('#cidadeNasc').remove();
+           var inputText = '<div class="col-sm-4" id="estadoNascCamp">Estado de Nascimento:<select name="estadoNasc"  id="estadoNasc" class="form-control" onchange="optionCidades()"><option value=""></option>@forelse($estados as $estado)<option value="{{$estado->estadoId}}">{{$estado->estadoUf}}</option>@empty<option value="0">Nenhum resultado encontrado!</option>@endforelse</select></div><div class="col-sm-4" id="cidadeNascCamp">Cidade de Nascimento:<select name="cidadeNasc"  id="cidadeNasc" class="form-control"></div>'; 
+           $('#estadoNascCamp').remove();
+           $('#cidadeNascCamp').remove();
            $('#estadosCidades').append(inputText);
          }
        }
 
        function optionCidades(){
-          var es = document.getElementById("estado").value;
+          var es = document.getElementById("estadoNasc").value;
           url = "{{action('censoController@getCidades')}}";
           $.get(url, {es: es},function (cidades){
-           $('select[name=cidade]').empty();
-           $('select[name=cidade]').append("<option value='0' disable select style='display:nome;'> Selecione uma cidade</option>");
+           $('select[name=cidadeNasc]').empty();
+           $('select[name=cidadeNasc]').append("<option value='0' disable select style='display:nome;'> Selecione uma cidade</option>");
            $.each(cidades, function (key, value){
-             $('select[name=cidade]').append('<option value='+value.cidadeId+'>'+value.cidadeNome+'</option>');
+             $('select[name=cidadeNasc]').append('<option value='+value.cidadeId+'>'+value.cidadeNome+'</option>');
            }); 
          }); 
 

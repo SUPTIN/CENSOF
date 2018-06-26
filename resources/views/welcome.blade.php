@@ -40,7 +40,7 @@
 
                       <div class="row" align="center">
                         <div class="col-sm-12">
-                          <a href="dadosPessoais"> Iniciar Censo </a>
+                          <a href="{{url("$dBasicos->idDadosBase/dadosPessoais")}}"> Iniciar Censo </a>
                         </div>
                       </div>
                   </div>

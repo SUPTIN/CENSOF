@@ -14,10 +14,15 @@
 Route::get('informacao', 'Controller@informacao');
 
 Route::get('{id}/dadosPessoais', 'censoController@dadosPessoais');
+Route::post('{id}/iDP', 'censoController@insereDadosPessoais');
+
 Route::get('enderecoContatos', 'censoController@enderecoContatos');
+
 Route::get('documentacao', 'censoController@documentacao');
+
 Route::get('dependentes', 'censoController@dependentes');
 Route::get('novoDependente', 'censoController@novoDependente');
+
 Route::get('getCidades', 'censoController@getCidades');
 
 Route::get('/', 'censoController@dadosBase');
