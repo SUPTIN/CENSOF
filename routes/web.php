@@ -16,7 +16,8 @@ Route::get('informacao', 'Controller@informacao');
 Route::get('{id}/dadosPessoais', 'censoController@dadosPessoais');
 Route::post('{id}/iDP', 'censoController@insereDadosPessoais');
 
-Route::get('enderecoContatos', 'censoController@enderecoContatos');
+Route::get('{id}/enderecoContatos', 'censoController@enderecoContatos');
+Route::post('{id}/eC', 'censoController@insereEnderecoContatos');
 
 Route::get('documentacao', 'censoController@documentacao');
 
