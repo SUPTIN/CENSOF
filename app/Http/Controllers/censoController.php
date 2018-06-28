@@ -14,6 +14,7 @@ use App\dadosBase;
 use App\dadosPessoais;
 use App\enderecoContatos;
 use App\documentacao;
+use App\dependente;
 use App\escolaridade;
 use App\pais;
 use App\estado;
@@ -25,17 +26,19 @@ class censoController extends Controller
 	private $dadosPessoais;
 	private $enderecoContatos;
 	private $documentacao;
+	private $dependente;
 	private $escolaridade;
 	private $pais;
 	private $estado;
 	private $cidade;
 
 
-	public function __construct(dadosBase $dadosBase, dadosPessoais $dadosPessoais, enderecoContatos $enderecoContatos, documentacao $documentacao, escolaridade $escolaridade, pais $pais, estado $estado, cidade $cidade){
+	public function __construct(dadosBase $dadosBase, dadosPessoais $dadosPessoais, enderecoContatos $enderecoContatos, documentacao $documentacao, dependente $dependente, escolaridade $escolaridade, pais $pais, estado $estado, cidade $cidade){
 		$this->dadosBase = $dadosBase;
 		$this->dadosPessoais = $dadosPessoais;
 		$this->enderecoContatos = $enderecoContatos;
 		$this->documentacao = $documentacao;
+		$this->dependente = $dependente;
 		$this->escolaridades = $escolaridade;
 		$this->paises = $pais;
 		$this->estados = $estado;
@@ -119,11 +122,10 @@ class censoController extends Controller
 
     public function  documentacao(Request $request, escolaridade $escolaridades, estado $estados){ 
     	$estados = $this->estados->orderBy('estadoUf')->get();
-    	//return $estados;
         return view('censoDocumentacao', compact( 'estados', 'cidades'));
     }
 
-    public function  inseredocumentacao(Request $request){ 
+    public function  insereDocumentacao(Request $request){ 
     	$dados = $request->all();
     	$idDadosBase = $request->id;
     	$dados['idDadosBase'] = $idDadosBase;
@@ -141,12 +143,30 @@ class censoController extends Controller
     	return redirect()->to($caminho);
     }
 
-    public function  dependentes(){ 
-        return view('censoDependentes');
+    public function  dependentes(Request $request){ 
+    	$idDadosBase = $request->id;
+    	//$dados['idDadosBase'] = $idDadosBase;
+    	$dependentes = dependente::where(function($query) use($idDadosBase){
+    		if($idDadosBase)
+    			$query->where('idDadosBase', '=' , $idDadosBase);
+    	})->paginate(5);
+
+    	//return $dependentes;
+        return view('censoDependentes', compact('dependentes'));
     }
 
     public function  novoDependente(){ 
         return view('censoNovoDependente');
+    }
+
+    public function  insereDependente(Request $request){ 
+    	$dados = $request->all();
+    	$idDadosBase = $request->id;
+    	$dados['idDadosBase'] = $idDadosBase;
+        $insert = $this->dependente->create($dados);
+        
+        $caminho = $idDadosBase.'/dependentes';
+    	return redirect()->to($caminho);
     }
 
 }
