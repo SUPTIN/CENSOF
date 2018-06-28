@@ -19,10 +19,11 @@ Route::post('{id}/iDP', 'censoController@insereDadosPessoais');
 Route::get('{id}/enderecoContatos', 'censoController@enderecoContatos');
 Route::post('{id}/eC', 'censoController@insereEnderecoContatos');
 
-Route::get('documentacao', 'censoController@documentacao');
+Route::get('{id}/documentacao', 'censoController@documentacao');
+Route::post('{id}/doc', 'censoController@inseredocumentacao');
 
-Route::get('dependentes', 'censoController@dependentes');
-Route::get('novoDependente', 'censoController@novoDependente');
+Route::get('{id}/dependentes', 'censoController@dependentes');
+Route::get('{id}/novoDependente', 'censoController@novoDependente');
 
 Route::get('getCidades', 'censoController@getCidades');
 
