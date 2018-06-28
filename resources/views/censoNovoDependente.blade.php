@@ -10,6 +10,12 @@
                         <h4>Censo Funcional - Adicionando Dependente</h4>
                       </div>
 
+                      <form method="post" action="dep">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <input class="form-control" type="hidden" name="_token" value="{{ csrf_token()}}"/>
+                        </div>
+                      </div>
                       <div class="row">
                         <div class="col-sm-12">
                           Nome: 
@@ -20,11 +26,15 @@
                       <div class="row">
                         <div class="col-sm-6">
                           Data de Nascimento:
-                          <input class="form-control" name="dataNascDependete" value="{{old('dataNascDependete')}}"/>
+                          <input class="form-control" name="dataNascDependente" value="{{old('dataNascDependete')}}"/>
                         </div>
                         <div class="col-sm-6">
                          Sexo:
-                         <input class="form-control" name="sexoDependente" value="{{old('sexoDependente')}}"/>
+                         <select name="sexoDependente" class="form-control">
+                           <option value=""></option>
+                           <option value="MASCULINO">MASCULINO</option>
+                           <option value="FEMININO">FEMININO</option>
+                         </select>
                         </div>
                       </div>
 
@@ -42,30 +52,51 @@
                       <div class="row">
                         <div class="col-sm-12">
                           Estado Cívil:
-                          <input class="form-control" name="estadoCivilDependente" value="{{old('estadoCivilDependente')}}"/>
+                          <select name="estadoCivilDependente" class="form-control">
+                          <option value=""></option>
+                           <option value="SOLTEIRO">SOLTEIRO</option>
+                           <option value="CASADO">CASADO</option>
+                           <option value="DIVORCIADO">DIVORCIADO</option>
+                           <option value="VIÚVO">VIÚVO</option>
+                           <option value="UNIÃO ESTAVÉL">UNIÃO ESTAVÉL</option>
+                           <option value="OUTRO">OUTRO</option>
+                         </select>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-12">
                           Dependente para fins de Dedução de Imposto de renda?
-                          <input class="form-control" name="deducaoImposto" value="{{old('deducaoImposto')}}"/>
+                          <select name="deducaoImposto" class="form-control">
+                           <option value=""></option>
+                           <option value="SIM">SIM</option>
+                           <option value="NÃO">NÃO</option>
+                         </select>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-12">
                           Dependente para fins de Recebimento de Salário Família?
-                          <input class="form-control" name="salarioFamilia" value="{{old('salarioFamilia')}}"/>
+                          <select name="salarioFamilia" class="form-control">
+                           <option value=""></option>
+                           <option value="SIM">SIM</option>
+                           <option value="NÃO">NÃO</option>
+                         </select>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-12">
-                          <a href="dependentes"> Adicionar</a>
+                          <br/>
                         </div>
                       </div>
-
+                      <div class="row" align="center">
+                        <div class="col-sm-12"> 
+                          <button class="btn btn-primary">Adicionar</button>
+                        </div>
+                      </div>
+                    </form>
                 </div>
             </div>
       </div>

@@ -20,10 +20,11 @@ Route::get('{id}/enderecoContatos', 'censoController@enderecoContatos');
 Route::post('{id}/eC', 'censoController@insereEnderecoContatos');
 
 Route::get('{id}/documentacao', 'censoController@documentacao');
-Route::post('{id}/doc', 'censoController@inseredocumentacao');
+Route::post('{id}/doc', 'censoController@insereDocumentacao');
 
 Route::get('{id}/dependentes', 'censoController@dependentes');
 Route::get('{id}/novoDependente', 'censoController@novoDependente');
+Route::post('{id}/dep', 'censoController@insereDependente');
 
 Route::get('getCidades', 'censoController@getCidades');
 
