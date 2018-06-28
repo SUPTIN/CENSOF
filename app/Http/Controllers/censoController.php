@@ -12,6 +12,8 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\dadosBase;
 use App\dadosPessoais;
+use App\enderecoContatos;
+use App\documentacao;
 use App\escolaridade;
 use App\pais;
 use App\estado;
@@ -21,15 +23,19 @@ class censoController extends Controller
 {
 	private $dadosBase;
 	private $dadosPessoais;
+	private $enderecoContatos;
+	private $documentacao;
 	private $escolaridade;
 	private $pais;
 	private $estado;
 	private $cidade;
 
 
-	public function __construct(dadosBase $dadosBase, dadosPessoais $dadosPessoais, escolaridade $escolaridade, pais $pais, estado $estado, cidade $cidade){
+	public function __construct(dadosBase $dadosBase, dadosPessoais $dadosPessoais, enderecoContatos $enderecoContatos, documentacao $documentacao, escolaridade $escolaridade, pais $pais, estado $estado, cidade $cidade){
 		$this->dadosBase = $dadosBase;
 		$this->dadosPessoais = $dadosPessoais;
+		$this->enderecoContatos = $enderecoContatos;
+		$this->documentacao = $documentacao;
 		$this->escolaridades = $escolaridade;
 		$this->paises = $pais;
 		$this->estados = $estado;
@@ -64,24 +70,19 @@ class censoController extends Controller
     	$idDadosBase = $request->id;
     	$infoBase = dadosBase::find($idDadosBase)->get();
     	$dados['idDadosBase'] = $idDadosBase;
-//return $dados;
+
     	$infoPessoais = dadosPessoais::where(function($query) use($idDadosBase){
     		if($idDadosBase)
     			$query->where('idDadosBase', '=', $idDadosBase);
-    	})->get();
-
-    	//return $infoPessoais[0]->idDadosBase;
+    	})->get();	
 
         if(empty($infoPessoais[0])){
         	$insert = $this->dadosPessoais->create($dados);
     		$novoIdDP = $insert->id;
         }else{
-            $infoPessoais->fill($dados)->save();
-        	return "opa";
-        	
+        	dadosPessoais::where('idDadosBase',$idDadosBase)->first()->update($dados);  	
         }
     	
-
     	if ($dados['nomeBase'] == $infoBase[0]->nomeBase){
     		dadosBase::find($idDadosBase)->update(['dadosPessoais' => '1']);
     	}else{
@@ -89,16 +90,55 @@ class censoController extends Controller
     		dadosBase::find($idDadosBase)->update(['nomeBase' => $nomeBase, 'dadosPessoais' => '1']);
     	}
 
-    	return '0';
+    	$caminho = $idDadosBase.'/enderecoContatos';
+    	return redirect()->to($caminho);
+    	//return view('censoEnderecoContatos', compact('escolaridades','paises', 'estados', 'cidades', 'infoBase'));;
     }
 
     public function  enderecoContatos(Request $request){ 
-    	
         return view('censoEnderecoContatos');
     }
 
-    public function  documentacao(){ 
-        return view('censoDocumentacao');
+    public function  insereEnderecoContatos(Request $request){ 
+    	$dados = $request->all();
+    	$idDadosBase = $request->id;
+    	$dados['idDadosBase'] = $idDadosBase;
+    	$eC = enderecoContatos::where(function($query) use($idDadosBase){
+    		if($idDadosBase)
+    			$query->where('idDadosBase', '=', $idDadosBase);
+    	})->get();	
+
+        if(empty($eC[0])){
+        	$insert = $this->enderecoContatos->create($dados);
+        }else{
+        	enderecoContatos::where('idDadosBase',$idDadosBase)->first()->update($dados);  	
+        }
+        $caminho = $idDadosBase.'/documentacao';
+    	return redirect()->to($caminho);
+    }
+
+    public function  documentacao(Request $request, escolaridade $escolaridades, estado $estados){ 
+    	$estados = $this->estados->orderBy('estadoUf')->get();
+    	//return $estados;
+        return view('censoDocumentacao', compact( 'estados', 'cidades'));
+    }
+
+    public function  inseredocumentacao(Request $request){ 
+    	$dados = $request->all();
+    	$idDadosBase = $request->id;
+    	$dados['idDadosBase'] = $idDadosBase;
+    	$doc = documentacao::where(function($query) use($idDadosBase){
+    		if($idDadosBase)
+    			$query->where('idDadosBase', '=', $idDadosBase);
+    	})->get();	
+
+        if(empty($doc[0])){
+        	$insert = $this->documentacao->create($dados);
+        }else{
+        	documentacao::where('idDadosBase',$idDadosBase)->first()->update($dados);  	
+        }
+        $caminho = $idDadosBase.'/dependentes';
+    	return redirect()->to($caminho);
     }
 
     public function  dependentes(){ 
