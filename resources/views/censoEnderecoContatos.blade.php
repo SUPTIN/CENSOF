@@ -13,42 +13,47 @@
 
                       <form method="post" action="eC">
                       <div class="row">
+                        <div class="col-sm-12">
+                          <input class="form-control" type="hidden" name="_token" value="{{ csrf_token()}}"/>
+                        </div>
+                      </div>
+                      <div class="row">
                         <div class="col-sm-6">
                           CEP:
                           <input class="form-control" id="cep" name="cep" value="{{old('cep')}}" onblur="pesquisaCep(this.value);"/>
                         </div>
                         <div class="col-sm-6">
                           Estado:
-                          <input class="form-control" id="estadoResidencia" name="estadoResidencia" value="{{old('estadoResidencia')}}"/>
+                          <input class="form-control" id="estadoEC" name="estadoEC" value="{{old('estadoEC')}}"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-6">
                           Cidade:
-                          <input class="form-control" id="cidade" name="cidade" value="{{old('cidade')}}"/>
+                          <input class="form-control" id="cidadeEC" name="cidadeEC" value="{{old('cidadeEC')}}"/>
                         </div>
                         <div class="col-sm-6">
                           Bairro:
-                          <input class="form-control" id="bairro" name="bairro" value="{{old('bairro')}}"/>
+                          <input class="form-control" id="bairroEC" name="bairroEC" value="{{old('bairroEC')}}"/>
                         </div> 
                       </div>
 
                       <div class="row">
                         <div class="col-sm-10">
                           Endereço Residencial: 
-                          <input class="form-control" id="enderecoResidencial" name="enderecoResidencial" value="{{old('enderecoResidencial')}}"/>
+                          <input class="form-control" id="enderecoResidencialEC" name="enderecoResidencialEC" value="{{old('enderecoResidencialEC')}}"/>
                         </div>
                         <div class="col-sm-2">
                           Número:
-                          <input class="form-control" id="numero" name="numero" value="{{old('numero')}}"/>
+                          <input class="form-control" id="numeroEC" name="numeroEC" value="{{old('numeroEC')}}"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-12">
                           Complemento:
-                          <input class="form-control" id="complemento" name="complemento" value="{{old('complemento')}}"/>
+                          <input class="form-control" id="complementoEC" name="complementoEC" value="{{old('complementoEC')}}"/>
                         </div>
                       </div>
 
@@ -90,18 +95,18 @@
       <script type="text/javascript">
 
           function limpa_cep(){
-            document.getElementById('cidade').value = ("");
-            document.getElementById('bairro').value = ("");
-            document.getElementById('enderecoResidencial').value = ("");
-            document.getElementById('estadoResidencia').value = ("");
+            document.getElementById('cidadeEC').value = ("");
+            document.getElementById('bairroEC').value = ("");
+            document.getElementById('enderecoResidencialEC').value = ("");
+            document.getElementById('estadoEC').value = ("");
           }
 
           function meu_callback(conteudo){
             if(!("erro" in conteudo)){
-              document.getElementById('cidade').value = (conteudo.localidade);
-              document.getElementById('bairro').value = (conteudo.bairro);
-              document.getElementById('enderecoResidencial').value = (conteudo.logradouro);
-              document.getElementById('estadoResidencia').value = (conteudo.uf);
+              document.getElementById('cidadeEC').value = (conteudo.localidade);
+              document.getElementById('bairroEC').value = (conteudo.bairro);
+              document.getElementById('enderecoResidencialEC').value = (conteudo.logradouro);
+              document.getElementById('estadoEC').value = (conteudo.uf);
             }else{
               limpa_cep();
               alert("CEP não encontrado!");
@@ -113,10 +118,10 @@
             if(cep != ""){
               var validaCep = /^[0-9]{8}$/;
               if(validaCep.test(cep)){
-                document.getElementById('cidade').value = ("...");
-                document.getElementById('bairro').value = ("...");
-                document.getElementById('enderecoResidencial').value = ("...");
-                document.getElementById('estadoResidencia').value = ("...");
+                document.getElementById('cidadeEC').value = ("...");
+                document.getElementById('bairroEC').value = ("...");
+                document.getElementById('enderecoResidencialEC').value = ("...");
+                document.getElementById('estadoEC').value = ("...");
                 var script = document.createElement('script');
                 script.src = 'https://viacep.com.br/ws/'+ cep +'/json/?callback=meu_callback';
                 document.body.appendChild(script);
