@@ -145,7 +145,7 @@
                           <input class="form-control" name="tipoCertMilitar" value="{{old('tipoCertMilitar')}}"/>
                         </div>
                         <div class="col-sm-6">
-                          UF do Certificado Milhitar:
+                          UF do Certificado Militar:
                           <select name="ufCertMilitar" class="form-control">
                             <option value=""></option>
                             @forelse($estados as $estado)
@@ -168,7 +168,15 @@
                         </div>
                         <div class="col-sm-3">
                           Categoria:
-                          <input class="form-control" name="categoriaCNH" value="{{old('categoriaCNH')}}"/>
+                         <select name="categoriaCNH" class="form-control">
+                           <option value=""></option>
+                           <option value="A">A</option>
+                           <option value="B">B</option>
+                           <option value="AB">AB</option>
+                           <option value="C">C</option>
+                           <option value="D">D</option>
+                           <option value="E">E</option>
+                         </select> 
                         </div>
                         <div class="col-sm-3">
                           Data emissão:
@@ -179,7 +187,14 @@
                       <div class="row">
                         <div class="col-sm-4">
                           UF da CNH:
-                          <input class="form-control" name="ufCNH" value="{{old('ufCNH')}}"/>
+                          <select name="ufCNH" class="form-control">
+                            <option value=""></option>
+                            @forelse($estados as $estado)
+                              <option value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
+                            @empty
+                              <option value="0">Nenhum resultado encontrado!</option>
+                            @endforelse
+                          </select>
                         </div>
                         <div class="col-sm-4">
                           Data Validade:

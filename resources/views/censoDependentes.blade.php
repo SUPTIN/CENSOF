@@ -16,7 +16,7 @@
                           <a href="novoDependente"> 
                              Adicionar novo Dependente <i class="fa fa-plus-circle" aria-hidden="true" title="Adicionar um Dependente"> </i>
                           </a> &nbsp;
-                          <a href="novoDependente"> 
+                          <a href="impressaoFichas"> 
                              Finalizar e Imprimir comprovantes <i class="fa fa-print" aria-hidden="true" title="Adicionar um Dependente"> </i>
                           </a>
                         </div>
