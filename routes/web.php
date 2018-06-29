@@ -28,6 +28,8 @@ Route::post('{id}/dep', 'censoController@insereDependente');
 
 Route::get('getCidades', 'censoController@getCidades');
 
+Route::get('{id}/impressaoFichas', 'censoController@impressaoCensoF');
+
 Route::get('/', 'censoController@dadosBase');
 
 /*Route::get('/', function () {
