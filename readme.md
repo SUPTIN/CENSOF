@@ -6,7 +6,7 @@
 
 
 ## Dependências
-
+  DOMPDF
 
 
 ## Funcionalidades
