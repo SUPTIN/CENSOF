@@ -11,8 +11,8 @@
                       </div>
                       <div class="row">
                         <div class="col-sm-12">
-                          <a href="#"> 
-                             Finalizar e Imprimir comprovantes <i class="fa fa-print" aria-hidden="true" title="Adicionar um Dependente"> </i>
+                          <a href="impressaoFichasPDF"> 
+                             Download PDF <i class="fa fa-print" aria-hidden="true" title="Imprimir Ficha"> </i>
                           </a>
                         </div>
                       </div> 
@@ -27,7 +27,7 @@
                           <b>Nome:</b> {{$dadosBase[0]->nomeBase}}
                         </div>
                       </div>
-                      <div class="row">
+                     <div class="row">
                         <div class="col-sm-6">
                           <b>Matricula:</b> {{$dadosBase[0]->matriculaBase}}
                         </div>  
@@ -48,7 +48,6 @@
                           <b>Secretaria de Lotação:</b> {{$dadosBase[0]->secretariaBase}}
                         </div>  
                       </div>
-
                       <div class="row">
                         <div class="col-sm-12">
                           <h5><b>Dados Pessoais</b></h5>
@@ -307,6 +306,7 @@
                       <div class="row">
                         <div class="col-sm-4">
                           Nº Registro: {{$dadosDocumentacao[0]->numConselhoProf}}
+
                         </div>  
                         <div class="col-sm-4">
                           Data de Emissão: {{$dadosDocumentacao[0]->dataEmissaoConselhoProf}}
@@ -369,7 +369,6 @@
                           </div>
                         </div>
                       @endforelse
-
                 </div>
             </div>
       </div>
