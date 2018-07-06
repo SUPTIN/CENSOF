@@ -55,86 +55,86 @@
                       </div>
                       <div class="row">
                         <div class="col-sm-6">
-                          Data de Nascimento: {{$dadosPessoais[0]->dataNasc}}
+                          <b>Data de Nascimento: </b>{{$dadosPessoais[0]->dataNasc}}
                         </div>  
                         <div class="col-sm-6">
-                          Sexo: {{$dadosPessoais[0]->sexo}}
+                          <b>Sexo: </b>{{$dadosPessoais[0]->sexo}}
                         </div>  
                       </div>
                       <div class="row">
                         <div class="col-sm-4">
-                          País de Nascimento: {{$dadosPessoais[0]->paisNasc}}
+                          <b>País de Nascimento: </b>{{$dadosPessoais[0]->paisNasc}}
                         </div>  
                         <div class="col-sm-4">
-                          Estado: {{$dadosPessoais[0]->estadoNasc}}
+                          <b>Estado:</b> {{$dadosPessoais[0]->estadoNasc}}
                         </div>  
                         <div class="col-sm-4">
-                          Cidade de Nascimento: {{$dadosPessoais[0]->cidadeNasc}}
+                          <b>Cidade de Nascimento: </b> {{$dadosPessoais[0]->cidadeNasc}}
                         </div> 
                       </div>
                       <div class="row">
                         <div class="col-sm-4">
-                          Nome de Mãe: {{$dadosPessoais[0]->nomeMae}}
+                          <b>Nome de Mãe: </b>{{$dadosPessoais[0]->nomeMae}}
                         </div>  
                       </div>
                       <div class="row">
                         <div class="col-sm-12">
-                          Nome de Pai: {{$dadosPessoais[0]->nomePai}}
+                          <b>Nome de Pai: </b>{{$dadosPessoais[0]->nomePai}}
                         </div>  
                       </div>
                       <div class="row">
                         <div class="col-sm-6">
-                          Estado Cívil: {{$dadosPessoais[0]->estadoCivil}}
+                          <b>Estado Cívil:</b> {{$dadosPessoais[0]->estadoCivil}}
                         </div>  
                         <div class="col-sm-6">
-                          Data do Casamento: {{$dadosPessoais[0]->dataCasamento}}
-                        </div>  
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-12">
-                          Nome Conjugue: {{$dadosPessoais[0]->nomeConjugue}}
-                        </div>  
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-6">
-                          Raça/Cor: {{$dadosPessoais[0]->racaCor}}
-                        </div>  
-                        <div class="col-sm-6">
-                          Tipo Sanguínio: {{$dadosPessoais[0]->tipoSanguinio}}
+                          <b>Data do Casamento:</b> {{$dadosPessoais[0]->dataCasamento}}
                         </div>  
                       </div>
                       <div class="row">
                         <div class="col-sm-12">
-                          Escolaridade: {{$dadosPessoais[0]->escolaridade}}
+                          <b>Nome Conjugue:</b> {{$dadosPessoais[0]->nomeConjugue}}
+                        </div> 
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <b>Raça/Cor: </b>{{$dadosPessoais[0]->racaCor}}
+                        </div>  
+                        <div class="col-sm-6">
+                          <b>Tipo Sanguínio:</b> {{$dadosPessoais[0]->tipoSanguinio}}
                         </div>  
                       </div>
                       <div class="row">
                         <div class="col-sm-12">
-                          Área de Instrução: {{$dadosPessoais[0]->areaInstrucao}}
+                          <b>Escolaridade:</b> {{$dadosPessoais[0]->escolaridade}}
+                        </div>  
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <b>Área de Instrução:</b> {{$dadosPessoais[0]->areaInstrucao}}
                         </div>  
                       </div>
                       <div class="row">
                         <div class="col-sm-6">
-                          Estrangeiro: {{$dadosPessoais[0]->estrangeiro}}
+                          <b>Estrangeiro: </b>{{$dadosPessoais[0]->estrangeiro}}
                         </div>  
                         <div class="col-sm-6">
-                          Data de Chegada ao Brasil: {{$dadosPessoais[0]->dataChegadaBrasil}}
-                        </div>  
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-6">
-                          Naturalizado: {{$dadosPessoais[0]->naturalizado}}
-                        </div>  
-                        <div class="col-sm-6">
-                          Data da Naturalização: {{$dadosPessoais[0]->dataNaturalizado}}
+                          <b>Data de Chegada ao Brasil: </b>{{$dadosPessoais[0]->dataChegadaBrasil}}
                         </div>  
                       </div>
                       <div class="row">
                         <div class="col-sm-6">
-                          Possui algum tipo de deficiência: {{$dadosPessoais[0]->possuiDeficiencia}}
+                          <b>Naturalizado: </b>{{$dadosPessoais[0]->naturalizado}}
                         </div>  
                         <div class="col-sm-6">
-                          Qual?: {{$dadosPessoais[0]->qualDeficiencia}}
+                          <b>Data da Naturalização: </b>{{$dadosPessoais[0]->dataNaturalizado}}
+                        </div>  
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <b>Possui algum tipo de deficiência: </b>{{$dadosPessoais[0]->possuiDeficiencia}}
+                        </div>  
+                        <div class="col-sm-6">
+                          <b>Qual?: </b>{{$dadosPessoais[0]->qualDeficiencia}}
                         </div>  
                       </div>
 
@@ -145,44 +145,44 @@
                       </div>
                       <div class="row">
                         <div class="col-sm-8">
-                          Endereço Residêncial: {{$dadosEndContato[0]->enderecoResidencialEC}}
+                          <b>Endereço Residêncial: </b>{{$dadosEndContato[0]->enderecoResidencialEC}}
                         </div>  
                         <div class="col-sm-2">
-                          Número: {{$dadosEndContato[0]->numeroEC}}
+                          <b>Número: </b>{{$dadosEndContato[0]->numeroEC}}
                         </div>  
                       </div>
                       <div class="row">
                         <div class="col-sm-6">
-                          Complemento: {{$dadosEndContato[0]->complementoEC}}
+                          <b>Complemento: </b>{{$dadosEndContato[0]->complementoEC}}
                         </div>  
                         <div class="col-sm-6">
-                          Bairro: {{$dadosEndContato[0]->bairroEC}}
+                          <b>Bairro: </b>{{$dadosEndContato[0]->bairroEC}}
                         </div>  
                       </div>
                       <div class="row">
                         <div class="col-sm-12">
-                          Cidade: {{$dadosEndContato[0]->cidadeEC}}
+                          <b>Cidade: </b>{{$dadosEndContato[0]->cidadeEC}}
                         </div>    
                       </div>
                       <div class="row">
                         <div class="col-sm-6">
-                          Estado: {{$dadosEndContato[0]->estadoEC}}
+                          <b>Estado: </b>{{$dadosEndContato[0]->estadoEC}}
                         </div>  
                         <div class="col-sm-6">
-                          CEP: {{$dadosEndContato[0]->cep}}
-                        </div>  
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-6">
-                          Telefone Residencial: {{$dadosEndContato[0]->telResidencial}}
-                        </div>  
-                        <div class="col-sm-6">
-                          Telefone Celular: {{$dadosEndContato[0]->telCelular}}
+                          <b>CEP: </b>{{$dadosEndContato[0]->cep}}
                         </div>  
                       </div>
                       <div class="row">
                         <div class="col-sm-6">
-                          E-mail: {{$dadosEndContato[0]->email}}
+                          <b>Telefone Residencial: </b>{{$dadosEndContato[0]->telResidencial}}
+                        </div>  
+                        <div class="col-sm-6">
+                         <b>Telefone Celular: </b>{{$dadosEndContato[0]->telCelular}}
+                        </div>  
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <b>E-mail: </b>{{$dadosEndContato[0]->email}}
                         </div>  
                       </div>
 
@@ -193,126 +193,126 @@
                       </div>
                       <div class="row">
                         <div class="col-sm-12">
-                          CPF: {{$dadosDocumentacao[0]->cpf}}
+                          <b>CPF: </b>{{$dadosDocumentacao[0]->cpf}}
                         </div>  
                       </div>
                       <div class="row">
                         <div class="col-sm-3">
-                          RG: {{$dadosDocumentacao[0]->rg}}
+                          <b>RG: </b>{{$dadosDocumentacao[0]->rg}}
                         </div>  
                         <div class="col-sm-3">
-                          Orgão Emissor: {{$dadosDocumentacao[0]->orgaoEmissorRG}}
+                          <b>Orgão Emissor: </b>{{$dadosDocumentacao[0]->orgaoEmissorRG}}
                         </div> 
                         <div class="col-sm-3">
-                          UF: {{$dadosDocumentacao[0]->ufRG}}
+                          <b>UF: </b>{{$dadosDocumentacao[0]->ufRG}}
                         </div> 
                         <div class="col-sm-3">
-                          Data de Emissão: {{$dadosDocumentacao[0]->dataEmissaoRG}}
+                          <b>Data de Emissão: </b>{{$dadosDocumentacao[0]->dataEmissaoRG}}
                         </div> 
                       </div>
                       <div class="row">
                         <div class="col-sm-3">
-                          Nº CTPS: {{$dadosDocumentacao[0]->ctps}}
+                          <b>Nº CTPS: </b>{{$dadosDocumentacao[0]->ctps}}
                         </div>  
                         <div class="col-sm-3">
-                          Série: {{$dadosDocumentacao[0]->serie}}
+                          <b>Série: </b>{{$dadosDocumentacao[0]->serie}}
                         </div> 
                         <div class="col-sm-3">
-                          UF: {{$dadosDocumentacao[0]->ufCtps}}
+                          <b>UF: </b>{{$dadosDocumentacao[0]->ufCtps}}
                         </div> 
                         <div class="col-sm-3">
-                          Data de Emissão: {{$dadosDocumentacao[0]->dataEmissaoCtps}}
+                          <b>Data de Emissão: </b>{{$dadosDocumentacao[0]->dataEmissaoCtps}}
                         </div> 
                       </div>
                       <div class="row">
                         <div class="col-sm-3">
-                          PIS/PASEP: {{$dadosDocumentacao[0]->pisPasep}}
+                          <b>PIS/PASEP: </b>{{$dadosDocumentacao[0]->pisPasep}}
                         </div>  
                         <div class="col-sm-3">
-                          Data de Cadastramento: {{$dadosDocumentacao[0]->dataCadPisPasep}}
+                          <b>Data de Cadastramento: </b>{{$dadosDocumentacao[0]->dataCadPisPasep}}
                         </div> 
                       </div>
                       <div class="row">
                         <div class="col-sm-3">
-                          Título de Eleitor: {{$dadosDocumentacao[0]->tituloEleitor}}
+                          <b>Título de Eleitor: </b>{{$dadosDocumentacao[0]->tituloEleitor}}
                         </div>  
                         <div class="col-sm-3">
-                          Zona: {{$dadosDocumentacao[0]->zona}}
+                          <b>Zona: </b>{{$dadosDocumentacao[0]->zona}}
                         </div> 
                         <div class="col-sm-3">
-                          Seção: {{$dadosDocumentacao[0]->secao}}
+                          <b>Seção: </b>{{$dadosDocumentacao[0]->secao}}
                         </div> 
                         <div class="col-sm-3">
-                          Data de Emissão: {{$dadosDocumentacao[0]->dataEmissaoTituloEleitor}}
+                          <b>Data de Emissão: </b>{{$dadosDocumentacao[0]->dataEmissaoTituloEleitor}}
                         </div> 
                       </div>
                       <div class="row">
                         <div class="col-sm-6">
-                          Cidade de Votação: {{$dadosDocumentacao[0]->cidadeVotacao}}
+                          <b>Cidade de Votação: </b>{{$dadosDocumentacao[0]->cidadeVotacao}}
                         </div>  
                         <div class="col-sm-6">
-                          UF de Votação: {{$dadosDocumentacao[0]->ufVotacao}}
+                          <b>UF de Votação: </b>{{$dadosDocumentacao[0]->ufVotacao}}
                         </div> 
                       </div>
                       <div class="row">
                         <div class="col-sm-4">
-                          Certificado Militar: {{$dadosDocumentacao[0]->certMilitar}}
+                          <b>Certificado Militar: </b>{{$dadosDocumentacao[0]->certMilitar}}
                         </div>  
                         <div class="col-sm-4">
-                          Situação: {{$dadosDocumentacao[0]->certMilitarSituacao}}
+                          <b>Situação: </b>{{$dadosDocumentacao[0]->certMilitarSituacao}}
                         </div> 
                         <div class="col-sm-4">
-                          Data de Emissão: {{$dadosDocumentacao[0]->dataCertMilitar}}
+                          <b>Data de Emissão: </b>{{$dadosDocumentacao[0]->dataCertMilitar}}
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-sm-6">
-                          Tipo: {{$dadosDocumentacao[0]->tipoCertMilitar}}
+                          <b>Tipo: </b>{{$dadosDocumentacao[0]->tipoCertMilitar}}
                         </div>  
                         <div class="col-sm-6">
-                          UF: {{$dadosDocumentacao[0]->ufCertMilitar}}
+                          <b>UF: </b>{{$dadosDocumentacao[0]->ufCertMilitar}}
                         </div> 
                       </div>
                       <div class="row">
                         <div class="col-sm-3">
-                          CNH Nº: {{$dadosDocumentacao[0]->numCNH}}
+                          <b>CNH Nº: </b>{{$dadosDocumentacao[0]->numCNH}}
                         </div>  
                         <div class="col-sm-3">
-                          Registro: {{$dadosDocumentacao[0]->registroCNH}}
+                          <b>Registro: </b>{{$dadosDocumentacao[0]->registroCNH}}
                         </div> 
                         <div class="col-sm-3">
-                          Categoria: {{$dadosDocumentacao[0]->categoriaCNH}}
+                          <b>Categoria: </b>{{$dadosDocumentacao[0]->categoriaCNH}}
                         </div>
                         <div class="col-sm-3">
-                          Data de Emissão: {{$dadosDocumentacao[0]->dataEmissaoCNH}}
+                          <b>Data de Emissão: </b>{{$dadosDocumentacao[0]->dataEmissaoCNH}}
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-sm-4">
-                          UF: {{$dadosDocumentacao[0]->ufCNH}}
+                          <b>UF: </b>{{$dadosDocumentacao[0]->ufCNH}}
                         </div>  
                         <div class="col-sm-4">
-                          Data de Validade: {{$dadosDocumentacao[0]->dataValidadeCNH}}
+                          <b>Data de Validade: </b>{{$dadosDocumentacao[0]->dataValidadeCNH}}
                         </div> 
                         <div class="col-sm-4">
-                          Primeira Habilitação: {{$dadosDocumentacao[0]->primeiraHabilitacao}}
+                          <b>Primeira Habilitação: </b>{{$dadosDocumentacao[0]->primeiraHabilitacao}}
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-sm-12">
-                          Nome do Conselho Profissional: {{$dadosDocumentacao[0]->conselhoProfissional}}
+                          <b>Nome do Conselho Profissional: </b>{{$dadosDocumentacao[0]->conselhoProfissional}}
                         </div>  
                       </div>
                       <div class="row">
                         <div class="col-sm-4">
-                          Nº Registro: {{$dadosDocumentacao[0]->numConselhoProf}}
+                          <b>Nº Registro: </b>{{$dadosDocumentacao[0]->numConselhoProf}}
 
                         </div>  
                         <div class="col-sm-4">
-                          Data de Emissão: {{$dadosDocumentacao[0]->dataEmissaoConselhoProf}}
+                          <b>Data de Emissão: </b>{{$dadosDocumentacao[0]->dataEmissaoConselhoProf}}
                         </div> 
                         <div class="col-sm-4">
-                          Data de Validade: {{$dadosDocumentacao[0]->dataValidadeConselhoProf}}
+                          <b>Data de Validade: </b>{{$dadosDocumentacao[0]->dataValidadeConselhoProf}}
                         </div>
                       </div>
 
@@ -324,36 +324,36 @@
                       @forelse($dadosDependente as $dependente)
                         <div class="row">
                           <div class="col-sm-12">
-                            Nome: {{$dependente->nomeDependente}}
+                            <b>Nome: </b>{{$dependente->nomeDependente}}
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-sm-6">
-                            Data de Nascimento: {{$dependente->dataNascDependente}}
+                            <b>Data de Nascimento: </b>{{$dependente->dataNascDependente}}
                           </div>
                           <div class="col-sm-6">
-                            Sexo: {{$dependente->sexoDependente}}
+                            <b>Sexo: </b>{{$dependente->sexoDependente}}
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-sm-6">
-                            Grau de Parentesco: {{$dependente->parentesco}}
+                            <b>Grau de Parentesco: </b>{{$dependente->parentesco}}
                           </div>
                           <div class="col-sm-6">
-                            cpfDependente: {{$dependente->cpfDependente}}
+                            <b>CPF Dependente: </b>{{$dependente->cpfDependente}}
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-sm-12">
-                            Estado Cívil: {{$dependente->estadoCivilDependente}}
+                            <b>Estado Cívil: </b>{{$dependente->estadoCivilDependente}}
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-sm-6">
-                            Dependente para fins de Dedução de Imposto de Renda? {{$dependente->deducaoImposto}}
+                            <b>Dependente para fins de Dedução de Imposto de Renda? </b>{{$dependente->deducaoImposto}}
                           </div>
                           <div class="col-sm-6">
-                            Dependente para fins de Recebimento de Salário Família? {{$dependente->salarioFamilia}}
+                            <b>Dependente para fins de Recebimento de Salário Família? </b>{{$dependente->salarioFamilia}}
                           </div>
                         </div>
                         <div class="row">
@@ -365,7 +365,7 @@
                       @empty
                         <div class="row">
                           <div class="col-sm-12">
-                             <p> Não existe Dependente cadastrado!</p>
+                             <p> <b>NÃO EXISTE DEPENDENTE CADASTRADO!</b></p>
                           </div>
                         </div>
                       @endforelse
