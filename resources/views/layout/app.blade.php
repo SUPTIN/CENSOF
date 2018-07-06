@@ -57,6 +57,9 @@
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'home') }}
                     </a>
+                    <a class="navbar-brand" href="{{ url('informacao') }}">
+                            <img src="icones/info.png" alt="Informação do Sistema" height="22" width="22"/>
+                    </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
