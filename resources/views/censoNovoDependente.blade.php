@@ -13,20 +13,20 @@
                       <form method="post" action="dep">
                       <div class="row">
                         <div class="col-sm-12">
-                          <input class="form-control" type="hidden" name="_token" value="{{ csrf_token()}}"/>
+                          <input class="form-control" type="hidden" name="_token" value="{{ csrf_token()}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-sm-12">
                           Nome: 
-                          <input class="form-control" name="nomeDependente" value="{{old('nomeDependente')}}"/>
+                          <input class="form-control" name="nomeDependente" value="{{old('nomeDependente')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-6">
                           Data de Nascimento:
-                          <input class="form-control" name="dataNascDependente" value="{{old('dataNascDependete')}}"/>
+                          <input class="form-control" name="dataNascDependente" value="{{old('dataNascDependete')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-6">
                          Sexo:
@@ -41,11 +41,11 @@
                       <div class="row">
                         <div class="col-sm-6">
                           Grau de Parentesco:
-                          <input class="form-control" name="parentesco" value="{{old('parentesco')}}"/>
+                          <input class="form-control" name="parentesco" value="{{old('parentesco')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-6">
                           CPF:
-                          <input class="form-control" name="cpfDependente" value="{{old('cpfDependente')}}"/>
+                          <input class="form-control" name="cpfDependente" value="{{old('cpfDependente')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 

@@ -29,7 +29,7 @@ class Pdf extends Fpdf
         $this->SetFont('Arial','BI',8);
         $this->Cell(150, 0, utf8_decode('SUPTIN & RH - Censo Funcional PMSMJ/ES - Impresso: '.strftime('%d/%m/%Y às %T')),0,0,'R');
         $this->SetFont('Arial','IB',6);
-        $this->Cell(50, 0, utf8_decode('Versão 0.5'),0,0,'R');
+        $this->Cell(50, 0, utf8_decode('Versão 1.0'),0,0,'R');
     }
 
 

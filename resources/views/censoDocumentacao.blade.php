@@ -20,18 +20,18 @@
                       <div class="row">
                         <div class="col-sm-12">
                           CPF: 
-                          <input class="form-control" name="cpf" value="{{old('cpf')}}"/>
+                          <input class="form-control" name="cpf" value="{{old('cpf')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-3">
                           RG:
-                          <input class="form-control" name="rg" value="{{old('rg')}}"/>
+                          <input class="form-control" name="rg" value="{{old('rg')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-3">
                           Orgão emissor:
-                          <input class="form-control" name="orgaoEmissorRG" value="{{old('orgaoEmissorRG')}}"/>
+                          <input class="form-control" name="orgaoEmissorRG" value="{{old('orgaoEmissorRG')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-3">
                           UF:
@@ -46,18 +46,18 @@
                         </div>
                         <div class="col-sm-3">
                           Data emissão:
-                          <input class="form-control" name="dataEmissaoRg" value="{{old('dataEmissaoRg')}}"/>
+                          <input class="form-control" name="dataEmissaoRg" value="{{old('dataEmissaoRg')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-3">
                           Número CTPS:
-                          <input class="form-control" name="ctps" value="{{old('ctps')}}"/>
+                          <input class="form-control" name="ctps" value="{{old('ctps')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-3">
                           Serie:
-                          <input class="form-control" name="serie" value="{{old('serie')}}"/>
+                          <input class="form-control" name="serie" value="{{old('serie')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-3">
                           UF:
@@ -72,37 +72,37 @@
                         </div>
                         <div class="col-sm-3">
                           Data emissão:
-                          <input class="form-control" name="dataEmissaoCtps" value="{{old('dataEmissaoCtps')}}"/>
+                          <input class="form-control" name="dataEmissaoCtps" value="{{old('dataEmissaoCtps')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-6">
                           Pis/PASEP:
-                          <input class="form-control" name="pisPasep" value="{{old('pisPasep')}}"/>
+                          <input class="form-control" name="pisPasep" value="{{old('pisPasep')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-6">
                           Data de Cadastramento:
-                          <input class="form-control" name="dataCadPisPasep" value="{{old('dataCadPisPasep')}}"/>
+                          <input class="form-control" name="dataCadPisPasep" value="{{old('dataCadPisPasep')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-3">
                           Titulo de Eleitor:
-                          <input class="form-control" name="tituloEleitor" value="{{old('tituloEleitor')}}"/>
+                          <input class="form-control" name="tituloEleitor" value="{{old('tituloEleitor')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-3">
                           Zona:
-                          <input class="form-control" name="zona" value="{{old('zona')}}"/>
+                          <input class="form-control" name="zona" value="{{old('zona')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-3">
                           Seção:
-                          <input class="form-control" name="secao" value="{{old('secao')}}"/>
+                          <input class="form-control" name="secao" value="{{old('secao')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-3">
                           Data emissão:
-                          <input class="form-control" name="dataEmissaoTituloEleitor" value="{{old('dataEmissaoTituloEleitor')}}"/>
+                          <input class="form-control" name="dataEmissaoTituloEleitor" value="{{old('dataEmissaoTituloEleitor')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -127,22 +127,22 @@
                       <div class="row">
                         <div class="col-sm-4">
                           Certificado Militar:
-                          <input class="form-control" name="certMilitar" value="{{old('certMilitar')}}"/>
+                          <input class="form-control" name="certMilitar" value="{{old('certMilitar')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-4">
                           Situação:
-                          <input class="form-control" name="certMilitarSituacao" value="{{old('certMilitarSituacao')}}"/>
+                          <input class="form-control" name="certMilitarSituacao" value="{{old('certMilitarSituacao')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-4">
                           Data emissão:
-                          <input class="form-control" name="dataCertMilitar" value="{{old('dataCertMilitar')}}"/>
+                          <input class="form-control" name="dataCertMilitar" value="{{old('dataCertMilitar')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-6">
                           Tipo de Certificado Militar:
-                          <input class="form-control" name="tipoCertMilitar" value="{{old('tipoCertMilitar')}}"/>
+                          <input class="form-control" name="tipoCertMilitar" value="{{old('tipoCertMilitar')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-6">
                           UF do Certificado Militar:
@@ -160,11 +160,11 @@
                       <div class="row">
                         <div class="col-sm-3">
                           Número CNH:
-                          <input class="form-control" name="numCNH" value="{{old('numCNH')}}"/>
+                          <input class="form-control" name="numCNH" value="{{old('numCNH')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-3">
                           Registro:
-                          <input class="form-control" name="registroCNH" value="{{old('registroCNH')}}"/>
+                          <input class="form-control" name="registroCNH" value="{{old('registroCNH')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-3">
                           Categoria:
@@ -180,7 +180,7 @@
                         </div>
                         <div class="col-sm-3">
                           Data emissão:
-                          <input class="form-control" name="dataEmissaoCNH" value="{{old('dataEmissaoCNH')}}"/>
+                          <input class="form-control" name="dataEmissaoCNH" value="{{old('dataEmissaoCNH')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -198,7 +198,7 @@
                         </div>
                         <div class="col-sm-4">
                           Data Validade:
-                          <input class="form-control" name="dataValidadeCNH" value="{{old('dataValidadeCNH')}}"/>
+                          <input class="form-control" name="dataValidadeCNH" value="{{old('dataValidadeCNH')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-4">
                           Primeira Habilitação:
@@ -213,22 +213,22 @@
                       <div class="row">
                         <div class="col-sm-12">
                           Nome do Conselho Profissional:
-                          <input class="form-control" name="conselhoProfissional" value="{{old('conselhoProfissional')}}"/>
+                          <input class="form-control" name="conselhoProfissional" value="{{old('conselhoProfissional')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-4">
                           Número Registro:
-                          <input class="form-control" name="numConselhoProf" value="{{old('numConselhoProf')}}"/>
+                          <input class="form-control" name="numConselhoProf" value="{{old('numConselhoProf')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-4">
                           Data emissão:
-                          <input class="form-control" name="dataEmissaoConselhoProf" value="{{old('dataEmissaoConselhoProf')}}"/>
+                          <input class="form-control" name="dataEmissaoConselhoProf" value="{{old('dataEmissaoConselhoProf')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-4">
                           Data validade:
-                          <input class="form-control" name="dataValidadeConselhoProf" value="{{old('dataValidadeConselhoProf')}}"/>
+                          <input class="form-control" name="dataValidadeConselhoProf" value="{{old('dataValidadeConselhoProf')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 

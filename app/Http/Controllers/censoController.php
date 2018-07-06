@@ -391,7 +391,7 @@ class censoController extends Controller
         $this->pdf->SetFont('Courier','B',12);
         $this->pdf->Cell(35,5, utf8_decode('Escolaridade: '),0,0);
         $this->pdf->SetFont('Courier','',12);
-        $this->pdf->Cell(70,5, utf8_decode($dadosPessoais[0]->escolaridade),0,1);
+        $this->pdf->MultiCell(160,6, utf8_decode($dadosPessoais[0]->escolaridade),0,1);
         $this->pdf->SetFont('Courier','B',12);
         $this->pdf->Cell(46,5, utf8_decode('Área de Instrução: '),0,0);
         $this->pdf->SetFont('Courier','',12);
@@ -422,7 +422,7 @@ class censoController extends Controller
         $this->pdf->Cell(0,5, utf8_decode($dadosPessoais[0]->qualDeficiencia),0,1);
 
 
-        $this->pdf->Ln(7);
+        $this->pdf->Ln(5);
         $this->pdf->SetFont('Courier','BI',15);
         $this->pdf->Cell(10,5,utf8_decode('Documentação'),0,1);
         $this->pdf->Ln(2);
@@ -579,15 +579,15 @@ class censoController extends Controller
         $this->pdf->SetFont('Courier','B',12);
         $this->pdf->Cell(8,5, utf8_decode('UF: '),0,0);
         $this->pdf->SetFont('Courier','',12);
-        $this->pdf->Cell(40,5, utf8_decode($dadosDocumentacao[0]->ufCNH),0,0);
+        $this->pdf->Cell(68,5, utf8_decode($dadosDocumentacao[0]->ufCNH),0,0);
         $this->pdf->SetFont('Courier','B',12);
         $this->pdf->Cell(27,5, utf8_decode('Categoria: '),0,0);
         $this->pdf->SetFont('Courier','',12);
-        $this->pdf->Cell(10,5, utf8_decode($dadosDocumentacao[0]->categoriaCNH),0,0);
+        $this->pdf->Cell(36,5, utf8_decode($dadosDocumentacao[0]->categoriaCNH),0,0);
         $this->pdf->SetFont('Courier','B',12);
         $this->pdf->Cell(27,5, utf8_decode('1ª Habil.: '),0,0);
         $this->pdf->SetFont('Courier','',12);
-        $this->pdf->Cell(27,5, utf8_decode($dadosDocumentacao[0]->primeiraHabilitacao),0,0);
+        $this->pdf->Cell(27,5, utf8_decode($dadosDocumentacao[0]->primeiraHabilitacao),0,1);
         $this->pdf->SetFont('Courier','B',12);
         $this->pdf->Cell(34,5, utf8_decode('Data de Val.: '),0,0);
         $this->pdf->SetFont('Courier','',12);
@@ -609,7 +609,7 @@ class censoController extends Controller
         $this->pdf->SetFont('Courier','',12);
         $this->pdf->Cell(80,5, utf8_decode($dadosDocumentacao[0]->dataValidadeConselhoProf),0,1);
 
-        $this->pdf->Ln(10);
+        $this->pdf->Ln(5);
         $this->pdf->SetFont('Courier','BI',15);
         $this->pdf->Cell(10,5,utf8_decode('Dependentes'),0,1);
         $this->pdf->Ln(2);
@@ -618,7 +618,6 @@ class censoController extends Controller
                 $query->where('idDadosBase', '=' , $idDadosBase);
         })->get();
         $itens = $dadosDependente->count();
-        //return $dadosDependente;
         $this->pdf->SetFont('Courier','',12);
         if ($itens > 0 ){
             for($i=0; $i < $itens; $i++){
@@ -657,11 +656,12 @@ class censoController extends Controller
                 $this->pdf->Ln(2);
             }
         }else{
-            $this->pdf->Cell(80,5, utf8_decode('Não existe Dependente!'),0,1);
+            $this->pdf->SetFont('Courier','B',12);
+            $this->pdf->Cell(80,5, utf8_decode('NÃO EXISTE DEPENDENTE CADASTRADO!'),0,1);
         }
 
 
-        $this->pdf->Output(utf8_decode("TEste.pdf"),"I");
+        $this->pdf->Output(utf8_decode("TEste.pdf"),"D");
         exit;
     
     }

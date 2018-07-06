@@ -20,14 +20,14 @@
                       <div class="row">
                         <div class="col-sm-12">
                           Nome: 
-                          <input class="form-control" name="nomeBase" value="{{$infoBase->nomeBase}}"/>
+                          <input class="form-control" name="nomeBase" value="{{$infoBase->nomeBase}}" style="text-transform:uppercase" />
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-6">
                           Data de Nascimento:
-                          <input class="form-control" name="dataNasc" value="{{old('dataNasc')}}"/>
+                          <input class="form-control" name="dataNasc" value="{{old('dataNasc')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-6">
                          Sexo:
@@ -59,14 +59,14 @@
                       <div class="row">
                         <div class="col-sm-12">
                           Nome de Mãe:
-                          <input class="form-control" name="nomeMae" value="{{old('nomeMae')}}"/>
+                          <input class="form-control" name="nomeMae" value="{{old('nomeMae')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-12">
                           Nome de Pai:
-                          <input class="form-control" name="nomePai" value="{{old('nomePai')}}"/>
+                          <input class="form-control" name="nomePai" value="{{old('nomePai')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -85,14 +85,14 @@
                         </div>
                         <div class="col-sm-6">
                           Data do Casamento:
-                          <input class="form-control" name="dataCasamento" value="{{old('dataCasamento')}}"/>
+                          <input class="form-control" name="dataCasamento" value="{{old('dataCasamento')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-12">
                           Nome do Conjuge:
-                          <input class="form-control" name="nomeConjugue" value="{{old('nomeConjugue')}}"/>
+                          <input class="form-control" name="nomeConjugue" value="{{old('nomeConjugue')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -139,7 +139,7 @@
                         </div>
                         <div class="col-sm-6">
                           Área de Instrução:
-                          <input class="form-control" name="areaInstrucao" value="{{old('areaInstrucao')}}"/>
+                          <input class="form-control" name="areaInstrucao" value="{{old('areaInstrucao')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -154,7 +154,7 @@
                         </div>
                         <div class="col-sm-6">
                           Data de Chegada ao Brasil:
-                          <input class="form-control" name="dataChegadaBrasil" value="{{old('dataChegadaBrasil')}}"/>
+                          <input class="form-control" name="dataChegadaBrasil" value="{{old('dataChegadaBrasil')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -169,7 +169,7 @@
                         </div>
                         <div class="col-sm-6">
                           Data da Naturalizaçao:
-                          <input class="form-control" name="dataNaturalizado" value="{{old('dataNaturalizado')}}"/>
+                          <input class="form-control" name="dataNaturalizado" value="{{old('dataNaturalizado')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -186,7 +186,7 @@
                       <div class="row">
                         <div class="col-sm-12">
                           Qual?
-                          <input class="form-control" name="qualDeficiencia" value="{{old('qualDeficiencia')}}"/>
+                          <input class="form-control" name="qualDeficiencia" value="{{old('qualDeficiencia')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -213,7 +213,7 @@
          var option = document.getElementById("paisNasc").value;
          if (option != '33'){
 
-           var inputText = '<div class="col-sm-4" id="estadoNascCamp">Estado de Nascimento: <input class="form-control" name="estadoNasc"  value="{{old('estadoNasc')}}"/></div> <div class="col-sm-4" id="cidadeNascCamp"> Cidade de Nascimento:<input class="form-control" name="cidadeNasc" value="{{old('cidadeNasc')}}"/></div>'; 
+           var inputText = '<div class="col-sm-4" id="estadoNascCamp">Estado de Nascimento: <input class="form-control" name="estadoNasc"  value="{{old('estadoNasc')}}" style="text-transform:uppercase"/></div> <div class="col-sm-4" id="cidadeNascCamp"> Cidade de Nascimento:<input class="form-control" name="cidadeNasc" value="{{old('cidadeNasc')}}" style="text-transform:uppercase"/></div>'; 
            $('#estadoNascCamp').remove();
            $('#cidadeNascCamp').remove();
            $('#estadosCidades').append(inputText);

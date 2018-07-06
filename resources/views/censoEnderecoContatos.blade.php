@@ -14,7 +14,7 @@
                       <form method="post" action="eC">
                       <div class="row">
                         <div class="col-sm-12">
-                          <input class="form-control" type="hidden" name="_token" value="{{ csrf_token()}}"/>
+                          <input class="form-control" type="hidden" name="_token" value="{{ csrf_token()}}" />
                         </div>
                       </div>
                       <div class="row">
@@ -24,47 +24,47 @@
                         </div>
                         <div class="col-sm-6">
                           Estado:
-                          <input class="form-control" id="estadoEC" name="estadoEC" value="{{old('estadoEC')}}"/>
+                          <input class="form-control" id="estadoEC" name="estadoEC" value="{{old('estadoEC')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-6">
                           Cidade:
-                          <input class="form-control" id="cidadeEC" name="cidadeEC" value="{{old('cidadeEC')}}"/>
+                          <input class="form-control" id="cidadeEC" name="cidadeEC" value="{{old('cidadeEC')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-6">
                           Bairro:
-                          <input class="form-control" id="bairroEC" name="bairroEC" value="{{old('bairroEC')}}"/>
+                          <input class="form-control" id="bairroEC" name="bairroEC" value="{{old('bairroEC')}}" style="text-transform:uppercase"/>
                         </div> 
                       </div>
 
                       <div class="row">
                         <div class="col-sm-10">
                           Endereço Residencial: 
-                          <input class="form-control" id="enderecoResidencialEC" name="enderecoResidencialEC" value="{{old('enderecoResidencialEC')}}"/>
+                          <input class="form-control" id="enderecoResidencialEC" name="enderecoResidencialEC" value="{{old('enderecoResidencialEC')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-2">
                           Número:
-                          <input class="form-control" id="numeroEC" name="numeroEC" value="{{old('numeroEC')}}"/>
+                          <input class="form-control" id="numeroEC" name="numeroEC" value="{{old('numeroEC')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-12">
                           Complemento:
-                          <input class="form-control" id="complementoEC" name="complementoEC" value="{{old('complementoEC')}}"/>
+                          <input class="form-control" id="complementoEC" name="complementoEC" value="{{old('complementoEC')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-6">
                           Tel. Residencial:
-                          <input class="form-control" name="telResidencial" value="{{old('telResidencial')}}"/>
+                          <input class="form-control" name="telResidencial" value="{{old('telResidencial')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-6">
                           Tel. Celular:
-                          <input class="form-control" name="telCelular" value="{{old('telCelular')}}"/>
+                          <input class="form-control" name="telCelular" value="{{old('telCelular')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -72,7 +72,7 @@
                         
                         <div class="col-sm-12">
                           E-mail:
-                          <input class="form-control" name="email" value="{{old('email')}}"/>
+                          <input class="form-control" name="email" value="{{old('email')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
