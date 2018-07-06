@@ -24,10 +24,12 @@ class Pdf extends Fpdf
     }
     public function footer(){
         $this->SetXY(-15, -15);
-        $this->line(0, $this->GetY()-2, $this->GetX(),$this->GetY()-2);
+        $this->line(0, $this->GetY()-2, $this->GetX()+15,$this->GetY()-2);
         $this->SetX(0);
         $this->SetFont('Arial','BI',8);
         $this->Cell(150, 0, utf8_decode('SUPTIN & RH - Censo Funcional PMSMJ/ES - Impresso: '.strftime('%d/%m/%Y às %T')),0,0,'R');
+        $this->SetFont('Arial','IB',6);
+        $this->Cell(50, 0, utf8_decode('Versão 0.5'),0,0,'R');
     }
 
 
