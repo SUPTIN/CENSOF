@@ -50,7 +50,7 @@ class censoController extends Controller
         $this->pdf = $pdf;
 	}
 
-	 public function dadosBase(){ 
+	public function dadosBase(){ 
 	 	$usuario = '1';
 	 	$dBasicos = dadosBase::find($usuario);
         return view('welcome', compact('dBasicos'));

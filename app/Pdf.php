@@ -14,7 +14,7 @@ class Pdf extends Fpdf
         $this->Cell(0,5, utf8_decode('Prefeitura Municipal de Santa Maria de Jetibá - ES'),15, 6, 'C');
         $this->SetFont('Arial','B',15);
         $this->SetX(30);
-        $this->Cell(0, 8,'Censo Funcional - '.strftime('%Y'), 15, 6, 'C');
+        $this->Cell(0, 8,'Censo Funcional - 2018', 15, 6, 'C');
         $this->SetFont('Arial','B',9);
         $this->SetX(-40);
         $this->Cell(40,10,utf8_decode('Página: ').$this->PageNo().'/{nb}',0, 1);
