@@ -70,7 +70,20 @@ class censoController extends Controller
     	$paises = $this->paises->orderBy('paisNome')->get();
     	$estados = $this->estados->orderBy('estadoUf')->get();
     	$infoBase = dadosBase::find($request->id);
-        return view('censoDadosPessoais', compact('escolaridades','paises', 'estados', 'cidades', 'infoBase'));
+        $idDadosBase= $request->id;
+
+        $infoPessoais = dadosPessoais::where(function($query) use($idDadosBase){
+            if($idDadosBase)
+                $query->where('idDadosBase', '=', $idDadosBase);
+        })->get();
+        if(empty($infoPessoais[0])){
+             return view('censoDadosPessoais', compact('escolaridades','paises', 'estados', 'cidades', 'infoBase'));
+        }else{
+            $infoPessoais = $infoPessoais[0];    
+            return view('censoDadosPessoaisUpdate', compact('escolaridades','paises', 'estados', 'cidades', 'infoBase','infoPessoais')); 
+        }
+
+        
     }
 
     public function insereDadosPessoais(Request $request){
@@ -83,6 +96,24 @@ class censoController extends Controller
     		if($idDadosBase)
     			$query->where('idDadosBase', '=', $idDadosBase);
     	})->get();	
+
+        if ($request->estadoCivil != "CASADO"){
+                $dados['dataCasamento'] = 'NÃO NECESSÁRIO.';
+            }
+        if ($request->nomeConjugue == ""){
+                $dados['nomeConjugue'] = 'NÃO NECESSÁRIO.';
+            }
+        if ($request->estrangeiro == "NÃO"){
+                $dados['dataChegadaBrasil'] = 'NÃO NECESSÁRIO.';
+            }
+        if ($request->naturalizado == "NÃO"){
+                $dados['dataNaturalizado'] = 'NÃO NECESSÁRIO.';
+            }
+        if ($request->possuiDeficiencia == "NÃO"){
+                $dados['qualDeficiencia'] = 'NÃO NECESSÁRIO.';
+            }
+        $this->validate($request, $this->dadosPessoais->rules, $this->dadosPessoais->messages, $this->dadosBase->rules, $this->dadosBase->messages);
+        $this->validate($request, $this->dadosBase->rules, $this->dadosBase->messages);
 
         if(empty($infoPessoais[0])){
         	$insert = $this->dadosPessoais->create($dados);
@@ -100,7 +131,6 @@ class censoController extends Controller
 
     	$caminho = $idDadosBase.'/enderecoContatos';
     	return redirect()->to($caminho);
-    	//return view('censoEnderecoContatos', compact('escolaridades','paises', 'estados', 'cidades', 'infoBase'));;
     }
 
     public function  enderecoContatos(Request $request){ 

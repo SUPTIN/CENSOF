@@ -8,7 +8,8 @@
                 <div class="panel-body">
                       <div class="row">
                         <h4>Censo Funcional - Dados Pessois</h4>
-                        <h6>Passo 1 de 4</h6>
+                        <h6>Passo 1 de 4 </h6>
+
                       </div>
 
                       <form method="post" action="iDP">
@@ -25,6 +26,7 @@
                             @endforeach
                           </div>
                         @endif
+                        
                       </div>
                       <div class="row">
                         <div class="col-sm-12">
@@ -41,14 +43,14 @@
                       <div class="row">
                         <div class="col-sm-6">
                           Data de Nascimento: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" id="dataNasc" name="dataNasc" value="{{old('dataNasc')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="dataNasc" name="dataNasc" value="{{$infoPessoais->dataNasc}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-6">
                          Sexo: <label style="font-size:15px;color:red;">*</label>
                          <select name="sexo" class="form-control">
-                           <option value=" "></option>
-                           <option value="MASCULINO">MASCULINO</option>
-                           <option value="FEMININO">FEMININO</option>
+                           <option value=" " {{$infoPessoais->sexo == " "? 'selected':' '}}></option>
+                           <option value="MASCULINO" {{$infoPessoais->sexo == "MASCULINO"? 'selected':'MASCULINO'}}>MASCULINO</option>
+                           <option value="FEMININO" {{$infoPessoais->sexo == "FEMININO"? 'selected':'FEMININO'}}>FEMININO</option>
                          </select>
                         </div>
                       </div>
@@ -59,7 +61,7 @@
                           <select name="paisNasc"  id="paisNasc" onchange="optionCheck()" class="form-control">
                                 <option value=" "></option>
                             @forelse($paises as $pais)
-                                <option value="{{$pais->paisId}}">{{$pais->paisNome}}</option>
+                                <option {{$infoPessoais->paisNasc == $pais->paisId ? 'selected':''}} value="{{$pais->paisId}}">{{$pais->paisNome}}</option>
                             @empty
                               <option value="0">Nenhum resultado encontrado!</option>
                             @endforelse
@@ -73,14 +75,14 @@
                       <div class="row">
                         <div class="col-sm-12">
                           Nome de Mãe: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" name="nomeMae" value="{{old('nomeMae')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" name="nomeMae" value="{{$infoPessoais->nomeMae}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-12">
                           Nome de Pai:
-                          <input class="form-control" name="nomePai" value="{{old('nomePai')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" name="nomePai" value="{{$infoPessoais->nomePai}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -89,24 +91,24 @@
                           Estado Civil: <label style="font-size:15px;color:red;">*</label>
                           <select id="estadoCivil" name="estadoCivil"  onchange="dataCamento()" class="form-control">
                           <option value=""></option>
-                           <option value="SOLTEIRO">SOLTEIRO</option>
-                           <option value="CASADO">CASADO</option>
-                           <option value="DIVORCIADO">DIVORCIADO</option>
-                           <option value="VIÚVO">VIÚVO</option>
-                           <option value="UNIÃO ESTAVÉL">UNIÃO ESTAVÉL</option>
-                           <option value="OUTRO">OUTRO</option>
+                           <option {{$infoPessoais->estadoCivil == "SOLTEIRO"? 'selected':'SOLTEIRO'}} value="SOLTEIRO">SOLTEIRO</option>
+                           <option {{$infoPessoais->estadoCivil == "CASADO"? 'selected':'CASADO'}} value="CASADO">CASADO</option>
+                           <option {{$infoPessoais->estadoCivil == "DIVORCIADO"? 'selected':'DIVORCIADO'}} value="DIVORCIADO">DIVORCIADO</option>
+                           <option {{$infoPessoais->estadoCivil == "VIÚVO"? 'selected':'VIÚVO'}} value="VIÚVO">VIÚVO</option>
+                           <option {{$infoPessoais->estadoCivil == "UNIÃO ESTAVÉL"? 'selected':'UNIÃO ESTAVÉL'}} value="UNIÃO ESTAVÉL">UNIÃO ESTAVÉL</option>
+                           <option {{$infoPessoais->estadoCivil == "OUTRO"? 'selected':'OUTRO'}} value="OUTRO">OUTRO</option>
                          </select>
                         </div>
-                        <div class="col-sm-6" id="campoEstadoCivil" style="display: none">
+                        <div class="col-sm-6" id="campoEstadoCivil" style="display:none">
                           Data do Casamento:
-                          <input class="form-control" id="dataCasamento" name="dataCasamento" value="{{old('dataCasamento')}}"/>
+                          <input class="form-control" id="dataCasamento" name="dataCasamento" value="{{$infoPessoais->dataCasamento}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
-                      <div class="row"  id="campoNomeConjugue" style="display: none">
+                      <div class="row" id="campoNomeConjugue" style="display: none">
                         <div class="col-sm-12">
                           Nome do Conjuge:
-                          <input class="form-control" name="nomeConjugue" value="{{old('nomeConjugue')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" name="nomeConjugue" value="{{$infoPessoais->nomeConjugue}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -114,27 +116,27 @@
                         <div class="col-sm-6">
                           Raça/cor: <label style="font-size:15px;color:red;">*</label>
                           <select name="racaCor" class="form-control">
-                            <option value=" "> </option>
-                           <option value="BRANCA">BRANCA</option>
-                           <option value="INDÍGENA">INDÍGENA</option>
-                           <option value="NEGRA">NEGRA</option>
-                           <option value="AMARELA">AMARELA</option>
-                           <option value="PARDA">PARDA</option>
-                           <option value="NÃO INFORMADO">NÃO INFORMADO</option>
+                            <option value=" " {{$infoPessoais->racaCor == " "? 'selected':' '}}> </option>
+                           <option {{$infoPessoais->racaCor == "BRANCA"? 'selected':'BRANCA'}} value="BRANCA">BRANCA</option>
+                           <option {{$infoPessoais->racaCor == "INDÍGENA"? 'selected':'INDÍGENA'}} value="INDÍGENA">INDÍGENA</option>
+                           <option {{$infoPessoais->racaCor == "NEGRA"? 'selected':'NEGRA'}} value="NEGRA">NEGRA</option>
+                           <option {{$infoPessoais->racaCor == "AMARELA"? 'selected':'AMARELA'}} value="AMARELA">AMARELA</option>
+                           <option {{$infoPessoais->racaCor == "PARDA"? 'selected':'PARDA'}} value="PARDA">PARDA</option>
+                           <option {{$infoPessoais->racaCor == "NÃO INFORMADO"? 'selected':'NÃO INFORMADO'}} value="NÃO INFORMADO">NÃO INFORMADO</option>
                          </select>
                         </div>
                         <div class="col-sm-6">
                           Tipo Sanguínio: <label style="font-size:15px;color:red;">*</label>
                           <select name="tipoSanguinio" class="form-control">
-                           <option value=" "> </option>
-                           <option value="A+">A+</option>
-                           <option value="A-">A-</option>
-                           <option value="B+">B+</option>
-                           <option value="B-">B-</option>
-                           <option value="AB+">AB+</option>
-                           <option value="AB-">AB-</option>
-                           <option value="O+">O+</option>
-                           <option value="O-">O-</option>
+                           <option {{$infoPessoais->tipoSanguinio == " "? 'selected':' '}} value=" "> </option>
+                           <option {{$infoPessoais->tipoSanguinio == "A+"? 'selected':'A+'}} value="A+">A+</option>
+                           <option {{$infoPessoais->tipoSanguinio == "A-"? 'selected':'A-'}} value="A-">A-</option>
+                           <option {{$infoPessoais->tipoSanguinio == "B+"? 'selected':'B+'}} value="B+">B+</option>
+                           <option {{$infoPessoais->tipoSanguinio == "B-"? 'selected':'B-'}} value="B-">B-</option>
+                           <option {{$infoPessoais->tipoSanguinio == "AB+"? 'selected':'AB+'}} value="AB+">AB+</option>
+                           <option {{$infoPessoais->tipoSanguinio == "AB-"? 'selected':'AB-'}} value="AB-">AB-</option>
+                           <option {{$infoPessoais->tipoSanguinio == "O+"? 'selected':'O+'}} value="O+">O+</option>
+                           <option {{$infoPessoais->tipoSanguinio == "O-"? 'selected':'O-'}} value="O-">O-</option>
                          </select>
                         </div>
                       </div>
@@ -145,7 +147,7 @@
                           <select name="escolaridade" class="form-control">
                             <option value=""></option>
                             @forelse($escolaridades as $escolaridade)
-                              <option value="{{$escolaridade->id}}">{{$escolaridade->descricaoEscolaridade}}</option>
+                              <option {{$infoPessoais->escolaridade == $escolaridade->id ? 'selected':''}} value="{{$escolaridade->id}}">{{$escolaridade->descricaoEscolaridade}}</option>
                             @empty
                               <option value="0">Nenhum resultado encontrado!</option>
                             @endforelse
@@ -153,7 +155,7 @@
                         </div>
                         <div class="col-sm-6">
                           Área de Instrução: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" name="areaInstrucao" value="{{old('areaInstrucao')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" name="areaInstrucao" value="{{$infoPessoais->areaInstrucao}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -161,14 +163,14 @@
                         <div class="col-sm-6">
                           Estrangeiro: <label style="font-size:15px;color:red;">*</label>
                           <select id="estrangeiro" name="estrangeiro" onChange="dataChegadaBrasilEst()" class="form-control">
-                           <option value=" "> </option>
-                           <option value="SIM">SIM</option>
-                           <option value="NÃO">NÃO</option>
+                           <option {{$infoPessoais->estrangeiro == " "? 'selected':' '}} value=" "> </option>
+                           <option {{$infoPessoais->estrangeiro == "SIM"? 'selected':'SIM'}} value="SIM">SIM</option>
+                           <option {{$infoPessoais->estrangeiro == "NÃO"? 'selected':'NÃO'}} value="NÃO">NÃO</option>
                          </select>
                         </div>
                         <div id="campoDataChegadaBrasil" class="col-sm-6" style="display: none">
                           Data de Chegada ao Brasil:
-                          <input class="form-control" id="dataChegadaBrasil" name="dataChegadaBrasil" value="{{old('dataChegadaBrasil')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="dataChegadaBrasil" name="dataChegadaBrasil" value="{{$infoPessoais->dataChegadaBrasil}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -176,14 +178,14 @@
                         <div class="col-sm-6">
                           Naturalizado: <label style="font-size:15px;color:red;">*</label>
                           <select id="naturalizado" name="naturalizado" onChange="dataNaturalizacao()" class="form-control">
-                           <option value=" "> </option>
-                           <option value="SIM">SIM</option>
-                           <option value="NÃO">NÃO</option>
+                           <option {{$infoPessoais->naturalizado == " "? 'selected':' '}} value=" "> </option>
+                           <option {{$infoPessoais->naturalizado == "SIM"? 'selected':'SIM'}} value="SIM">SIM</option>
+                           <option {{$infoPessoais->naturalizado == "NÃO"? 'selected':'NÃO'}} value="NÃO">NÃO</option>
                          </select>
                         </div>
                         <div id="campoNaturalizado"  name="campoNaturalizado" class="col-sm-6" style="display: none">
                           Data da Naturalizaçao:
-                          <input class="form-control" id="dataNaturalizado"  name="dataNaturalizado" value="{{old('dataNaturalizado')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="dataNaturalizado"  name="dataNaturalizado" value="{{$infoPessoais->dataNaturalizado}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -191,16 +193,16 @@
                         <div class="col-sm-12">
                           Possui algum tipo de deficiência: <label style="font-size:15px;color:red;">*</label>
                           <select  id="possuiDeficiencia"name="possuiDeficiencia" onchange="possuiTipoDeficiencia()" class="form-control">
-                           <option value=" "> </option>
-                           <option value="SIM">SIM</option>
-                           <option value="NÃO">NÃO</option>
+                           <option {{$infoPessoais->possuiDeficiencia == " "? 'selected':' '}} value=" "> </option>
+                           <option {{$infoPessoais->possuiDeficiencia == "SIM"? 'selected':'SIM'}} value="SIM">SIM</option>
+                           <option {{$infoPessoais->possuiDeficiencia == "NÃO"? 'selected':'NÃO'}} value="NÃO">NÃO</option>
                          </select>
                         </div>
                       </div>
                       <div class="row" id="campoQual" style="display: none">
                         <div class="col-sm-12">
                           Qual?
-                          <input class="form-control" name="qualDeficiencia" value="{{old('qualDeficiencia')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" name="qualDeficiencia" value="{{$infoPessoais->qualDeficiencia}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -228,13 +230,13 @@
          var option = document.getElementById("paisNasc").value;
          if (option != '33'){
 
-           var inputText = '<div class="col-sm-4" id="estadoNascCamp">Estado de Nascimento: <label style="font-size:15px;color:red;">*</label> <input class="form-control" name="estadoNasc"  value="{{old('estadoNasc')}}" style="text-transform:uppercase"/></div> <div class="col-sm-4" id="cidadeNascCamp"> Cidade de Nascimento: <label style="font-size:15px;color:red;">*</label> <input class="form-control" name="cidadeNasc" value="{{old('cidadeNasc')}}" style="text-transform:uppercase"/></div>'; 
+           var inputText = '<div class="col-sm-4" id="estadoNascCamp">Estado de Nascimento: <label style="font-size:15px;color:red;">*</label> <input class="form-control" name="estadoNasc"  value="{{$infoPessoais->estadoNasc}}" style="text-transform:uppercase"/></div> <div class="col-sm-4" id="cidadeNascCamp"> Cidade de Nascimento: <label style="font-size:15px;color:red;">*</label> <input class="form-control" name="cidadeNasc" value="{{$infoPessoais->cidadeNasc}}" style="text-transform:uppercase"/></div>'; 
            $('#estadoNascCamp').remove();
            $('#cidadeNascCamp').remove();
            $('#estadosCidades').append(inputText);
     
          }else{
-           var inputText = '<div class="col-sm-4" id="estadoNascCamp">Estado de Nascimento: <label style="font-size:15px;color:red;">*</label> <select name="estadoNasc"  id="estadoNasc" class="form-control" onchange="optionCidades()"> <option value=""></option>@forelse($estados as $estado)<option value="{{$estado->estadoId}}">{{$estado->estadoUf}}</option>@empty<option value="0">Nenhum resultado encontrado!</option>@endforelse</select></div><div class="col-sm-4" id="cidadeNascCamp">Cidade de Nascimento: <label style="font-size:15px;color:red;">*</label> <select name="cidadeNasc"  id="cidadeNasc" class="form-control"></div>'; 
+           var inputText = '<div class="col-sm-4" id="estadoNascCamp">Estado de Nascimento: <label style="font-size:15px;color:red;">*</label> <select name="estadoNasc"  id="estadoNasc" class="form-control" onchange="optionCidades()"> <option {{$infoPessoais->estadoNasc == " "? 'selected':' '}}value=""></option>@forelse($estados as $estado)<option {{$infoPessoais->estadoNasc == $estado->estadoId? 'selected':' '}} value="{{$estado->estadoId}}">{{$estado->estadoUf}}</option>@empty<option value="0">Nenhum resultado encontrado!</option>@endforelse</select></div><div class="col-sm-4" id="cidadeNascCamp">Cidade de Nascimento: <label style="font-size:15px;color:red;">*</label><select name="cidadeNasc"  id="cidadeNasc" class="form-control"></div>'; 
            $('#estadoNascCamp').remove();
            $('#cidadeNascCamp').remove();
            $('#estadosCidades').append(inputText);
@@ -248,7 +250,7 @@
            $('select[name=cidadeNasc]').empty();
            $('select[name=cidadeNasc]').append("<option value='0' disable style='display:nome;'> Selecione uma cidade</option>");
            $.each(cidades, function (key, value){
-             $('select[name=cidadeNasc]').append('<option value='+value.cidadeId+'>'+value.cidadeNome+'</option>');
+             $('select[name=cidadeNasc]').append('<option {{$infoPessoais->cidadeNasc == '+value.cidadeId+'? 'selected':''}} value='+value.cidadeId+'>'+value.cidadeNome+'</option>');
            }); 
          }); 
         }
@@ -274,7 +276,7 @@
            $('#campoQual').show();
          }else{
            $('#campoQual').hide();
-           $qualDeficiencia = 'NÃO NECESSÁRIO.'
+           $qualDeficiencia = 'CAMPO NÃO NECESSÁRIO.'
          }
         }
 
@@ -286,7 +288,7 @@
            $dataChegadaBrasil.mask('00/00/0000',{reverse: true});
          }else{
            $('#campoDataChegadaBrasil').hide();
-           $dataChegadaBrasil = 'NÃO NECESSÁRIO.'
+           $dataChegadaBrasil = 'CAMPO NÃO NECESSÁRIO.'
          }
         }
 
@@ -298,7 +300,7 @@
            $dataNaturalizado.mask('00/00/0000',{reverse: true});
          }else{
            $('#campoNaturalizado').hide();
-           $dataNaturalizado = 'NÃO NECESSÁRIO.'
+           $dataNaturalizado = 'CAMPO NÃO NECESSÁRIO.'
          }
         }
 
