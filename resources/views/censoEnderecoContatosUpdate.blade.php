@@ -34,51 +34,51 @@
                       <div class="row">
                         <div class="col-sm-6">
                           CEP: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" id="cep" name="cep" value="{{old('cep')}}" onblur="pesquisaCep(this.value);"/>
+                          <input class="form-control" id="cep" name="cep" value="{{$eC->cep}}" onblur="pesquisaCep(this.value);"/>
                         </div>
                         <div class="col-sm-6">
                           Estado: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" id="estadoEC" name="estadoEC" value="{{old('estadoEC')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="estadoEC" name="estadoEC" value="{{$eC->estadoEC}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-6">
                           Cidade: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" id="cidadeEC" name="cidadeEC" value="{{old('cidadeEC')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="cidadeEC" name="cidadeEC" value="{{$eC->cidadeEC}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-6">
                           Bairro: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" id="bairroEC" name="bairroEC" value="{{old('bairroEC')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="bairroEC" name="bairroEC" value="{{$eC->bairroEC}}" style="text-transform:uppercase"/>
                         </div> 
                       </div>
 
                       <div class="row">
                         <div class="col-sm-10">
                           Endereço Residencial: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" id="enderecoResidencialEC" name="enderecoResidencialEC" value="{{old('enderecoResidencialEC')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="enderecoResidencialEC" name="enderecoResidencialEC" value="{{$eC->enderecoResidencialEC}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-2">
                           Número: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" id="numeroEC" name="numeroEC" value="{{old('numeroEC')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="numeroEC" name="numeroEC" value="{{$eC->numeroEC}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-12">
                           Complemento:
-                          <input class="form-control" id="complementoEC" name="complementoEC" value="{{old('complementoEC')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="complementoEC" name="complementoEC" value="{{$eC->complementoEC}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-6">
                           Tel. Residencial:
-                          <input class="form-control" id="telResidencial" name="telResidencial" value="{{old('telResidencial')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="telResidencial" name="telResidencial" value="{{$eC->telResidencial}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-6">
                           Tel. Celular: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" id="telCelular" name="telCelular" value="{{old('telCelular')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="telCelular" name="telCelular" value="{{$eC->telCelular}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -86,7 +86,7 @@
                         
                         <div class="col-sm-12">
                           E-mail:
-                          <input class="form-control" name="email" value="{{old('email')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="email" name="email" value="{{$eC->email}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
