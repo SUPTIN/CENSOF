@@ -57,9 +57,6 @@
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'home') }}
                     </a>
-                    <a class="navbar-brand" href="{{ url('informacao') }}">
-                            <img src="icones/info.png" alt="Informação do Sistema" height="22" width="22"/>
-                    </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -67,12 +64,14 @@
                     <ul class="nav navbar-nav">
                         &nbsp;
                     </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <!-- <ul class="nav navbar-nav navbar-right">
-                            <li><a href="{{url('fichaProdRural')}}">Principal</a></li>
-                            </li>
-                    </ul> -->
+                     <ul class="nav navbar-nav navbar-right">
+                        &nbsp;                          
+                        <li> 
+                          <a class="navbar-brand" href="{{ url('informacao') }}">
+                            <img src="{{ asset('icones/info.png') }}" alt="Informação do Sistema" height="22" width="22"/>
+                          </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -98,6 +97,6 @@
 <!-- Bootstrap Date-Picker Plugin -->
  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
+<script type="text/javascript" src="{{ asset('js/jquery.mask.js') }}"></script>
 </body>
 </html>
