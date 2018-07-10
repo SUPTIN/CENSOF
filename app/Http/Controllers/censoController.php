@@ -112,7 +112,7 @@ class censoController extends Controller
         if ($request->possuiDeficiencia == "NÃO"){
                 $dados['qualDeficiencia'] = 'NÃO NECESSÁRIO.';
             }
-        $this->validate($request, $this->dadosPessoais->rules, $this->dadosPessoais->messages, $this->dadosBase->rules, $this->dadosBase->messages);
+        $this->validate($request, $this->dadosPessoais->rules, $this->dadosPessoais->messages);
         $this->validate($request, $this->dadosBase->rules, $this->dadosBase->messages);
 
         if(empty($infoPessoais[0])){
@@ -134,7 +134,20 @@ class censoController extends Controller
     }
 
     public function  enderecoContatos(Request $request){ 
-        return view('censoEnderecoContatos');
+        $idDadosBase = $request->id;
+
+        $eC = enderecoContatos::where(function($query) use($idDadosBase){
+            if($idDadosBase)
+                $query->where('idDadosBase', '=', $idDadosBase);
+        })->get();
+
+        if (empty($eC[0])){
+            //return 'vazio';
+            return view('censoEnderecoContatos');
+        }else{
+            $eC = $eC[0];
+            return view('censoEnderecoContatosUpdate',compact('eC'));
+        }
     }
 
     public function  insereEnderecoContatos(Request $request){ 
@@ -144,8 +157,18 @@ class censoController extends Controller
     	$eC = enderecoContatos::where(function($query) use($idDadosBase){
     		if($idDadosBase)
     			$query->where('idDadosBase', '=', $idDadosBase);
-    	})->get();	
+    	})->get();
 
+        if (($request->complementoEC == "") || ($request->complementoEC == "NÃO PREENCHIDO.")){
+                $dados['complementoEC'] = 'NÃO PREENCHIDO.';
+            }
+        if (($request->telResidencial == "")||($request->telResidencial == "NÃO PREENCHIDO.")){
+                $dados['telResidencial'] = 'NÃO PREENCHIDO.';
+            }
+        if (($request->email == "")||($request->email == "NÃO PREENCHIDO.")){
+                $dados['email'] = 'NÃO PREENCHIDO.';
+            }
+        $this->validate($request, $this->enderecoContatos->rules, $this->enderecoContatos->messages);
         if(empty($eC[0])){
         	$insert = $this->enderecoContatos->create($dados);
         }else{
