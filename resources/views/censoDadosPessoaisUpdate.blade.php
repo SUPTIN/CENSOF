@@ -248,7 +248,7 @@
           url = "{{action('censoController@getCidades')}}";
           $.get(url, {es: es},function (cidades){
            $('select[name=cidadeNasc]').empty();
-           $('select[name=cidadeNasc]').append("<option value='0' disable style='display:nome;'> Selecione uma cidade</option>");
+           $('select[name=cidadeNasc]').append("<option value='' disable style='display:nome;'> Selecione uma cidade</option>");
            $.each(cidades, function (key, value){
              $('select[name=cidadeNasc]').append('<option {{$infoPessoais->cidadeNasc == '+value.cidadeId+'? 'selected':''}} value='+value.cidadeId+'>'+value.cidadeNome+'</option>');
            }); 
