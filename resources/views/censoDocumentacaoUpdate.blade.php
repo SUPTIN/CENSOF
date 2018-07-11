@@ -15,6 +15,7 @@
                       <div class="row">
                         <div class="col-sm-12">
                           <input class="form-control" type="hidden" name="_token" value="{{ csrf_token()}}"/>
+                          <input class="form-control" type="hidden" id="ci" name="ci" value="{{ $doc->cidadeVotacao}}"/>
                         </div>
                         @if (isset($errors) && count($errors) > 0)
                           <div class="alert alert-danger">
@@ -34,51 +35,51 @@
                       <div class="row">
                         <div class="col-sm-12">
                           CPF: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" id="cpf" name="cpf" value="{{old('cpf')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="cpf" name="cpf" value="{{$doc->cpf}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-3">
                           RG: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" name="rg" value="{{old('rg')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" name="rg" value="{{$doc->rg}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-3">
                           Orgão emissor: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" name="orgaoEmissorRG" value="{{old('orgaoEmissorRG')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" name="orgaoEmissorRG" value="{{$doc->orgaoEmissorRG}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-3">
                           UF: <label style="font-size:15px;color:red;">*</label>
                           <select name="ufRG" class="form-control">
                             <option value=""></option>
                             @forelse($estados as $estado)
-                              <option value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
+                              <option {{$doc->ufRG == $estado->estadoId ? 'selected':''}} value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
                             @empty
                               <option value="0">Nenhum resultado encontrado!</option>
                             @endforelse
                           </select>
                         </div>
                         <div class="col-sm-3">
-                          Data emissão: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" id="dataEmissaoRG" name="dataEmissaoRG" value="{{old('dataEmissaoRG')}}" style="text-transform:uppercase"/>
+                          Data Emissão: <label style="font-size:15px;color:red;">*</label>
+                          <input class="form-control" id="dataEmissaoRG" name="dataEmissaoRG" value="{{$doc->dataEmissaoRG}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-3">
                           Número CTPS: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" name="ctps" value="{{old('ctps')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" name="ctps" value="{{$doc->ctps}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-3">
                           Serie: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" id="serie" name="serie" value="{{old('serie')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="serie" name="serie" value="{{$doc->serie}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-3">
                           UF: <label style="font-size:15px;color:red;">*</label>
                           <select name="ufCtps" class="form-control">
                             <option value=""></option>
                             @forelse($estados as $estado)
-                              <option value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
+                              <option {{$doc->ufCtps == $estado->estadoId ? 'selected':''}} value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
                             @empty
                               <option value="0">Nenhum resultado encontrado!</option>
                             @endforelse
@@ -86,37 +87,37 @@
                         </div>
                         <div class="col-sm-3">
                           Data emissão: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" id="dataEmissaoCtps" name="dataEmissaoCtps" value="{{old('dataEmissaoCtps')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="dataEmissaoCtps" name="dataEmissaoCtps" value="{{$doc->dataEmissaoCtps}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-6">
                           Pis/PASEP: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" id="pisPasep" name="pisPasep" value="{{old('pisPasep')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="pisPasep" name="pisPasep" value="{{$doc->pisPasep}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-6">
                           Data de Cadastramento: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" id="dataCadPisPasep" name="dataCadPisPasep" value="{{old('dataCadPisPasep')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="dataCadPisPasep" name="dataCadPisPasep" value="{{$doc->dataCadPisPasep}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-3">
                           Titulo de Eleitor: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" name="tituloEleitor" value="{{old('tituloEleitor')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" name="tituloEleitor" value="{{$doc->tituloEleitor}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-3">
                           Zona: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" name="zona" value="{{old('zona')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" name="zona" value="{{$doc->zona}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-3">
                           Seção: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" name="secao" value="{{old('secao')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" name="secao" value="{{$doc->secao}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-3">
                           Data emissão: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" id="dataEmissaoTituloEleitor" name="dataEmissaoTituloEleitor" value="{{old('dataEmissaoTituloEleitor')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="dataEmissaoTituloEleitor" name="dataEmissaoTituloEleitor" value="{{$doc->dataEmissaoTituloEleitor}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -126,7 +127,7 @@
                           <select name="ufVotacao" id="ufVotacao" onchange="optionCidades()" class="form-control">
                             <option value=""></option>
                             @forelse($estados as $estado)
-                              <option value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
+                              <option {{$doc->ufVotacao == $estado->estadoId ? 'selected':''}} value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
                             @empty
                               <option value="0">Nenhum resultado encontrado!</option>
                             @endforelse
@@ -141,29 +142,29 @@
                       <div class="row">
                         <div class="col-sm-4">
                           Certificado Militar: 
-                          <input class="form-control" name="certMilitar" value="{{old('certMilitar')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" name="certMilitar" value="{{$doc->certMilitar}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-4">
                           Situação:
-                          <input class="form-control" name="certMilitarSituacao" value="{{old('certMilitarSituacao')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" name="certMilitarSituacao" value="{{$doc->certMilitarSituacao}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-4">
                           Data emissão:
-                          <input class="form-control" id="dataCertMilitar" name="dataCertMilitar" value="{{old('dataCertMilitar')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="dataCertMilitar" name="dataCertMilitar" value="{{$doc->dataCertMilitar}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-6">
                           Tipo de Certificado Militar:
-                          <input class="form-control" name="tipoCertMilitar" value="{{old('tipoCertMilitar')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" name="tipoCertMilitar" value="{{$doc->tipoCertMilitar}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-6">
                           UF do Certificado Militar:
                           <select name="ufCertMilitar" class="form-control">
                             <option value=""></option>
                             @forelse($estados as $estado)
-                              <option value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
+                              <option {{$doc->ufCertMilitar == $estado->estadoId ? 'selected':''}} value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
                             @empty
                               <option value="0">Nenhum resultado encontrado!</option>
                             @endforelse
@@ -174,27 +175,27 @@
                       <div class="row">
                         <div class="col-sm-3">
                           Número CNH:
-                          <input class="form-control" name="numCNH" value="{{old('numCNH')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" name="numCNH" value="{{$doc->numCNH}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-3">
                           Registro:
-                          <input class="form-control" name="registroCNH" value="{{old('registroCNH')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" name="registroCNH" value="{{$doc->registroCNH}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-3">
                           Categoria:
                          <select name="categoriaCNH" class="form-control">
-                           <option value=""></option>
-                           <option value="A">A</option>
-                           <option value="B">B</option>
-                           <option value="AB">AB</option>
-                           <option value="C">C</option>
-                           <option value="D">D</option>
-                           <option value="E">E</option>
+                           <option {{$doc->categoriaCNH == " "? 'selected':''}} value=" "></option>
+                           <option {{$doc->categoriaCNH == "A"? 'selected':'A'}} value="A">A</option>
+                           <option {{$doc->categoriaCNH == "B"? 'selected':'B'}} value="B">B</option>
+                           <option {{$doc->categoriaCNH == "AB"? 'selected':'AB'}} value="AB">AB</option>
+                           <option {{$doc->categoriaCNH == "C"? 'selected':'C'}} value="C">C</option>
+                           <option {{$doc->categoriaCNH == "D"? 'selected':'D'}} value="D">D</option>
+                           <option {{$doc->categoriaCNH == "E"? 'selected':'E'}} value="E">E</option>
                          </select> 
                         </div>
                         <div class="col-sm-3">
                           Data emissão:
-                          <input class="form-control" id="dataEmissaoCNH" name="dataEmissaoCNH" value="{{old('dataEmissaoCNH')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="dataEmissaoCNH" name="dataEmissaoCNH" value="{{$doc->dataEmissaoCNH}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -204,7 +205,7 @@
                           <select name="ufCNH" class="form-control">
                             <option value=""></option>
                             @forelse($estados as $estado)
-                              <option value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
+                              <option {{$doc->ufCNH == $estado->estadoId ? 'selected':''}} value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
                             @empty
                               <option value="0">Nenhum resultado encontrado!</option>
                             @endforelse
@@ -212,33 +213,33 @@
                         </div>
                         <div class="col-sm-4">
                           Data Validade:
-                          <input class="form-control" id="dataValidadeCNH" name="dataValidadeCNH" value="{{old('dataValidadeCNH')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="dataValidadeCNH" name="dataValidadeCNH" value="{{$doc->dataValidadeCNH}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-4">
                           Reg. 1ª Habilitação:
-                           <input class="form-control" name="primeiraHabilitacao" value="{{old('primeiraHabilitacao')}}" style="text-transform:uppercase"/>
+                           <input class="form-control" name="primeiraHabilitacao" value="{{$doc->primeiraHabilitacao}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-12">
                           Nome do Conselho Profissional:
-                          <input class="form-control" name="conselhoProfissional" value="{{old('conselhoProfissional')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" name="conselhoProfissional" value="{{$doc->conselhoProfissional}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-4">
                           Número Registro:
-                          <input class="form-control" name="numConselhoProf" value="{{old('numConselhoProf')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" name="numConselhoProf" value="{{$doc->numConselhoProf}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-4">
                           Data emissão:
-                          <input class="form-control" id="dataEmissaoConselhoProf" name="dataEmissaoConselhoProf" value="{{old('dataEmissaoConselhoProf')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="dataEmissaoConselhoProf" name="dataEmissaoConselhoProf" value="{{$doc->dataEmissaoConselhoProf}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-4">
                           Data validade:
-                          <input class="form-control" id="dataValidadeConselhoProf" name="dataValidadeConselhoProf" value="{{old('dataValidadeConselhoProf')}}" style="text-transform:uppercase"/>
+                          <input class="form-control" id="dataValidadeConselhoProf" name="dataValidadeConselhoProf" value="{{$doc->dataValidadeConselhoProf}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -258,8 +259,10 @@
             </div>
       </div>
       <script type="text/javascript">
+
        function optionCidades(){
           var es = document.getElementById("ufVotacao").value;
+          var ci = document.getElementById("ci").value;
           url = "{{action('censoController@getCidades')}}";
           $.get(url, {es: es},function (cidades){
            $('select[name=cidadeVotacao]').empty();

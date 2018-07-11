@@ -180,7 +180,19 @@ class censoController extends Controller
 
     public function  documentacao(Request $request, escolaridade $escolaridades, estado $estados){ 
     	$estados = $this->estados->orderBy('estadoUf')->get();
-        return view('censoDocumentacao', compact( 'estados', 'cidades'));
+        $idDadosBase = $request->id;
+        $doc = documentacao::where(function($query) use($idDadosBase){
+           if($idDadosBase)
+                $query->where('idDadosBase', '=', $idDadosBase);
+        })->get();
+
+        if (empty($doc[0])){
+            return view('censoDocumentacao', compact( 'estados', 'cidades'));
+        }else{
+            $doc = $doc[0];
+            return view('censoDocumentacaoUpdate', compact( 'estados', 'cidades','doc'));
+        }
+        
     }
 
     public function  insereDocumentacao(Request $request){ 
@@ -191,6 +203,60 @@ class censoController extends Controller
     		if($idDadosBase)
     			$query->where('idDadosBase', '=', $idDadosBase);
     	})->get();	
+
+        if (($request->certMilitar == "") || ($request->certMilitar == "NÃO PREENCHIDO.")){
+                $dados['certMilitar'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->certMilitarSituacao == "") || ($request->certMilitarSituacao == "NÃO PREENCHIDO.")){
+                $dados['certMilitarSituacao'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->dataCertMilitar == "") || ($request->dataCertMilitar == "NÃO PREENCHIDO.")){
+                $dados['dataCertMilitar'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->tipoCertMilitar == "") || ($request->tipoCertMilitar == "NÃO PREENCHIDO.")){
+                $dados['tipoCertMilitar'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->ufCertMilitar == "") || ($request->ufCertMilitar == "NÃO PREENCHIDO.")){
+                $dados['ufCertMilitar'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->numCNH == "") || ($request->numCNH == "NÃO PREENCHIDO.")){
+                $dados['numCNH'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->registroCNH == "") || ($request->registroCNH == "NÃO PREENCHIDO.")){
+                $dados['registroCNH'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->categoriaCNH == "") || ($request->Categoria == "NÃO PREENCHIDO.")){
+                $dados['categoriaCNH'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->dataEmissaoCNH == "") || ($request->dataEmissaoCNH == "NÃO PREENCHIDO.")){
+                $dados['dataEmissaoCNH'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->ufCNH == "") || ($request->ufCNH == "NÃO PREENCHIDO.")){
+                $dados['ufCNH'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->dataValidadeCNH == "") || ($request->dataValidadeCNH == "NÃO PREENCHIDO.")){
+                $dados['dataValidadeCNH'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->primeiraHabilitacao == "") || ($request->primeiraHabilitacao == "NÃO PREENCHIDO.")){
+                $dados['primeiraHabilitacao'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->conselhoProfissional == "") || ($request->conselhoProfissional == "NÃO PREENCHIDO.")){
+                $dados['conselhoProfissional'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->numConselhoProf == "") || ($request->numConselhoProf == "NÃO PREENCHIDO.")){
+                $dados['numConselhoProf'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->dataEmissaoConselhoProf == "") || ($request->dataEmissaoConselhoProf == "NÃO PREENCHIDO.")){
+                $dados['dataEmissaoConselhoProf'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->dataValidadeConselhoProf == "") || ($request->dataValidadeConselhoProf == "NÃO PREENCHIDO.")){
+                $dados['dataValidadeConselhoProf'] = 'NÃO PREENCHIDO.';
+        }
+        if ($request->cidadeVotacao == "0"){
+                $dados['cidadeVotacao'] = '';
+        }
+
+       $this->validate($request, $this->documentacao->rules, $this->documentacao->messages);
 
         if(empty($doc[0])){
         	$insert = $this->documentacao->create($dados);
@@ -309,13 +375,18 @@ class censoController extends Controller
     		if($ufCertMilitarId)
     			$query->where('estadoId', '=', $ufCertMilitarId);
     	})->get();
-    	$dadosDocumentacao[0]['ufCertMilitar'] = $ufCertMilitar[0]['estadoNome'];
-    	$ufCNHId=$dadosDocumentacao[0]['ufCNH'];
+        if ($dadosDocumentacao[0]['ufCertMilitar'] != 'NÃO PREENCHIDO.'){
+    	  $dadosDocumentacao[0]['ufCertMilitar'] = $ufCertMilitar[0]['estadoNome'];
+        }
+        
+        $ufCNHId=$dadosDocumentacao[0]['ufCNH'];
     	$ufCNH= estado::where(function($query) use($ufCNHId){
     		if($ufCNHId)
     			$query->where('estadoId', '=', $ufCNHId);
     	})->get();
-    	$dadosDocumentacao[0]['ufCNH'] = $ufCNH[0]['estadoNome'];
+        if ($dadosDocumentacao[0]['ufCNH'] != 'NÃO PREENCHIDO.'){
+    	   $dadosDocumentacao[0]['ufCNH'] = $ufCNH[0]['estadoNome'];
+        }
 
     	$dadosDependente = dependente::where(function($query) use($idDadosBase){
     		if($idDadosBase)
@@ -521,13 +592,17 @@ class censoController extends Controller
             if($ufCertMilitarId)
                 $query->where('estadoId', '=', $ufCertMilitarId);
         })->get();
-        $dadosDocumentacao[0]['ufCertMilitar'] = $ufCertMilitar[0]['estadoNome'];
+        if ($dadosDocumentacao[0]['ufCertMilitar'] != 'NÃO PREENCHIDO.'){
+          $dadosDocumentacao[0]['ufCertMilitar'] = $ufCertMilitar[0]['estadoNome'];
+        }
         $ufCNHId=$dadosDocumentacao[0]['ufCNH'];
         $ufCNH= estado::where(function($query) use($ufCNHId){
             if($ufCNHId)
                 $query->where('estadoId', '=', $ufCNHId);
         })->get();
-        $dadosDocumentacao[0]['ufCNH'] = $ufCNH[0]['estadoNome'];
+        if ($dadosDocumentacao[0]['ufCNH'] != 'NÃO PREENCHIDO.'){
+           $dadosDocumentacao[0]['ufCNH'] = $ufCNH[0]['estadoNome'];
+        }
 
         $this->pdf->SetFont('Courier','B',12);
         $this->pdf->Cell(11,5, utf8_decode('CPF: '),0,0);
