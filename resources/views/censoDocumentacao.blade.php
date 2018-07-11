@@ -52,7 +52,7 @@
                           <select name="ufRG" class="form-control">
                             <option value=""></option>
                             @forelse($estados as $estado)
-                              <option value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
+                              <option {{ old('ufRG') == $estado->estadoId ? 'selected' : '' }} value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
                             @empty
                               <option value="0">Nenhum resultado encontrado!</option>
                             @endforelse
@@ -78,7 +78,7 @@
                           <select name="ufCtps" class="form-control">
                             <option value=""></option>
                             @forelse($estados as $estado)
-                              <option value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
+                              <option {{ old('ufCtps') == $estado->estadoId ? 'selected' : '' }} value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
                             @empty
                               <option value="0">Nenhum resultado encontrado!</option>
                             @endforelse
@@ -126,7 +126,7 @@
                           <select name="ufVotacao" id="ufVotacao" onchange="optionCidades()" class="form-control">
                             <option value=""></option>
                             @forelse($estados as $estado)
-                              <option value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
+                              <option {{ old('ufVotacao') == $estado->estadoId ? 'selected' : '' }} value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
                             @empty
                               <option value="0">Nenhum resultado encontrado!</option>
                             @endforelse
@@ -163,7 +163,7 @@
                           <select name="ufCertMilitar" class="form-control">
                             <option value=""></option>
                             @forelse($estados as $estado)
-                              <option value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
+                              <option {{ old('ufCertMilitar') == $estado->estadoId ? 'selected' : '' }}  value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
                             @empty
                               <option value="0">Nenhum resultado encontrado!</option>
                             @endforelse
@@ -184,12 +184,12 @@
                           Categoria:
                          <select name="categoriaCNH" class="form-control">
                            <option value=""></option>
-                           <option value="A">A</option>
-                           <option value="B">B</option>
-                           <option value="AB">AB</option>
-                           <option value="C">C</option>
-                           <option value="D">D</option>
-                           <option value="E">E</option>
+                           <option {{ old('categoriaCNH') == 'A' ? 'selected' : '' }} value="A">A</option>
+                           <option {{ old('categoriaCNH') == 'B' ? 'selected' : '' }} value="B">B</option>
+                           <option {{ old('categoriaCNH') == 'AB' ? 'selected' : '' }} value="AB">AB</option>
+                           <option {{ old('categoriaCNH') == 'C' ? 'selected' : '' }} value="C">C</option>
+                           <option {{ old('categoriaCNH') == 'D' ? 'selected' : '' }} value="D">D</option>
+                           <option {{ old('categoriaCNH') == 'E' ? 'selected' : '' }} value="E">E</option>
                          </select> 
                         </div>
                         <div class="col-sm-3">
@@ -204,7 +204,7 @@
                           <select name="ufCNH" class="form-control">
                             <option value=""></option>
                             @forelse($estados as $estado)
-                              <option value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
+                              <option {{ old('ufCNH') == $estado->estadoId ? 'selected' : '' }} value="{{$estado->estadoId}}">{{$estado->estadoNome}}</option>
                             @empty
                               <option value="0">Nenhum resultado encontrado!</option>
                             @endforelse
