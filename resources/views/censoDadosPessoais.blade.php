@@ -47,8 +47,8 @@
                          Sexo: <label style="font-size:15px;color:red;">*</label>
                          <select name="sexo" class="form-control">
                            <option value=" "></option>
-                           <option value="MASCULINO">MASCULINO</option>
-                           <option value="FEMININO">FEMININO</option>
+                           <option {{ old('sexo') == 'MASCULINO' ? 'selected' : '' }} value="MASCULINO">MASCULINO</option>
+                           <option {{ old('sexo') == 'FEMININO' ? 'selected' : '' }} value="FEMININO">FEMININO</option>
                          </select>
                         </div>
                       </div>
@@ -59,7 +59,7 @@
                           <select name="paisNasc"  id="paisNasc" onchange="optionCheck()" class="form-control">
                                 <option value=" "></option>
                             @forelse($paises as $pais)
-                                <option value="{{$pais->paisId}}">{{$pais->paisNome}}</option>
+                                <option {{ old('paisNasc') == $pais->paisId ? 'selected' : '' }} value="{{$pais->paisId}}">{{$pais->paisNome}}</option>
                             @empty
                               <option value="0">Nenhum resultado encontrado!</option>
                             @endforelse
@@ -89,12 +89,12 @@
                           Estado Civil: <label style="font-size:15px;color:red;">*</label>
                           <select id="estadoCivil" name="estadoCivil"  onchange="dataCamento()" class="form-control">
                           <option value=""></option>
-                           <option value="SOLTEIRO">SOLTEIRO</option>
-                           <option value="CASADO">CASADO</option>
-                           <option value="DIVORCIADO">DIVORCIADO</option>
-                           <option value="VIÚVO">VIÚVO</option>
-                           <option value="UNIÃO ESTAVÉL">UNIÃO ESTAVÉL</option>
-                           <option value="OUTRO">OUTRO</option>
+                           <option {{ old('estadoCivil') == 'SOLTEIRO' ? 'selected' : '' }} value="SOLTEIRO">SOLTEIRO</option>
+                           <option {{ old('estadoCivil') == 'CASADO' ? 'selected' : '' }} value="CASADO">CASADO</option>
+                           <option {{ old('estadoCivil') == 'DIVORCIADO' ? 'selected' : '' }} value="DIVORCIADO">DIVORCIADO</option>
+                           <option {{ old('estadoCivil') == 'VIÚVO' ? 'selected' : '' }} value="VIÚVO">VIÚVO</option>
+                           <option {{ old('estadoCivil') == 'UNIÃO ESTAVÉL' ? 'selected' : '' }} value="UNIÃO ESTAVÉL">UNIÃO ESTAVÉL</option>
+                           <option {{ old('estadoCivil') == 'OUTRO' ? 'selected' : '' }} value="OUTRO">OUTRO</option>
                          </select>
                         </div>
                         <div class="col-sm-6" id="campoEstadoCivil" style="display: none">
@@ -115,26 +115,26 @@
                           Raça/cor: <label style="font-size:15px;color:red;">*</label>
                           <select name="racaCor" class="form-control">
                             <option value=" "> </option>
-                           <option value="BRANCA">BRANCA</option>
-                           <option value="INDÍGENA">INDÍGENA</option>
-                           <option value="NEGRA">NEGRA</option>
-                           <option value="AMARELA">AMARELA</option>
-                           <option value="PARDA">PARDA</option>
-                           <option value="NÃO INFORMADO">NÃO INFORMADO</option>
+                           <option {{ old('racaCor') == 'BRANCA' ? 'selected' : '' }} value="BRANCA">BRANCA</option>
+                           <option {{ old('racaCor') == 'INDÍGENA' ? 'selected' : '' }} value="INDÍGENA">INDÍGENA</option>
+                           <option {{ old('racaCor') == 'NEGRA' ? 'selected' : '' }} value="NEGRA">NEGRA</option>
+                           <option {{ old('racaCor') == 'AMARELA' ? 'selected' : '' }} value="AMARELA">AMARELA</option>
+                           <option {{ old('racaCor') == 'PARDA' ? 'selected' : '' }} value="PARDA">PARDA</option>
+                           <option {{ old('racaCor') == 'NÃO INFORMADO' ? 'selected' : '' }} value="NÃO INFORMADO">NÃO INFORMADO</option>
                          </select>
                         </div>
                         <div class="col-sm-6">
                           Tipo Sanguínio: <label style="font-size:15px;color:red;">*</label>
                           <select name="tipoSanguinio" class="form-control">
                            <option value=" "> </option>
-                           <option value="A+">A+</option>
-                           <option value="A-">A-</option>
-                           <option value="B+">B+</option>
-                           <option value="B-">B-</option>
-                           <option value="AB+">AB+</option>
-                           <option value="AB-">AB-</option>
-                           <option value="O+">O+</option>
-                           <option value="O-">O-</option>
+                           <option {{ old('tipoSanguinio') == 'A+' ? 'selected' : '' }} value="A+">A+</option>
+                           <option {{ old('tipoSanguinio') == 'A-' ? 'selected' : '' }} value="A-">A-</option>
+                           <option {{ old('tipoSanguinio') == 'B+' ? 'selected' : '' }} value="B+">B+</option>
+                           <option {{ old('tipoSanguinio') == 'B-' ? 'selected' : '' }} value="B-">B-</option>
+                           <option {{ old('tipoSanguinio') == 'AB+' ? 'selected' : '' }} value="AB+">AB+</option>
+                           <option {{ old('tipoSanguinio') == 'AB-' ? 'selected' : '' }} value="AB-">AB-</option>
+                           <option {{ old('tipoSanguinio') == 'O+' ? 'selected' : '' }} value="O+">O+</option>
+                           <option {{ old('tipoSanguinio') == 'O-' ? 'selected' : '' }} value="O-">O-</option>
                          </select>
                         </div>
                       </div>
@@ -145,7 +145,7 @@
                           <select name="escolaridade" class="form-control">
                             <option value=""></option>
                             @forelse($escolaridades as $escolaridade)
-                              <option value="{{$escolaridade->id}}">{{$escolaridade->descricaoEscolaridade}}</option>
+                              <option {{ old('escolaridade') == $escolaridade->id ? 'selected' : '' }} value="{{$escolaridade->id}}">{{$escolaridade->descricaoEscolaridade}}</option>
                             @empty
                               <option value="0">Nenhum resultado encontrado!</option>
                             @endforelse
@@ -162,8 +162,8 @@
                           Estrangeiro: <label style="font-size:15px;color:red;">*</label>
                           <select id="estrangeiro" name="estrangeiro" onChange="dataChegadaBrasilEst()" class="form-control">
                            <option value=" "> </option>
-                           <option value="SIM">SIM</option>
-                           <option value="NÃO">NÃO</option>
+                           <option {{ old('estrangeiro') == 'SIM' ? 'selected' : '' }} value="SIM">SIM</option>
+                           <option {{ old('estrangeiro') == 'NÃO' ? 'selected' : '' }} value="NÃO">NÃO</option>
                          </select>
                         </div>
                         <div id="campoDataChegadaBrasil" class="col-sm-6" style="display: none">
@@ -177,8 +177,8 @@
                           Naturalizado: <label style="font-size:15px;color:red;">*</label>
                           <select id="naturalizado" name="naturalizado" onChange="dataNaturalizacao()" class="form-control">
                            <option value=" "> </option>
-                           <option value="SIM">SIM</option>
-                           <option value="NÃO">NÃO</option>
+                           <option {{ old('naturalizado') == 'SIM' ? 'selected' : '' }} value="SIM">SIM</option>
+                           <option {{ old('naturalizado') == 'NÃO' ? 'selected' : '' }} value="NÃO">NÃO</option>
                          </select>
                         </div>
                         <div id="campoNaturalizado"  name="campoNaturalizado" class="col-sm-6" style="display: none">
@@ -192,8 +192,8 @@
                           Possui algum tipo de deficiência: <label style="font-size:15px;color:red;">*</label>
                           <select  id="possuiDeficiencia"name="possuiDeficiencia" onchange="possuiTipoDeficiencia()" class="form-control">
                            <option value=" "> </option>
-                           <option value="SIM">SIM</option>
-                           <option value="NÃO">NÃO</option>
+                           <option {{ old('possuiDeficiencia') == 'SIM' ? 'selected' : '' }} value="SIM">SIM</option>
+                           <option {{ old('possuiDeficiencia') == 'NÃO' ? 'selected' : '' }} value="NÃO">NÃO</option>
                          </select>
                         </div>
                       </div>
@@ -234,7 +234,7 @@
            $('#estadosCidades').append(inputText);
     
          }else{
-           var inputText = '<div class="col-sm-4" id="estadoNascCamp">Estado de Nascimento: <label style="font-size:15px;color:red;">*</label> <select name="estadoNasc"  id="estadoNasc" class="form-control" onchange="optionCidades()"> <option value=""></option>@forelse($estados as $estado)<option value="{{$estado->estadoId}}">{{$estado->estadoUf}}</option>@empty<option value="0">Nenhum resultado encontrado!</option>@endforelse</select></div><div class="col-sm-4" id="cidadeNascCamp">Cidade de Nascimento: <label style="font-size:15px;color:red;">*</label> <select name="cidadeNasc"  id="cidadeNasc" class="form-control"></div>'; 
+           var inputText = '<div class="col-sm-4" id="estadoNascCamp">Estado de Nascimento: <label style="font-size:15px;color:red;">*</label> <select name="estadoNasc"  id="estadoNasc" class="form-control" onchange="optionCidades()"> <option value=""></option>@forelse($estados as $estado)<option {{ old('estadoNasc') == $estado->estadoId ? 'selected' : '' }} value="{{$estado->estadoId}}">{{$estado->estadoUf}}</option>@empty<option value="0">Nenhum resultado encontrado!</option>@endforelse</select></div><div class="col-sm-4" id="cidadeNascCamp">Cidade de Nascimento: <label style="font-size:15px;color:red;">*</label> <select name="cidadeNasc"  id="cidadeNasc" class="form-control"></div>'; 
            $('#estadoNascCamp').remove();
            $('#cidadeNascCamp').remove();
            $('#estadosCidades').append(inputText);

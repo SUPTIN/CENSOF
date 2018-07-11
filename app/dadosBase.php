@@ -14,7 +14,4 @@ class dadosBase extends Model
 
     public $messages = ['nomeBase.required' =>  'O Campo NOME é de preenchimento Obrigatório!',
                        ];
-
-
-
 }
