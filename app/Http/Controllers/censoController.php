@@ -269,13 +269,11 @@ class censoController extends Controller
 
     public function  dependentes(Request $request){ 
     	$idDadosBase = $request->id;
-    	//$dados['idDadosBase'] = $idDadosBase;
     	$dependentes = dependente::where(function($query) use($idDadosBase){
     		if($idDadosBase)
     			$query->where('idDadosBase', '=' , $idDadosBase);
     	})->paginate(5);
-
-    	//return $dependentes;
+        
         return view('censoDependentes', compact('dependentes'));
     }
 

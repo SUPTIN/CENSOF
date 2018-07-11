@@ -27,14 +27,18 @@
                           <table class="table table-hover">
                             <tr>
                               <tH>Nome</td>
+                              <tH>CPF</td>
+                              <tH>Data Nasc.</td>
                             </tr>
                             @forelse($dependentes as $dependente)
                               <tr>
-                                <td> {{$dependente->nomeDependente}}</td>
+                                <td>{{$dependente->nomeDependente}}</td>
+                                <td>{{$dependente->cpfDependente}}</td>
+                                <td>{{$dependente->dataNascDependente}}</td>
                               </tr>
                             @empty
                               <tr>
-                                <td> <p> Não existe Dependente cadastrado!</p></td>
+                                <td colspan="3"> <p> Não existe Dependente cadastrado!</p></td>
                               </tr>
                             @endforelse
                           </table>
