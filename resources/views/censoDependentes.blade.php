@@ -29,12 +29,18 @@
                               <tH>Nome</td>
                               <tH>CPF</td>
                               <tH>Data Nasc.</td>
+                              <tH>Ação</td>
                             </tr>
                             @forelse($dependentes as $dependente)
                               <tr>
-                                <td>{{$dependente->nomeDependente}}</td>
-                                <td>{{$dependente->cpfDependente}}</td>
-                                <td>{{$dependente->dataNascDependente}}</td>
+                                <td >{{$dependente->nomeDependente}}</td>
+                                <td width="80px">{{$dependente->cpfDependente}}</td>
+                                <td width="80px">{{$dependente->dataNascDependente}}</td>
+                                <td width="80px">
+                                  <a href="{{url("$dependente->idDependente/editDependente")}}" class="edit">
+                                     <li class="fa fa-pencil-square-o" title="Editar Dependente"></li>
+                                  </a>
+                                </td>
                               </tr>
                             @empty
                               <tr>
