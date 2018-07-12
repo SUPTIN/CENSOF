@@ -278,11 +278,11 @@
          var $cpf = $("#cpf");
          $cpf.mask('000.000.000-00',{reverse: true});
 
-         var $pisPasep = $("#pisPasep");
-         $pisPasep.mask('000.00000.00-0',{reverse: true});
+         //var $pisPasep = $("#pisPasep");
+         //$pisPasep.mask('000.00000.00-0',{reverse: true});
 
-         var $serie = $("#serie");
-         $serie.mask('000-0',{reverse: true});
+         //var $serie = $("#serie");
+         //$serie.mask('000-0',{reverse: true});
 
          var $dataEmissaoRg = $("#dataEmissaoRG");
          $dataEmissaoRg.mask('00/00/0000',{reverse: true});

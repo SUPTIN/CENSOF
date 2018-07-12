@@ -46,4 +46,28 @@ class documentacao extends Model
                         'cidadeVotacao.required' =>  'O Campo CIDADE DE VOTAÇÃO é de preenchimento Obrigatório!',
                         'ufVotacao.required' =>  'O Campo UF DE VOTAÇÃO é de preenchimento Obrigatório!',
                        ];
+    public function setOrgaoEmissorRGAttribute($value){
+        $this->attributes['orgaoEmissorRG'] = mb_strtoupper($value);
+    }
+    public function setCtpsAttribute($value){
+        $this->attributes['ctps'] = mb_strtoupper($value);
+    }
+    public function setSerieAttribute($value){
+        $this->attributes['serie'] = mb_strtoupper($value);
+    }
+    public function setZonaAttribute($value){
+        $this->attributes['zona'] = mb_strtoupper($value);
+    }
+    public function setSecaoAttribute($value){
+        $this->attributes['secao'] = mb_strtoupper($value);
+    }
+    public function setCertMilitarSituacaoAttribute($value){
+        $this->attributes['certMilitarSituacao'] = mb_strtoupper($value);
+    }
+    public function setTipoCertMilitarAttribute($value){
+        $this->attributes['tipoCertMilitar'] = mb_strtoupper($value);
+    }
+    public function setConselhoProfissionalAttribute($value){
+        $this->attributes['conselhoProfissional'] = mb_strtoupper($value);
+    }
 }

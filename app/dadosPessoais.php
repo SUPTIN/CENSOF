@@ -41,4 +41,20 @@ class dadosPessoais extends Model
                         'naturalizado.required' =>  'O Campo NATURALIZADO é de preenchimento Obrigatório!',
                         'possuiDeficiencia.required' =>  'O Campo POSSUI ALGUM TIPO DE DEFICIÊNCIA é de preenchimento Obrigatório!',
                        ];
+    public function setNomeMaeAttribute($value){
+        $this->attributes['nomeMae'] = mb_strtoupper($value);
+    }
+    public function setNomePaiAttribute($value){
+        $this->attributes['nomePai'] = mb_strtoupper($value);
+    }
+    public function setNomeConjugueAttribute($value){
+        $this->attributes['nomeConjugue'] = mb_strtoupper($value);
+    }
+    public function setAreaInstrucaoAttribute($value){
+        $this->attributes['areaInstrucao'] = mb_strtoupper($value);
+    }
+    public function setQualDeficienciaAttribute($value){
+        $this->attributes['qualDeficiencia'] = mb_strtoupper($value);
+    }
+
 }

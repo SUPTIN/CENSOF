@@ -28,4 +28,11 @@ class dependente extends Model
                         'deducaoImposto.required' =>  'O Campo DEPENDENTE PARA FINS DE DEDUÇÃO DE IMPOSTO DE RENDA é de preenchimento Obrigatório!',
                         'salarioFamilia.required' =>  'O Campo DEPENDENTE PARA FINS DE RECEBIMENTO DE SALÁRIO FAMILIA é de preenchimento Obrigatório!',
                        ];
+    public function setNomeDependenteAttribute($value){
+        $this->attributes['nomeDependente'] = mb_strtoupper($value);
+    }
+    public function setParentescoAttribute($value){
+        $this->attributes['parentesco'] = mb_strtoupper($value);
+    }
+
 }

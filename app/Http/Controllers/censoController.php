@@ -53,6 +53,7 @@ class censoController extends Controller
 	public function dadosBase(){ 
 	 	$usuario = '1';
 	 	$dBasicos = dadosBase::find($usuario);
+
         return view('welcome', compact('dBasicos'));
     }
 
@@ -121,12 +122,17 @@ class censoController extends Controller
         }else{
         	dadosPessoais::where('idDadosBase',$idDadosBase)->first()->update($dados);  	
         }
-    	
-    	if ($dados['nomeBase'] == $infoBase[0]->nomeBase){
-    		dadosBase::find($idDadosBase)->update(['dadosPessoais' => '1']);
+
+    	if (($dados['nomeBase'] == $infoBase[0]->nomeBase) || ($dados['localTrabBase'] == $infoBase[0]->localTrabBase) || ($dados['secretariaBase'] == $infoBase[0]->secretariaBase)){
+            $secretariaBase = mb_strtoupper($dados['secretariaBase']);
+            $localTrabBase = $dados['localTrabBase'];
+    		dadosBase::find($idDadosBase)->update(['dadosPessoais' => '1', 'localTrabBase' => $localTrabBase, 'secretariaBase' => $secretariaBase]);
     	}else{
     		$nomeBase = $dados['nomeBase'];
-    		dadosBase::find($idDadosBase)->update(['nomeBase' => $nomeBase, 'dadosPessoais' => '1']);
+            $secretariaBase = $dados['secretariaBase'];
+            $localTrabBase = $dados['localTrabBase'];
+           
+    		dadosBase::find($idDadosBase)->update(['nomeBase' => $nomeBase, 'dadosPessoais' => '1', 'localTrabBase' => $localTrabBase, 'secretariaBase' => $secretariaBase]);
     	}
 
     	$caminho = $idDadosBase.'/enderecoContatos';
@@ -441,27 +447,27 @@ class censoController extends Controller
         $this->pdf->SetFont('Courier','B',11);
         $this->pdf->Cell(13,5, utf8_decode('Nome: '),0,0);
         $this->pdf->SetFont('Courier','',11);
-        $this->pdf->Cell(120, 5, utf8_decode($dadosBase[0]->nomeBase),0,0);
+        $this->pdf->Cell(120, 5, utf8_decode(strtoupper($dadosBase[0]->nomeBase)),0,0);
         $this->pdf->SetFont('Courier','B',11);
         $this->pdf->Cell(26,5, utf8_decode('Matrícula: '),0,0);
         $this->pdf->SetFont('Courier','',11);
-        $this->pdf->Cell(0,5, utf8_decode($dadosBase[0]->matriculaBase),0,1);
+        $this->pdf->Cell(0,5, utf8_decode(strtoupper($dadosBase[0]->matriculaBase)),0,1);
         $this->pdf->SetFont('Courier','B',11);
         $this->pdf->Cell(16,5, utf8_decode('Cargo: '),0,0);
         $this->pdf->SetFont('Courier','',11);
-        $this->pdf->Cell(100, 5, utf8_decode($dadosBase[0]->cargoBase),0,0);
+        $this->pdf->Cell(100, 5, utf8_decode(strtoupper($dadosBase[0]->cargoBase)),0,0);
         $this->pdf->SetFont('Courier','B',11);
         $this->pdf->Cell(44,5, utf8_decode('Data de Admissão: '),0,0);
         $this->pdf->SetFont('Courier','',11);
-        $this->pdf->Cell(0,5, utf8_decode($dadosBase[0]->admissaoBase),0,1);
+        $this->pdf->Cell(0,5, utf8_decode(strtoupper($dadosBase[0]->admissaoBase)),0,1);
         $this->pdf->SetFont('Courier','B',11);
         $this->pdf->Cell(39,5, utf8_decode('Local de Trab.: '),0,0);
         $this->pdf->SetFont('Courier','',11);
-        $this->pdf->Cell(77, 5, utf8_decode($dadosBase[0]->localTrabBase),0,0);
+        $this->pdf->Cell(77, 5, utf8_decode(strtoupper($dadosBase[0]->localTrabBase)),0,0);
         $this->pdf->SetFont('Courier','B',11);
         $this->pdf->Cell(34,5, utf8_decode('Sec. Lotação: '),0,0);
         $this->pdf->SetFont('Courier','',11);
-        $this->pdf->Cell(0,5, utf8_decode($dadosBase[0]->secretariaBase),0,1);
+        $this->pdf->Cell(0,5, strtoupper(utf8_decode($dadosBase[0]->secretariaBase)),0,1);
 
 
         $this->pdf->Ln(7);

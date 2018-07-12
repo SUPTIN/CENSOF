@@ -31,9 +31,6 @@
 
                       <div class="row">
                         <div class="col-sm-6 col-md-6">
-                          Local de Trabalho: {{$dBasicos->localTrabBase}}
-                        </div>
-                        <div class="col-sm-6 col-md-6">
                          Secretaria de Lotação: {{$dBasicos->secretariaBase}}
                         </div>
                       </div>

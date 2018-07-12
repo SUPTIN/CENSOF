@@ -26,4 +26,22 @@ class enderecoContatos extends Model
                         'numeroEC.required' =>  'O Campo NUMERO é de preenchimento Obrigatório!',
                         'telCelular.required' =>  'O Campo TEL. CELULAR é de preenchimento Obrigatório!',
                        ];
+    public function setEstadoECAttribute($value){
+        $this->attributes['estadoEC'] = mb_strtoupper($value);
+    }
+    public function setCidadeECAttribute($value){
+        $this->attributes['cidadeEC'] = mb_strtoupper($value);
+    }
+    public function setBairroECAttribute($value){
+        $this->attributes['bairroEC'] = mb_strtoupper($value);
+    }
+    public function setEnderecoResidencialECAttribute($value){
+        $this->attributes['enderecoResidencialEC'] = mb_strtoupper($value);
+    }
+    public function setComplementoECAttribute($value){
+        $this->attributes['complementoEC'] = mb_strtoupper($value);
+    }
+    public function setEmailAttribute($value){
+        $this->attributes['email'] = mb_strtoupper($value);
+    }
 }

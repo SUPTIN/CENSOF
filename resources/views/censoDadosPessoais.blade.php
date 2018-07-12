@@ -32,6 +32,16 @@
                         </div>
                       </div>
                       <div class="row">
+                        <div class="col-sm-6">
+                          Secretaria: <label style="font-size:15px;color:red;">*</label>
+                          <input class="form-control" name="secretariaBase" value="{{$infoBase->secretariaBase}}" style="text-transform:uppercase" />
+                        </div>
+                        <div class="col-sm-6">
+                          Local de Trabalho: <label style="font-size:15px;color:red;">*</label>
+                          <input class="form-control" name="localTrabBase" value="{{$infoBase->localTrabBase}}" style="text-transform:uppercase" />
+                        </div>
+                      </div>
+                      <div class="row">
                         <div class="col-sm-12">
                           Nome: <label style="font-size:15px;color:red;">*</label>
                           <input class="form-control" name="nomeBase" value="{{$infoBase->nomeBase}}" style="text-transform:uppercase" />
