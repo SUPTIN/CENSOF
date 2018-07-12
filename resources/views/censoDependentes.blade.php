@@ -40,6 +40,9 @@
                                   <a href="{{url("$dependente->idDependente/editDependente")}}" class="edit">
                                      <li class="fa fa-pencil-square-o" title="Editar Dependente"></li>
                                   </a>
+                                  <a href="{{url("$dependente->idDependente/delDependente")}}" class="delete">
+                                     <li class="fa fa-eraser" title="Deleta Dependente"></li>
+                                  </a>
                                 </td>
                               </tr>
                             @empty

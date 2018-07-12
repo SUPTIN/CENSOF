@@ -315,8 +315,17 @@ class censoController extends Controller
         })->get();
 
         dependente::where('idDependente',$idDependente)->first()->update($dados); 
-
         return redirect()->to($dependente[0]->idDadosBase.'/dependentes');
+    }
+
+    public function delDependente(Request $request){ 
+        $idDependente = $request->id;
+        $dependente = dependente::where(function($query) use($idDependente ){
+            if($idDependente)
+                $query->where('idDependente', '=' , $idDependente );
+        })->get();
+        dependente::where('idDependente',$idDependente)->delete(); 
+        return redirect()->to($dependente[0]->idDadosBase.'/dependentes');  
     }
 
     public function  impressaoCensoF(Request $request){ 

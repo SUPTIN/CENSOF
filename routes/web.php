@@ -27,6 +27,7 @@ Route::get('{id}/novoDependente', 'censoController@novoDependente');
 Route::get('{id}/editDependente', 'censoController@editDependente');
 Route::post('{id}/editDep', 'censoController@updateDep');
 Route::post('{id}/dep', 'censoController@insereDependente');
+Route::get('{id}/delDependente', 'censoController@delDependente');
 
 Route::get('getCidades', 'censoController@getCidades');
 
