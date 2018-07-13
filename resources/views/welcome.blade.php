@@ -37,7 +37,12 @@
 
                       <div class="row" align="center">
                         <div class="col-sm-12">
-                          <a href="{{url("$dBasicos->idDadosBase/dadosPessoais")}}"> Iniciar Censo </a>
+                          <a href="{{url("$dBasicos->idDadosBase/dadosPessoais")}}"> Iniciar Censo <i class="fa fa-edit" aria-hidden="true" title="Iniciar Cadastro"> </i>
+                          </a>
+                        </div>
+                        <div class="col-sm-12">
+                          <a href="{{url("$dBasicos->idDadosBase/impressaoFichas")}}"> Conferência e Impressão de Ficha  <i class="fa fa-print" aria-hidden="true" title="Finalizar e impressão"> </i>
+                          </a>
                         </div>
                       </div>
                   </div>
