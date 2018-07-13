@@ -34,6 +34,9 @@ Route::get('getCidades', 'censoController@getCidades');
 Route::get('{id}/impressaoFichas', 'censoController@impressaoCensoF');
 Route::get('{id}/impressaoFichasPDF', 'censoController@impressaoPDF');
 
+Route::get('{id}/anexaArquivos', 'censoController@anexarArquivos');
+
+
 Route::get('/', 'censoController@dadosBase');
 
 /*Route::get('/', function () {
