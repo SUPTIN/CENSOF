@@ -123,17 +123,10 @@ class censoController extends Controller
         	dadosPessoais::where('idDadosBase',$idDadosBase)->first()->update($dados);  	
         }
 
-    	if (($dados['nomeBase'] == $infoBase[0]->nomeBase) || ($dados['localTrabBase'] == $infoBase[0]->localTrabBase) || ($dados['secretariaBase'] == $infoBase[0]->secretariaBase)){
-            $secretariaBase = mb_strtoupper($dados['secretariaBase']);
-            $localTrabBase = $dados['localTrabBase'];
-    		dadosBase::find($idDadosBase)->update(['dadosPessoais' => '1', 'localTrabBase' => $localTrabBase, 'secretariaBase' => $secretariaBase]);
-    	}else{
-    		$nomeBase = $dados['nomeBase'];
-            $secretariaBase = $dados['secretariaBase'];
-            $localTrabBase = $dados['localTrabBase'];
-           
-    		dadosBase::find($idDadosBase)->update(['nomeBase' => $nomeBase, 'dadosPessoais' => '1', 'localTrabBase' => $localTrabBase, 'secretariaBase' => $secretariaBase]);
-    	}
+        $nomeBase = $dados['nomeBase'];
+        $secretariaBase = $dados['secretariaBase'];
+        $localTrabBase = $dados['localTrabBase'];
+        dadosBase::find($idDadosBase)->update(['dadosPessoais' => '1', 'localTrabBase' => $localTrabBase, 'secretariaBase' => $secretariaBase,'nomeBase' => $nomeBase]);
 
     	$caminho = $idDadosBase.'/enderecoContatos';
     	return redirect()->to($caminho);
