@@ -430,6 +430,10 @@ class censoController extends Controller
     	return view('censoImpressaoFichas', compact('dadosBase', 'dadosPessoais', 'dadosEndContato', 'dadosDocumentacao', 'dadosDependente'));
     }
 
+     public function  anexarArquivos(){ 
+        return view('censoAnexarArquivos');
+    }
+
     public function impressaoPDF(Request $request){
         $idDadosBase = $request->id;
         $this->pdf->AliasNbPages();
