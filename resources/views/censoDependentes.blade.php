@@ -8,7 +8,7 @@
                 <div class="panel-body">
                       <div class="row">
                         <h4>Censo Funcional - Dependentes</h4>
-                        <h6>Passo 4 de 4</h6>
+                        <h6>Passo 4 de 5</h6>
                       </div>
 
                       <div class="row">
@@ -16,8 +16,8 @@
                           <a href="novoDependente"> 
                              Adicionar novo Dependente <i class="fa fa-plus-circle" aria-hidden="true" title="Adicionar um Dependente"> </i>
                           </a> &nbsp;
-                          <a href="impressaoFichas"> 
-                             Finalizar e Imprimir comprovantes <i class="fa fa-print" aria-hidden="true" title="Adicionar um Dependente"> </i>
+                          <a href="anexaArquivos"> 
+                             Anexar Documentos <i class="fa fa-upload" aria-hidden="true" title="Adicionar anexo dos Documentos"> </i>
                           </a>
                         </div>
                       </div>

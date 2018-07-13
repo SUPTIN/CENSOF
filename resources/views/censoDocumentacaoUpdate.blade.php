@@ -8,7 +8,7 @@
                 <div class="panel-body">
                       <div class="row">
                         <h4>Censo Funcional - Documentação </h4>
-                        <h6>Passo 3 de 4</h6> 
+                        <h6>Passo 3 de 5</h6> 
                       </div>
 
                       <form method="post" action="doc">
