@@ -35,6 +35,10 @@ Route::get('{id}/impressaoFichas', 'censoController@impressaoCensoF');
 Route::get('{id}/impressaoFichasPDF', 'censoController@impressaoPDF');
 
 Route::get('{id}/anexaArquivos', 'censoController@anexarArquivos');
+Route::get('{id}/novoDocumento', 'censoController@novoUpDocumento');
+Route::post('{id}/insereArq', 'censoController@insereArquivo');
+Route::get('{id}/viewArquivo', 'censoController@viewArquivo');
+Route::get('{id}/delArquivo', 'censoController@delArquivo');
 
 
 Route::get('/', 'censoController@dadosBase');
