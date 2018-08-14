@@ -318,6 +318,12 @@
 
                       <div class="row">
                         <div class="col-sm-12">
+                          <h5><b>Total de arquivos anexados: {{$tArquivos}}</b></h5>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-sm-12">
                           <h5><b>Dependentes</b></h5>
                         </div>
                       </div>

@@ -44,6 +44,17 @@
                            <option value=""></option>
                            <option value="CPF" {{ old('tipoDocumento') == 'CPF' ? 'selected' : '' }} >CPF</option>
                            <option value="RG" {{ old('tipoDocumento') == 'RG' ? 'selected' : '' }}>RG</option>
+                           <option value="CERT. DE NASCIMENTO" {{ old('tipoDocumento') == 'CERT. DE NASCIMENTO' ? 'selected' : '' }}>CERT. DE NASCIMENTO</option>
+                           <option value="CERT. DE CASAMENTO" {{ old('tipoDocumento') == 'CERT. DE CASAMENTO' ? 'selected' : '' }}>CERT. DE CASAMENTO</option>
+                           <option value="TÍTULO DE ELEITOR" {{ old('tipoDocumento') == 'TÍTULO DE ELEITOR' ? 'selected' : '' }}>TÍTULO DE ELEITOR</option>
+                           <option value="COMP. ÚLTIMA VOTAÇÃO" {{ old('tipoDocumento') == 'COMP. ÚLTIMA VOTAÇÃO' ? 'selected' : '' }}>COMP. ÚLTIMA VOTAÇÃO</option>
+                           <option value="CTPS" {{ old('tipoDocumento') == 'CTPS' ? 'selected' : '' }}>CTPS</option>
+                           <option value="CERT. DE RESERVISTA" {{ old('tipoDocumento') == 'CERT. DE RESERVISTA' ? 'selected' : '' }}>CERT. DE RESERVISTA</option>
+                           <option value="CNH" {{ old('tipoDocumento') == 'CNH' ? 'selected' : '' }}>CNH</option>
+                           <option value="PIS/PASEP" {{ old('tipoDocumento') == 'PIS/PASEP' ? 'selected' : '' }}>PIS/PASEP</option>
+                           <option value="CONSELHO PROFISSIONAL" {{ old('tipoDocumento') == 'CONSELHO PROFISSIONAL' ? 'selected' : '' }}>CONSELHO PROFISSIONAL</option>
+                           <option value="COMPROVANTE ENDEREÇO" {{ old('tipoDocumento') == 'COMPROVANTE ENDEREÇO' ? 'selected' : '' }}>COMPROVANTE ENDEREÇO</option>
+                           <option value="OUTRO" {{ old('tipoDocumento') == 'OUTRO' ? 'selected' : '' }}>OUTRO</option>
                          </select>
                         </div>
                       </div>

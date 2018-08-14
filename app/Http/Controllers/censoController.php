@@ -145,7 +145,6 @@ class censoController extends Controller
         })->get();
 
         if (empty($eC[0])){
-            //return 'vazio';
             return view('censoEnderecoContatos');
         }else{
             $eC = $eC[0];
@@ -348,7 +347,7 @@ class censoController extends Controller
         $dados = $request->all();
         $idDadosBase = $request->id;
         $dados['idDadosBase'] = $idDadosBase;
-        #$this->validate($request, $this->arquivos->rules, $this->arquivos->messages);
+        $this->validate($request, $this->arquivos->rules, $this->arquivos->messages);
         $data = date('Y-m-d h:m:s');
 
         $arquivo = file_get_contents(Input::file('arquivoDoc')->getRealPath());
@@ -373,7 +372,6 @@ class censoController extends Controller
         $id = $request->id;
         $file = DB::select('SELECT * from arquivos where idArquivo = ?',array($id));
         $arquivo = $file[0]->arquivoDoc;
-        //return $file[0]->nomeArquivo;
         return Response($arquivo, 200, array('Content-type'=>$file[0]->mime, 'Content-length'=>$file[0]->size));
     }
 
@@ -387,6 +385,14 @@ class censoController extends Controller
         return redirect()->to($arquivo[0]->idDadosBase.'/anexaArquivos');  
     }
 
+    public function totalArquivosAnexados($id){
+        $idDadosBase = $id;
+        $tArquivos = arquivos::where(function($query) use($idDadosBase){
+            if($idDadosBase)
+                $query->where('idDadosBase', '=' , $idDadosBase);
+        })->count();
+        return $tArquivos;
+    }
 
 
 
@@ -490,7 +496,9 @@ class censoController extends Controller
     			$query->where('idDadosBase', '=' , $idDadosBase);
     	})->get();
 
-    	return view('censoImpressaoFichas', compact('dadosBase', 'dadosPessoais', 'dadosEndContato', 'dadosDocumentacao', 'dadosDependente'));
+        $tArquivos = censoController::totalArquivosAnexados($idDadosBase);
+
+    	return view('censoImpressaoFichas', compact('dadosBase', 'dadosPessoais', 'dadosEndContato', 'dadosDocumentacao', 'dadosDependente', 'tArquivos'));
     }
 
 
@@ -835,7 +843,15 @@ class censoController extends Controller
         $this->pdf->SetFont('Courier','',11);
         $this->pdf->Cell(80,5, utf8_decode($dadosDocumentacao[0]->dataValidadeConselhoProf),0,1);
 
-        $this->pdf->Ln(5);
+        $tArquivos = censoController::totalArquivosAnexados($idDadosBase);
+
+        $this->pdf->Ln(1);
+        $this->pdf->SetFont('Courier','BI',12);
+        $this->pdf->Cell(70,5,utf8_decode('Total de arquivos Anexados: '),0,0);
+        $this->pdf->Cell(10,5,utf8_decode($tArquivos),0,1);
+        $this->pdf->Ln(2);
+
+        $this->pdf->Ln(3);
         $this->pdf->SetFont('Courier','BI',15);
         $this->pdf->Cell(10,5,utf8_decode('Dependentes'),0,1);
         $this->pdf->Ln(2);
@@ -887,7 +903,7 @@ class censoController extends Controller
         }
 
 
-        $this->pdf->Output(utf8_decode("TEste.pdf"),"D");
+        $this->pdf->Output(utf8_decode("Censo_2018_PMSMJ.pdf"),"D");
         exit;
     
     }
