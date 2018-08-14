@@ -7,12 +7,15 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                       <div class="row">
-                        <h4>Censo Funcional - Dependentes</h4>
+                        <h4>Censo Funcional - Documentos anexados</h4>
                         <h6>Passo 5 de 5</h6>
                       </div>
 
                       <div class="row">
                         <div class="col-sm-12">
+                          <a href="novoDocumento"> 
+                             Anexar novo Documento <i class="fa fa-plus-circle" aria-hidden="true" title="Adicionar um Documento"> </i>
+                          </a> &nbsp; 
                           <a href="impressaoFichas"> 
                              Finalizar e Imprimir comprovante <i class="fa fa-print" aria-hidden="true" title="Finalizar e impressão"> </i>
                           </a>
@@ -21,10 +24,38 @@
 
                       <div class="row">
                         <div class="col-sm-12">
-                          Arquivos
+                          <table class="table table-hover">
+                            <tr>
+                              <tH>Arquivo</td>
+                              <tH>Tipo Documento</td>
+                              <tH>Ações</td>
+                            </tr>
+                            @forelse($arquivos as $arquivo)
+                              <tr>
+                                <td >{{$arquivo->nomeArquivo}}</td>
+                                <td >{{$arquivo->tipoDocumento}}</td>
+                                <td width="80px">
+                                  <a href="{{url("$arquivo->idArquivo/delArquivo")}}" class="delete">
+                                     <li class="fa fa-eraser" title="Deleta Arquivo"></li>
+                                  </a>
+                                  <a target="_blank" href="{{url("$arquivo->idArquivo/viewArquivo")}}" class="delete">
+                                     <li class="fa fa-eye" title="Mostra Arquivo"></li>
+                                  </a>
+                                </td>
+                              </tr>
+                            @empty
+                              <tr>
+                                <td colspan="3"> <p> Não existe Documentos Anexados!</p></td>
+                              </tr>
+                            @endforelse
+                          </table>
                         </div>
                       </div>
-
+                       <div class="row">
+                        <div class="col-sm-12">
+                          <div align="center">{!! $arquivos->links() !!}</div>
+                        </div>
+                      </div>
                 </div>
             </div>
       </div>
