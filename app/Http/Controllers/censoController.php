@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -20,6 +21,7 @@ use App\escolaridade;
 use App\pais;
 use App\estado;
 use App\cidade;
+use App\arquivos;
 
 class censoController extends Controller
 {
@@ -32,11 +34,12 @@ class censoController extends Controller
 	private $pais;
 	private $estado;
 	private $cidade;
+    private $arquivos;
 
     protected $pdf;
 
 
-	public function __construct(dadosBase $dadosBase, dadosPessoais $dadosPessoais, enderecoContatos $enderecoContatos, documentacao $documentacao, dependente $dependente, escolaridade $escolaridade, pais $pais, estado $estado, cidade $cidade, \App\Pdf $pdf){
+	public function __construct(dadosBase $dadosBase, dadosPessoais $dadosPessoais, enderecoContatos $enderecoContatos, documentacao $documentacao, dependente $dependente, escolaridade $escolaridade, pais $pais, estado $estado, cidade $cidade, \App\Pdf $pdf, arquivos $arquivos){
 		$this->dadosBase = $dadosBase;
 		$this->dadosPessoais = $dadosPessoais;
 		$this->enderecoContatos = $enderecoContatos;
@@ -46,6 +49,7 @@ class censoController extends Controller
 		$this->paises = $pais;
 		$this->estados = $estado;
 		$this->cidades = $cidade;
+        $this->arquivos = $arquivos;
 
         $this->pdf = $pdf;
 	}
@@ -266,7 +270,7 @@ class censoController extends Controller
     	return redirect()->to($caminho);
     }
 
-    public function  dependentes(Request $request){ 
+    public function dependentes(Request $request){ 
     	$idDadosBase = $request->id;
     	$dependentes = dependente::where(function($query) use($idDadosBase){
     		if($idDadosBase)
@@ -326,6 +330,65 @@ class censoController extends Controller
         dependente::where('idDependente',$idDependente)->delete(); 
         return redirect()->to($dependente[0]->idDadosBase.'/dependentes');  
     }
+
+    public function  anexarArquivos(Request $request){ 
+        $idDadosBase = $request->id;
+        $arquivos = arquivos::where(function($query) use($idDadosBase){
+            if($idDadosBase)
+                $query->where('idDadosBase', '=' , $idDadosBase);
+        })->paginate(5);
+        return view('censoAnexarArquivos', compact('arquivos'));
+    }
+
+    public function novoUpDocumento(Request $request){ 
+        return view('censoNovoDocumento');
+    }
+
+    public function insereArquivo(Request $request){  
+        $dados = $request->all();
+        $idDadosBase = $request->id;
+        $dados['idDadosBase'] = $idDadosBase;
+        #$this->validate($request, $this->arquivos->rules, $this->arquivos->messages);
+        $data = date('Y-m-d h:m:s');
+
+        $arquivo = file_get_contents(Input::file('arquivoDoc')->getRealPath());
+        $arquivoNome = Input::file('arquivoDoc')->getClientOriginalName();
+        $size = Input::file('arquivoDoc')->getSize();
+        $mime = Input::file('arquivoDoc')->getMimeType();
+        
+        DB::table('arquivos')->insert(array('arquivoDoc' => $arquivo, 
+                                            'nomeArquivo' => $arquivoNome,
+                                            'mime' => $mime,
+                                            'size' => $size,
+                                            'idDadosBase' => $dados['idDadosBase'], 
+                                            'tipoDocumento' => $dados['tipoDocumento'],
+                                            'created_at' => $data,
+                                            'updated_at' => $data));
+        
+        $caminho = $idDadosBase.'/anexaArquivos';
+        return redirect()->to($caminho);
+    }
+
+    public function viewArquivo(Request $request){ 
+        $id = $request->id;
+        $file = DB::select('SELECT * from arquivos where idArquivo = ?',array($id));
+        $arquivo = $file[0]->arquivoDoc;
+        //return $file[0]->nomeArquivo;
+        return Response($arquivo, 200, array('Content-type'=>$file[0]->mime, 'Content-length'=>$file[0]->size));
+    }
+
+    public function delArquivo(Request $request){ 
+        $idArquivo = $request->id;
+        $arquivo = arquivos::where(function($query) use($idArquivo ){
+            if($idArquivo)
+                $query->where('idArquivo', '=' , $idArquivo );
+        })->get();
+        arquivos::where('idArquivo',$idArquivo)->delete(); 
+        return redirect()->to($arquivo[0]->idDadosBase.'/anexaArquivos');  
+    }
+
+
+
 
     public function  impressaoCensoF(Request $request){ 
 
@@ -430,9 +493,6 @@ class censoController extends Controller
     	return view('censoImpressaoFichas', compact('dadosBase', 'dadosPessoais', 'dadosEndContato', 'dadosDocumentacao', 'dadosDependente'));
     }
 
-     public function  anexarArquivos(){ 
-        return view('censoAnexarArquivos');
-    }
 
     public function impressaoPDF(Request $request){
         $idDadosBase = $request->id;
