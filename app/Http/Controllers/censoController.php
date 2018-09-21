@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Gate;
+use app\User;
 
 use Session;
 use App\dadosBase;
@@ -52,11 +54,25 @@ class censoController extends Controller
         $this->arquivos = $arquivos;
 
         $this->pdf = $pdf;
+
+        $this->middleware('auth');
 	}
 
+    public function semPermissao(){ 
+
+
+        return view('semPermissao');
+    }
+
 	public function dadosBase(){ 
-	 	$usuario = '1';
-	 	$dBasicos = dadosBase::find($usuario);
+
+	 	$usuario = Auth::user()->matricula;
+
+	 	$dBasicos = dadosBase::where(function($query) use($usuario){
+            if($usuario)
+                $query->where('matriculaBase', '=', $usuario);
+        })->get();
+
 
         return view('welcome', compact('dBasicos'));
     }
@@ -76,6 +92,11 @@ class censoController extends Controller
     	$estados = $this->estados->orderBy('estadoUf')->get();
     	$infoBase = dadosBase::find($request->id);
         $idDadosBase= $request->id;
+
+        if (Gate::denies('insere_dadosBase', $infoBase)){
+            //abort(403, 'Não Autorizado');
+            return view('semPermissao');
+        }
 
         $infoPessoais = dadosPessoais::where(function($query) use($idDadosBase){
             if($idDadosBase)
@@ -144,6 +165,11 @@ class censoController extends Controller
                 $query->where('idDadosBase', '=', $idDadosBase);
         })->get();
 
+        if (Gate::denies('insere_enderecoContatos', $eC[0])){
+            //abort(403, 'Não Autorizado');
+            return view('semPermissao');
+        }
+
         if (empty($eC[0])){
             return view('censoEnderecoContatos');
         }else{
@@ -187,6 +213,11 @@ class censoController extends Controller
            if($idDadosBase)
                 $query->where('idDadosBase', '=', $idDadosBase);
         })->get();
+
+        if (Gate::denies('insere_documentacao', $doc[0])){
+            //abort(403, 'Não Autorizado');
+            return view('semPermissao');
+        }
 
         if (empty($doc[0])){
             return view('censoDocumentacao', compact( 'estados', 'cidades'));
@@ -276,10 +307,26 @@ class censoController extends Controller
     			$query->where('idDadosBase', '=' , $idDadosBase);
     	})->paginate(5);
 
+        if (Gate::denies('insere_dependente', $dependentes[0])){
+            //abort(403, 'Não Autorizado');
+            return view('semPermissao');
+        }
+
         return view('censoDependentes', compact('dependentes'));
     }
 
-    public function  novoDependente(){ 
+    public function  novoDependente(Request $request){ 
+        $idDadosBase = $request->id;
+        $dependentes = dependente::where(function($query) use($idDadosBase){
+            if($idDadosBase)
+                $query->where('idDadosBase', '=' , $idDadosBase);
+        })->paginate(5);
+
+        if (Gate::denies('insere_dependente', $dependentes[0])){
+            //abort(403, 'Não Autorizado');
+            return view('semPermissao');
+        }
+
         return view('censoNovoDependente');
     }
 
@@ -303,6 +350,11 @@ class censoController extends Controller
             if($idDependente)
                 $query->where('idDependente', '=' , $idDependente );
         })->get();
+
+        if (Gate::denies('edit_dependente', $dependente[0])){
+            //abort(403, 'Não Autorizado');
+            return view('semPermissao');
+        }
 
         return view('censoEditDependenteUpdate',compact('dependente'));
     }
@@ -336,10 +388,27 @@ class censoController extends Controller
             if($idDadosBase)
                 $query->where('idDadosBase', '=' , $idDadosBase);
         })->paginate(5);
+
+        if (Gate::denies('insere_arquivos', $arquivos[0])){
+            //abort(403, 'Não Autorizado');
+            return view('semPermissao');
+        }
+        
         return view('censoAnexarArquivos', compact('arquivos'));
     }
 
     public function novoUpDocumento(Request $request){ 
+        $idDadosBase = $request->id;
+        $arquivos = arquivos::where(function($query) use($idDadosBase){
+            if($idDadosBase)
+                $query->where('idDadosBase', '=' , $idDadosBase);
+        })->paginate(5);
+
+        if (Gate::denies('insere_arquivos', $arquivos[0])){
+            //abort(403, 'Não Autorizado');
+            return view('semPermissao');
+        }
+
         return view('censoNovoDocumento');
     }
 
@@ -372,6 +441,18 @@ class censoController extends Controller
         $id = $request->id;
         $file = DB::select('SELECT * from arquivos where idArquivo = ?',array($id));
         $arquivo = $file[0]->arquivoDoc;
+
+        $idDadosBase = $file[0]->idDadosBase;
+        $arq = arquivos::where(function($query) use($idDadosBase){
+            if($idDadosBase)
+                $query->where('idDadosBase', '=' , $idDadosBase);
+        })->paginate(5);
+
+        if (Gate::denies('view_arquivos', $arq[0])){
+            //abort(403, 'Não Autorizado');
+            return view('semPermissao');
+        }
+
         return Response($arquivo, 200, array('Content-type'=>$file[0]->mime, 'Content-length'=>$file[0]->size));
     }
 
@@ -405,6 +486,11 @@ class censoController extends Controller
     		if($idDadosBase)
     			$query->where('idDadosBase', '=', $idDadosBase);
     	})->get();
+
+        if (Gate::denies('ficha', $dadosPessoais[0])){
+            //abort(403, 'Não Autorizado');
+            return view('semPermissao');
+        }
 
     	$paisId=$dadosPessoais[0]['paisNasc'];
     	$paisNasc = pais::where(function($query) use($paisId){
@@ -906,5 +992,9 @@ class censoController extends Controller
         $this->pdf->Output(utf8_decode("Censo_2018_PMSMJ.pdf"),"D");
         exit;
     
+    }
+
+    public function viewTrocaSenha(Request $request){
+        return view('trocaSenha');
     }
 }

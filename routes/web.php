@@ -40,9 +40,14 @@ Route::post('{id}/insereArq', 'censoController@insereArquivo');
 Route::get('{id}/viewArquivo', 'censoController@viewArquivo');
 Route::get('{id}/delArquivo', 'censoController@delArquivo');
 
+Route::get('semPermissao', 'censoController@semPermissao');
 
-Route::get('/', 'censoController@dadosBase');
+Route::get('dados', 'censoController@dadosBase');
 
 /*Route::get('/', function () {
     return view('welcome');
 }); */
+
+Auth::routes();
+Route::get('/', 'censoController@dadosBase')->name('/');
+Route::get('/trocaSenha', 'censoController@viewTrocaSenha');
