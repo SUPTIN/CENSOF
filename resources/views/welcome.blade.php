@@ -38,14 +38,23 @@
                       </div>
 
                       <div class="row" align="center">
-                        <div class="col-sm-12">
-                          <a href="{{url("$dBasico->idDadosBase/dadosPessoais")}}"> Iniciar Censo <i class="fa fa-edit" aria-hidden="true" title="Iniciar Cadastro"> </i>
-                          </a>
-                        </div>
-                        <div class="col-sm-12">
-                          <a href="{{url("$dBasico->idDadosBase/impressaoFichas")}}"> Conferência e Impressão de Ficha  <i class="fa fa-print" aria-hidden="true" title="Finalizar e impressão"> </i>
-                          </a>
-                        </div>
+
+                        @if ( $dBasico->trocaSenha == 0 )
+                          <div class="col-sm-12">
+                            <a href="{{url("/trocaSenha")}}"> Troca Senha <i class="fa fa-edit" aria-hidden="true" title="Troca Senha"> </i>
+                            </a>
+                          </div>
+                        @else
+                          <div class="col-sm-12">
+                            <a href="{{url("$dBasico->idDadosBase/dadosPessoais")}}"> Iniciar Censo <i class="fa fa-edit" aria-hidden="true" title="Iniciar Cadastro"> </i>
+                            </a>
+                          </div>
+                          <div class="col-sm-12">
+                            <a href="{{url("$dBasico->idDadosBase/impressaoFichas")}}"> Conferência e Impressão de Ficha  <i class="fa fa-print" aria-hidden="true" title="Finalizar e impressão"> </i>
+                            </a>
+                          </div>
+                        @endif
+
                         @empty
                           <div class="col-sm-12">
                             <p> Nenhum resultado encontrado!</p>
