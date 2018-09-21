@@ -51,3 +51,4 @@ Route::get('dados', 'censoController@dadosBase');
 Auth::routes();
 Route::get('/', 'censoController@dadosBase')->name('/');
 Route::get('/trocaSenha', 'censoController@viewTrocaSenha');
+Route::post('/updateSenha', 'censoController@updateTrocaSenha');

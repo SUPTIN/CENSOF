@@ -59,8 +59,6 @@ class censoController extends Controller
 	}
 
     public function semPermissao(){ 
-
-
         return view('semPermissao');
     }
 
@@ -996,5 +994,16 @@ class censoController extends Controller
 
     public function viewTrocaSenha(Request $request){
         return view('trocaSenha');
+    }
+
+    public function updateTrocaSenha(Request $request){
+        $usuario = Auth::user();
+
+        if ( ! $request->password == ''){
+
+            $usuario->password = bcrypt($request->password);
+        }
+        $usuario->save();
+        return view('confirmaTrocaSenha');
     }
 }
