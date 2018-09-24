@@ -1000,7 +1000,7 @@ class censoController extends Controller
         $usuario = Auth::user();
 
         if ( ! $request->password == ''){
-
+            $usuario->trocaSenha = 1;
             $usuario->password = bcrypt($request->password);
         }
         $usuario->save();
