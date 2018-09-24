@@ -39,7 +39,7 @@
 
                       <div class="row" align="center">
 
-                        @if ( $dBasico->trocaSenha == 0 )
+                        @if (  Auth::user()->trocaSenha == 0 )
                           <div class="col-sm-12">
                             <a href="{{url("/trocaSenha")}}"> Troca Senha <i class="fa fa-edit" aria-hidden="true" title="Troca Senha"> </i>
                             </a>
