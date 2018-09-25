@@ -481,111 +481,116 @@ class censoController extends Controller
     public function  impressaoCensoF(Request $request){ 
 
     	$idDadosBase = $request->id;
-    	$dadosBase = dadosBase::find($idDadosBase)->get();
+        $usuario = Auth::user()->id;
+        if ( $usuario == $idDadosBase){
 
-    	$dadosPessoais = dadosPessoais::where(function($query) use($idDadosBase){
-    		if($idDadosBase)
-    			$query->where('idDadosBase', '=', $idDadosBase);
-    	})->get();
+            $dadosBase = dadosBase::where(function($query) use($idDadosBase){
+                if($idDadosBase)
+                    $query->where('idDadosBase', '=', $idDadosBase);
+                })->get();
 
-        if (Gate::denies('ficha', $dadosPessoais[0])){
-            //abort(403, 'Não Autorizado');
-            return view('semPermissao');
-        }
+    	    $dadosPessoais = dadosPessoais::where(function($query) use($idDadosBase){
+    		    if($idDadosBase)
+    			    $query->where('idDadosBase', '=', $idDadosBase);
+    	        })->get();
 
-    	$paisId=$dadosPessoais[0]['paisNasc'];
-    	$paisNasc = pais::where(function($query) use($paisId){
-    		if($paisId)
-    			$query->where('paisId', '=', $paisId);
-    	})->get();
-    	$dadosPessoais[0]['paisNasc'] = $paisNasc[0]['paisNome']; 
-
-    	if ($paisId == '33'){	
-    	  $estadoId=$dadosPessoais[0]['estadoNasc'];
-    	  $estadoNasc = estado::where(function($query) use($estadoId){
-    		  if($estadoId)
-    			  $query->where('estadoId', '=', $estadoId);
-    	  })->get();
-    	  $dadosPessoais[0]['estadoNasc'] = $estadoNasc[0]['estadoNome']; 
-
-    	  $cidadeId=$dadosPessoais[0]['cidadeNasc'];
-    	  $cidadeNasc = cidade::where(function($query) use($cidadeId){
-    		  if($cidadeId)
-    		  	  $query->where('cidadeId', '=', $cidadeId);
-    	  })->get();
-    	  $dadosPessoais[0]['cidadeNasc'] = $cidadeNasc[0]['cidadeNome']; 
-    	}
-
-    	$escolaridade=$dadosPessoais[0]['escolaridade'];
-    	$escolaridade = escolaridade::where(function($query) use($escolaridade){
-    		if($escolaridade)
-    			$query->where('id', '=', $escolaridade);
-    	})->get();
-    	$dadosPessoais[0]['escolaridade'] = $escolaridade[0]['descricaoEscolaridade']; 
-
-    	$dadosEndContato = enderecoContatos::where(function($query) use($idDadosBase){
-    		if($idDadosBase)
-    			$query->where('idDadosBase', '=', $idDadosBase);
-    	})->get();
-
-    	$dadosDocumentacao = documentacao::where(function($query) use($idDadosBase){
-    		if($idDadosBase)
-    			$query->where('idDadosBase', '=', $idDadosBase);
-    	})->get();
-
-    	$ufRGId=$dadosDocumentacao[0]['ufRG'];
-    	$ufRG = estado::where(function($query) use($ufRGId){
-    		if($ufRGId)
-    			$query->where('estadoId', '=', $ufRGId);
-    	})->get();
-    	$dadosDocumentacao[0]['ufRG'] = $ufRG[0]['estadoNome']; 
-
-    	$ufCtpsId=$dadosDocumentacao[0]['ufCtps'];
-    	$ufCtps= estado::where(function($query) use($ufCtpsId){
-    		if($ufCtpsId)
-    			$query->where('estadoId', '=', $ufCtpsId);
-    	})->get();
-    	$dadosDocumentacao[0]['ufCtps'] = $ufCtps[0]['estadoNome']; 
-
-    	$ufVotacaoId=$dadosDocumentacao[0]['ufVotacao'];
-    	$ufVotacao= estado::where(function($query) use($ufVotacaoId){
-    		if($ufVotacaoId)
-    			$query->where('estadoId', '=', $ufVotacaoId);
-    	})->get();
-    	$dadosDocumentacao[0]['ufVotacao'] = $ufVotacao[0]['estadoNome'];
-    	$cidadeVotacaoId=$dadosDocumentacao[0]['cidadeVotacao'];
-    	$cidadeVotacao = cidade::where(function($query) use($cidadeVotacaoId){
-    		if($cidadeVotacaoId)
-    		  	$query->where('cidadeId', '=', $cidadeVotacaoId);
-    	})->get();
-    	$dadosDocumentacao[0]['cidadeVotacao'] = $cidadeVotacao[0]['cidadeNome']; 
-
-        $ufCertMilitarId=$dadosDocumentacao[0]['ufCertMilitar'];
-    	$ufCertMilitar= estado::where(function($query) use($ufCertMilitarId){
-    		if($ufCertMilitarId)
-    			$query->where('estadoId', '=', $ufCertMilitarId);
-    	})->get();
-        if ($dadosDocumentacao[0]['ufCertMilitar'] != 'NÃO PREENCHIDO.'){
-    	  $dadosDocumentacao[0]['ufCertMilitar'] = $ufCertMilitar[0]['estadoNome'];
-        }
         
-        $ufCNHId=$dadosDocumentacao[0]['ufCNH'];
-    	$ufCNH= estado::where(function($query) use($ufCNHId){
-    		if($ufCNHId)
-    			$query->where('estadoId', '=', $ufCNHId);
-    	})->get();
-        if ($dadosDocumentacao[0]['ufCNH'] != 'NÃO PREENCHIDO.'){
-    	   $dadosDocumentacao[0]['ufCNH'] = $ufCNH[0]['estadoNome'];
-        }
+    	    $paisId=$dadosPessoais[0]['paisNasc'];
+    	    $paisNasc = pais::where(function($query) use($paisId){
+    		    if($paisId)
+    			    $query->where('paisId', '=', $paisId);
+    	        })->get();
+    	    $dadosPessoais[0]['paisNasc'] = $paisNasc[0]['paisNome']; 
 
-    	$dadosDependente = dependente::where(function($query) use($idDadosBase){
-    		if($idDadosBase)
-    			$query->where('idDadosBase', '=' , $idDadosBase);
-    	})->get();
+    	    if ($paisId == '33'){	
+    	      $estadoId=$dadosPessoais[0]['estadoNasc'];
+    	      $estadoNasc = estado::where(function($query) use($estadoId){
+    		      if($estadoId)
+    			      $query->where('estadoId', '=', $estadoId);
+    	          })->get();
+    	      $dadosPessoais[0]['estadoNasc'] = $estadoNasc[0]['estadoNome']; 
 
-        $tArquivos = censoController::totalArquivosAnexados($idDadosBase);
+    	      $cidadeId=$dadosPessoais[0]['cidadeNasc'];
+    	      $cidadeNasc = cidade::where(function($query) use($cidadeId){
+    		      if($cidadeId)
+    		  	      $query->where('cidadeId', '=', $cidadeId);
+    	           })->get();
+    	      $dadosPessoais[0]['cidadeNasc'] = $cidadeNasc[0]['cidadeNome']; 
+    	    }
 
-    	return view('censoImpressaoFichas', compact('dadosBase', 'dadosPessoais', 'dadosEndContato', 'dadosDocumentacao', 'dadosDependente', 'tArquivos'));
+    	    $escolaridade=$dadosPessoais[0]['escolaridade'];
+    	    $escolaridade = escolaridade::where(function($query) use($escolaridade){
+    		   if($escolaridade)
+    			    $query->where('id', '=', $escolaridade);
+    	       })->get();
+    	    $dadosPessoais[0]['escolaridade'] = $escolaridade[0]['descricaoEscolaridade']; 
+
+    	    $dadosEndContato = enderecoContatos::where(function($query) use($idDadosBase){
+    		    if($idDadosBase)
+    			    $query->where('idDadosBase', '=', $idDadosBase);
+    	        })->get();
+
+    	     $dadosDocumentacao = documentacao::where(function($query) use($idDadosBase){
+    		    if($idDadosBase)
+    			    $query->where('idDadosBase', '=', $idDadosBase);
+    	        })->get();
+
+    	    $ufRGId=$dadosDocumentacao[0]['ufRG'];
+    	    $ufRG = estado::where(function($query) use($ufRGId){
+    		    if($ufRGId)
+    			    $query->where('estadoId', '=', $ufRGId);
+    	        })->get();
+    	    $dadosDocumentacao[0]['ufRG'] = $ufRG[0]['estadoNome']; 
+
+    	    $ufCtpsId=$dadosDocumentacao[0]['ufCtps'];
+    	    $ufCtps= estado::where(function($query) use($ufCtpsId){
+    		    if($ufCtpsId)
+    			     $query->where('estadoId', '=', $ufCtpsId);
+    	        })->get();
+    	    $dadosDocumentacao[0]['ufCtps'] = $ufCtps[0]['estadoNome']; 
+
+    	    $ufVotacaoId=$dadosDocumentacao[0]['ufVotacao'];
+    	    $ufVotacao= estado::where(function($query) use($ufVotacaoId){
+    		    if($ufVotacaoId)
+    			    $query->where('estadoId', '=', $ufVotacaoId);
+    	        })->get();
+    	    $dadosDocumentacao[0]['ufVotacao'] = $ufVotacao[0]['estadoNome'];
+    	    $cidadeVotacaoId=$dadosDocumentacao[0]['cidadeVotacao'];
+    	    $cidadeVotacao = cidade::where(function($query) use($cidadeVotacaoId){
+    		    if($cidadeVotacaoId)
+    		  	     $query->where('cidadeId', '=', $cidadeVotacaoId);
+    	        })->get();
+    	    $dadosDocumentacao[0]['cidadeVotacao'] = $cidadeVotacao[0]['cidadeNome']; 
+
+            $ufCertMilitarId=$dadosDocumentacao[0]['ufCertMilitar'];
+    	    $ufCertMilitar= estado::where(function($query) use($ufCertMilitarId){
+    		    if($ufCertMilitarId)
+    			     $query->where('estadoId', '=', $ufCertMilitarId);
+    	        })->get();
+            if ($dadosDocumentacao[0]['ufCertMilitar'] != 'NÃO PREENCHIDO.'){
+    	        $dadosDocumentacao[0]['ufCertMilitar'] = $ufCertMilitar[0]['estadoNome'];
+            }
+        
+            $ufCNHId=$dadosDocumentacao[0]['ufCNH'];
+    	    $ufCNH= estado::where(function($query) use($ufCNHId){
+    		    if($ufCNHId)
+    			    $query->where('estadoId', '=', $ufCNHId);
+    	    })->get();
+            if ($dadosDocumentacao[0]['ufCNH'] != 'NÃO PREENCHIDO.'){
+    	        $dadosDocumentacao[0]['ufCNH'] = $ufCNH[0]['estadoNome'];
+            }
+
+    	    $dadosDependente = dependente::where(function($query) use($idDadosBase){
+    		    if($idDadosBase)
+    			     $query->where('idDadosBase', '=' , $idDadosBase);
+    	        })->get();
+
+            $tArquivos = censoController::totalArquivosAnexados($idDadosBase);
+
+    	    return view('censoImpressaoFichas', compact('dadosBase', 'dadosPessoais', 'dadosEndContato', 'dadosDocumentacao', 'dadosDependente', 'tArquivos'));
+        } else{
+             return view('semPermissao');
+        }  
     }
 
 
