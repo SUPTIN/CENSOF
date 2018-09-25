@@ -9,7 +9,7 @@ class dadosBase extends Model
 
     protected $table = 'dadosBase';
     protected $primaryKey = 'idDadosBase';
-    protected $fillable = ['nomeBase', 'dadosPessoais', 'idDadosBase', 'secretariaBase', 'localTrabBase'];
+    protected $fillable = ['nomeBase', 'idDadosBase', 'secretariaBase', 'localTrabBase'];
     public $rules = ['nomeBase' => 'required',
                      'localTrabBase' => 'required',
                      'secretariaBase' => 'required',
