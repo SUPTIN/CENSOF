@@ -163,16 +163,17 @@ class censoController extends Controller
                 $query->where('idDadosBase', '=', $idDadosBase);
         })->get();
 
-        if (Gate::denies('insere_enderecoContatos', $eC[0])){
-            //abort(403, 'Não Autorizado');
-            return view('semPermissao');
-        }
+        $usuario = Auth::user()->id;
 
-        if (empty($eC[0])){
-            return view('censoEnderecoContatos');
-        }else{
-            $eC = $eC[0];
-            return view('censoEnderecoContatosUpdate',compact('eC'));
+        if ( $usuario == $idDadosBase){
+            if (empty($eC[0])){
+                return view('censoEnderecoContatos');
+            }else{
+                $eC = $eC[0];
+                return view('censoEnderecoContatosUpdate',compact('eC'));
+            }
+        } else{
+           return view('semPermissao');
         }
     }
 
@@ -212,16 +213,17 @@ class censoController extends Controller
                 $query->where('idDadosBase', '=', $idDadosBase);
         })->get();
 
-        if (Gate::denies('insere_documentacao', $doc[0])){
-            //abort(403, 'Não Autorizado');
-            return view('semPermissao');
-        }
+        $usuario = Auth::user()->id;
 
-        if (empty($doc[0])){
-            return view('censoDocumentacao', compact( 'estados', 'cidades'));
-        }else{
-            $doc = $doc[0];
-            return view('censoDocumentacaoUpdate', compact( 'estados', 'cidades','doc'));
+        if ( $usuario == $idDadosBase){
+            if (empty($doc[0])){
+                return view('censoDocumentacao', compact( 'estados', 'cidades'));
+            }else{
+                $doc = $doc[0];
+                return view('censoDocumentacaoUpdate', compact( 'estados', 'cidades','doc'));
+            }
+        } else{
+            return view('semPermissao');
         }
         
     }
@@ -305,12 +307,13 @@ class censoController extends Controller
     			$query->where('idDadosBase', '=' , $idDadosBase);
     	})->paginate(5);
 
-        if (Gate::denies('insere_dependente', $dependentes[0])){
-            //abort(403, 'Não Autorizado');
-            return view('semPermissao');
-        }
+        $usuario = Auth::user()->id;
 
-        return view('censoDependentes', compact('dependentes'));
+        if ( $usuario == $idDadosBase){
+            return view('censoDependentes', compact('dependentes'));
+        } else{
+             return view('semPermissao');
+        }
     }
 
     public function  novoDependente(Request $request){ 
@@ -320,12 +323,12 @@ class censoController extends Controller
                 $query->where('idDadosBase', '=' , $idDadosBase);
         })->paginate(5);
 
-        if (Gate::denies('insere_dependente', $dependentes[0])){
-            //abort(403, 'Não Autorizado');
-            return view('semPermissao');
-        }
-
-        return view('censoNovoDependente');
+        $usuario = Auth::user()->id;
+        if ( $usuario == $idDadosBase){
+            return view('censoNovoDependente');
+        } else{
+             return view('semPermissao');
+        } 
     }
 
     public function  insereDependente(Request $request){ 
@@ -387,12 +390,12 @@ class censoController extends Controller
                 $query->where('idDadosBase', '=' , $idDadosBase);
         })->paginate(5);
 
-        if (Gate::denies('insere_arquivos', $arquivos[0])){
-            //abort(403, 'Não Autorizado');
-            return view('semPermissao');
-        }
-        
-        return view('censoAnexarArquivos', compact('arquivos'));
+        $usuario = Auth::user()->id;
+        if ( $usuario == $idDadosBase){
+            return view('censoAnexarArquivos', compact('arquivos'));
+        } else{
+             return view('semPermissao');
+        }   
     }
 
     public function novoUpDocumento(Request $request){ 
@@ -402,12 +405,12 @@ class censoController extends Controller
                 $query->where('idDadosBase', '=' , $idDadosBase);
         })->paginate(5);
 
-        if (Gate::denies('insere_arquivos', $arquivos[0])){
-            //abort(403, 'Não Autorizado');
-            return view('semPermissao');
-        }
-
-        return view('censoNovoDocumento');
+       $usuario = Auth::user()->id;
+        if ( $usuario == $idDadosBase){
+             return view('censoNovoDocumento');
+        } else{
+             return view('semPermissao');
+        }     
     }
 
     public function insereArquivo(Request $request){  
