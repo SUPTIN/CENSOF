@@ -8,7 +8,7 @@ class documentacao extends Model
 {
     protected $table = 'documentacao';
     protected $primaryKey = 'idDocumentacao';
-    protected $fillable = ['idDadosBase', 'cpf', 'rg', 'orgaoEmissorRG', 'ufRG', 'dataEmissaoRG', 'ctps', 'serie', 'ufCtps', 'dataEmissaoCtps', 'pisPasep', 'dataCadPisPasep', 'tituloEleitor', 'zona', 'secao', 'dataEmissaoTituloEleitor', 'ufVotacao', 'cidadeVotacao', 'certMilitar', 'certMilitarSituacao', 'dataCertMilitar', 'tipoCertMilitar', 'ufCertMilitar', 'numCNH', 'registroCNH', 'categoriaCNH', 'dataEmissaoCNH', 'dataValidadeCNH', 'ufCNH', 'primeiraHabilitacao', 'conselhoProfissional', 'numConselhoProf', 'dataEmissaoConselhoProf', 'dataValidadeConselhoProf'];
+    protected $fillable = ['idDadosBase', 'cpf', 'rg', 'orgaoEmissorRG', 'ufRG', 'dataEmissaoRG', 'ctps', 'serie', 'ufCtps', 'dataEmissaoCtps', 'pisPasep', 'dataCadPisPasep', 'tituloEleitor', 'zona', 'secao', 'dataEmissaoTituloEleitor', 'ufVotacao', 'cidadeVotacao', 'certMilitar', 'certMilitarSituacao', 'dataCertMilitar', 'tipoCertMilitar', 'ufCertMilitar', 'numCNH', 'registroCNH', 'categoriaCNH', 'dataEmissaoCNH', 'dataValidadeCNH', 'ufCNH', 'primeiraHabilitacao', 'conselhoProfissional', 'numConselhoProf', 'dataEmissaoConselhoProf', 'dataValidadeConselhoProf', 'orgaoEmissorConselhoProf'];
     public $rules = ['cpf' => 'required',
                      'rg' => 'required',
                      'orgaoEmissorRG' => 'required',
@@ -69,5 +69,8 @@ class documentacao extends Model
     }
     public function setConselhoProfissionalAttribute($value){
         $this->attributes['conselhoProfissional'] = mb_strtoupper($value);
+    }
+    public function setorgaoEmissorConselhoProfAttribute($value){
+        $this->attributes['orgaoEmissorConselhoProf'] = mb_strtoupper($value);
     }
 }

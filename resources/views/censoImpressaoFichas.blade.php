@@ -307,8 +307,11 @@
                         </div>
                       </div>
                       <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-8">
                           <b>Nome do Conselho Profissional: </b>{{$dadosDocumentacao[0]->conselhoProfissional}}
+                        </div>  
+                        <div class="col-sm-4">
+                          <b>Orgão Emissor: </b>{{$dadosDocumentacao[0]->orgaoEmissorConselhoProf}}
                         </div>  
                       </div>
                       <div class="row">

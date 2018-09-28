@@ -221,9 +221,13 @@
                       </div>
 
                       <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-8">
                           Nome do Conselho Profissional:
                           <input class="form-control" name="conselhoProfissional" value="{{old('conselhoProfissional')}}" style="text-transform:uppercase"/>
+                        </div>
+                        <div class="col-sm-4">
+                          Orgão Emissor:
+                          <input class="form-control" name="orgaoEmissorConselhoProf" value="{{old('orgaoEmissorConselhoProf')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 

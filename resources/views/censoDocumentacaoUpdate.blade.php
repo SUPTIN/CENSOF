@@ -222,9 +222,13 @@
                       </div>
 
                       <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-8">
                           Nome do Conselho Profissional:
                           <input class="form-control" name="conselhoProfissional" value="{{$doc->conselhoProfissional}}" style="text-transform:uppercase"/>
+                        </div>
+                        <div class="col-sm-4">
+                          Orgão Emissor:
+                          <input class="form-control" name="orgaoEmissorConselhoProf" value="{{$doc->orgaoEmissorConselhoProf}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
@@ -277,12 +281,6 @@
 
          var $cpf = $("#cpf");
          $cpf.mask('000.000.000-00',{reverse: true});
-
-         //var $pisPasep = $("#pisPasep");
-         //$pisPasep.mask('000.00000.00-0',{reverse: true});
-
-         //var $serie = $("#serie");
-         //$serie.mask('000-0',{reverse: true});
 
          var $dataEmissaoRg = $("#dataEmissaoRG");
          $dataEmissaoRg.mask('00/00/0000',{reverse: true});
