@@ -138,7 +138,7 @@ class censoController extends Controller
             }
         $this->validate($request, $this->dadosPessoais->rules, $this->dadosPessoais->messages);
         $this->validate($request, $this->dadosBase->rules, $this->dadosBase->messages);
-
+       
         if(empty($infoPessoais[0])){
         	$insert = $this->dadosPessoais->create($dados);
     		$novoIdDP = $insert->id;
@@ -618,7 +618,11 @@ class censoController extends Controller
         $this->pdf->AddPage();
         $this->pdf->SetFont('Courier','BI',15);
         $this->pdf->Cell(10,5,utf8_decode('Dados Funcionais'),0,1);
-        $dadosBase = dadosBase::find($idDadosBase)->get();
+        $dadosBase = dadosBase::where(function($query) use($idDadosBase){
+            if($idDadosBase)
+                $query->where('idDadosBase', '=', $idDadosBase);
+        })->get();
+
         $this->pdf->SetFont('Courier','B',11);
         $this->pdf->Cell(13,5, utf8_decode('Nome: '),0,0);
         $this->pdf->SetFont('Courier','',11);
@@ -643,12 +647,20 @@ class censoController extends Controller
         $this->pdf->Cell(34,5, utf8_decode('Sec. Lotação: '),0,0);
         $this->pdf->SetFont('Courier','',11);
         $this->pdf->Cell(0,5, strtoupper(utf8_decode($dadosBase[0]->secretariaBase)),0,1);
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(34,5, utf8_decode('Carga Hóraria: '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(0,5, strtoupper(utf8_decode($dadosBase[0]->cargaHorariaBase)),0,1);
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(34,5, utf8_decode('Hór/dias trab: '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(0,5, strtoupper(utf8_decode($dadosBase[0]->horarioTrabBase)),0,1);
 
 
-        $this->pdf->Ln(7);
+        $this->pdf->Ln(2);
         $this->pdf->SetFont('Courier','BI',15);
         $this->pdf->Cell(10,5,utf8_decode('Dados Pessoais'),0,1);
-        $this->pdf->Ln(2);
+        $this->pdf->Ln(1);
         $dadosPessoais = dadosPessoais::where(function($query) use($idDadosBase){
             if($idDadosBase)
                 $query->where('idDadosBase', '=', $idDadosBase);
@@ -762,10 +774,10 @@ class censoController extends Controller
         $this->pdf->Cell(0,5, utf8_decode($dadosPessoais[0]->qualDeficiencia),0,1);
 
 
-        $this->pdf->Ln(5);
+        $this->pdf->Ln(2);
         $this->pdf->SetFont('Courier','BI',15);
         $this->pdf->Cell(10,5,utf8_decode('Documentação'),0,1);
-        $this->pdf->Ln(2);
+        $this->pdf->Ln(1);
         $dadosEndContato = enderecoContatos::where(function($query) use($idDadosBase){
             if($idDadosBase)
                 $query->where('idDadosBase', '=', $idDadosBase);
@@ -959,12 +971,12 @@ class censoController extends Controller
         $this->pdf->SetFont('Courier','BI',12);
         $this->pdf->Cell(70,5,utf8_decode('Total de arquivos Anexados: '),0,0);
         $this->pdf->Cell(10,5,utf8_decode($tArquivos),0,1);
-        $this->pdf->Ln(2);
+        $this->pdf->Ln(1);
 
-        $this->pdf->Ln(3);
+        $this->pdf->Ln(2);
         $this->pdf->SetFont('Courier','BI',15);
         $this->pdf->Cell(10,5,utf8_decode('Dependentes'),0,1);
-        $this->pdf->Ln(2);
+        $this->pdf->Ln(1);
         $dadosDependente = dependente::where(function($query) use($idDadosBase){
             if($idDadosBase)
                 $query->where('idDadosBase', '=' , $idDadosBase);
