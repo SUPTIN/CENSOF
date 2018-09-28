@@ -222,7 +222,17 @@
                       <div class="row" id="campoQual" style="display: none">
                         <div class="col-sm-12">
                           Qual?
-                          <input class="form-control" name="qualDeficiencia" value="{{$infoPessoais->qualDeficiencia}}" style="text-transform:uppercase"/>
+                         <select id="qualDeficiencia" name="qualDeficiencia"  class="form-control">
+                           <option {{$infoPessoais->qualDeficiencia == " "? 'selected':' '}} value=" "> </option>
+                           <option {{ $infoPessoais->qualDeficiencia == 'FÍSICA' ? 'selected' : '' }} value="FÍSICA">FÍSICA</option>
+                           <option {{ $infoPessoais->qualDeficiencia == 'AUDITIVA' ? 'selected' : '' }} value="AUDITIVA">AUDITIVA</option>
+                           <option {{ $infoPessoais->qualDeficiencia == 'VISUAL' ? 'selected' : '' }} value="VISUAL">VISUAL</option>
+                           <option {{ $infoPessoais->qualDeficiencia == 'MENTAL' ? 'selected' : '' }} value="MENTAL">MENTAL</option>
+                           <option {{ $infoPessoais->qualDeficiencia == 'MÚLTIPLAS' ? 'selected' : '' }} value="MÚLTIPLAS">MÚLTIPLAS</option>
+                           <option {{ $infoPessoais->qualDeficiencia == 'REABILITADO' ? 'selected' : '' }} value="REABILITADO">REABILITADO</option>
+                           <option {{ $infoPessoais->qualDeficiencia == 'INTELECTUAL' ? 'selected' : '' }} value="INTELECTUAL">INTELECTUAL</option>
+                           <option {{ $infoPessoais->qualDeficiencia == 'NÃO NECESSÁRIO' ? 'selected' : '' }} value="NÃO NECESSÁRIO">NÃO INFORMADO</option>
+                          </select>
                         </div>
                       </div>
 
