@@ -16,9 +16,9 @@
                           <a href="novoDependente"> 
                              Adicionar novo Dependente <i class="fa fa-plus-circle" aria-hidden="true" title="Adicionar um Dependente"> </i>
                           </a> &nbsp;
-                          <a href="anexaArquivos"> 
+                         <!-- <a href="anexaArquivos"> 
                              Anexar Documentos <i class="fa fa-upload" aria-hidden="true" title="Adicionar anexo dos Documentos"> </i>
-                          </a>
+                          </a> -->
                         </div>
                       </div>
 
@@ -47,7 +47,7 @@
                               </tr>
                             @empty
                               <tr>
-                                <td colspan="3"> <p> Não existe Dependente cadastrado!</p></td>
+                                <td colspan="4"> <p> Não existe Dependente cadastrado!</p></td>
                               </tr>
                             @endforelse
                           </table>
@@ -58,6 +58,13 @@
                           <div align="center">{!! $dependentes->links() !!}</div>
                         </div>
                       </div>
+                      <div class="row" align="center">
+                        <div class="col-sm-12"> 
+                          <a href="anexaArquivos" class="btn btn-primary"> 
+                             Avançar <i aria-hidden="true" title="Adicionar anexo dos Documentos"> </i>
+                          </a>
+                        </div>
+                      </div> 
                 </div>
             </div>
       </div>
