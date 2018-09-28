@@ -149,7 +149,9 @@ class censoController extends Controller
         $nomeBase = $dados['nomeBase'];
         $secretariaBase = $dados['secretariaBase'];
         $localTrabBase = $dados['localTrabBase'];
-        dadosBase::find($idDadosBase)->update(['dadosPessoais' => '1', 'localTrabBase' => $localTrabBase, 'secretariaBase' => $secretariaBase,'nomeBase' => $nomeBase]);
+        $cargaHorariaBase = $dados['cargaHorariaBase'];
+        $horarioTrabBase = $dados['horarioTrabBase'];
+        dadosBase::find($idDadosBase)->update(['dadosPessoais' => '1', 'localTrabBase' => $localTrabBase, 'secretariaBase' => $secretariaBase, 'cargaHorariaBase' => $cargaHorariaBase, 'horarioTrabBase' => $horarioTrabBase,'nomeBase' => $nomeBase]);
 
     	$caminho = $idDadosBase.'/enderecoContatos';
     	return redirect()->to($caminho);
