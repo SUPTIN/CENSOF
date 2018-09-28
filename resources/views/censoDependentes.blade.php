@@ -16,9 +16,9 @@
                           <a href="novoDependente"> 
                              Adicionar novo Dependente <i class="fa fa-plus-circle" aria-hidden="true" title="Adicionar um Dependente"> </i>
                           </a> &nbsp;
-                         <!-- <a href="anexaArquivos"> 
-                             Anexar Documentos <i class="fa fa-upload" aria-hidden="true" title="Adicionar anexo dos Documentos"> </i>
-                          </a> -->
+                          <a href="dependenteRegras"> 
+                             Regras para inserir Dependentes <i class="fa fa-eye" aria-hidden="true" title="Regras para inserir Dependentes"> </i>
+                          </a> &nbsp;
                         </div>
                       </div>
 
@@ -63,6 +63,15 @@
                           <a href="anexaArquivos" class="btn btn-primary"> 
                              Avançar <i aria-hidden="true" title="Adicionar anexo dos Documentos"> </i>
                           </a>
+                        </div>
+                      </div> 
+
+                      <div class="row" align="justify">
+                        <div class="col-sm-12"> 
+                          <br>
+                          <p align="center"> Atenção: Observar as regras para os campos </p>
+                             <p> - Dependente para fins de Dedução de Imposto de renda?</p>
+                              <p>- Dependente para fins de Recebimento de Salário Família?</p>
                         </div>
                       </div> 
                 </div>

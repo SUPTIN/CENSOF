@@ -297,7 +297,13 @@ class censoController extends Controller
         	documentacao::where('idDadosBase',$idDadosBase)->first()->update($dados);  	
         }
         $caminho = $idDadosBase.'/dependentes';
-    	return redirect()->to($caminho);
+    	//return redirect()->to($caminho);
+        return view('censoDependentesRegras', compact('idDadosBase'));
+    }
+
+    public function dependenteRegras(Request $request){ 
+        $idDadosBase = $request->id;
+        return view('censoDependentesRegras', compact('idDadosBase'));
     }
 
     public function dependentes(Request $request){ 
