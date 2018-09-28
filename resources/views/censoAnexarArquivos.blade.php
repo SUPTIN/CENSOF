@@ -16,8 +16,8 @@
                           <a href="novoDocumento"> 
                              Anexar novo Documento <i class="fa fa-plus-circle" aria-hidden="true" title="Adicionar um Documento"> </i>
                           </a> &nbsp; 
-                          <a href="impressaoFichas"> 
-                             Finalizar e Imprimir comprovante <i class="fa fa-print" aria-hidden="true" title="Finalizar e impressão"> </i>
+                          <a href="arquivosRegras"> 
+                             Orientenções para anexo dos Arquivos <i class="fa fa-eye" aria-hidden="true" title="Orientenções para anexo dos Arquivos"> </i>
                           </a>
                         </div>
                       </div>
@@ -54,6 +54,13 @@
                        <div class="row">
                         <div class="col-sm-12">
                           <div align="center">{!! $arquivos->links() !!}</div>
+                        </div>
+                      </div>
+                      <div class="row" align="center">
+                        <div class="col-sm-12"> 
+                          <a href="impressaoFichas" class="btn btn-primary"> 
+                             Finalizar e Imprimir comprovante <i aria-hidden="true" title="Finalizar e Imprimir comprovante"> </i>
+                          </a>
                         </div>
                       </div>
                 </div>

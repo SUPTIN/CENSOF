@@ -60,7 +60,7 @@
                       </div>
                       <div class="row" align="center">
                         <div class="col-sm-12"> 
-                          <a href="anexaArquivos" class="btn btn-primary"> 
+                          <a href="arquivosRegras" class="btn btn-primary"> 
                              Avançar <i aria-hidden="true" title="Adicionar anexo dos Documentos"> </i>
                           </a>
                         </div>
