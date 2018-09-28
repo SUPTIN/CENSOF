@@ -482,6 +482,10 @@ class censoController extends Controller
         return $tArquivos;
     }
 
+    public function arquivosRegras(Request $request){ 
+        $idDadosBase = $request->id;
+        return view('censoAnexaArquivosRegras', compact('idDadosBase'));
+    }
 
 
     public function  impressaoCensoF(Request $request){ 
