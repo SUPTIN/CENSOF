@@ -937,9 +937,9 @@ class censoController extends Controller
         $this->pdf->SetFont('Courier','',11);
         $this->pdf->Cell(68,5, utf8_decode($dadosDocumentacao[0]->ufCNH),0,0);
         $this->pdf->SetFont('Courier','B',11);
-        $this->pdf->Cell(27,5, utf8_decode('Categoria: '),0,0);
+        $this->pdf->Cell(26,5, utf8_decode('Categoria: '),0,0);
         $this->pdf->SetFont('Courier','',11);
-        $this->pdf->Cell(30,5, utf8_decode($dadosDocumentacao[0]->categoriaCNH),0,0);
+        $this->pdf->Cell(37,5, utf8_decode($dadosDocumentacao[0]->categoriaCNH),0,0);
         $this->pdf->SetFont('Courier','B',11);
         $this->pdf->Cell(27,5, utf8_decode('1ª Habil.: '),0,0);
         $this->pdf->SetFont('Courier','',11);
@@ -949,9 +949,13 @@ class censoController extends Controller
         $this->pdf->SetFont('Courier','',11);
         $this->pdf->Cell(80,5, utf8_decode($dadosDocumentacao[0]->dataValidadeCNH),0,1);
         $this->pdf->SetFont('Courier','B',11);
-        $this->pdf->Cell(57,5, utf8_decode('Conselho Profissional: '),0,0);
+        $this->pdf->Cell(35,5, utf8_decode('Conselho Prof.: '),0,0);
         $this->pdf->SetFont('Courier','',11);
-        $this->pdf->Cell(120,5, utf8_decode($dadosDocumentacao[0]->conselhoProfissional),0,1);
+        $this->pdf->Cell(103,5, utf8_decode($dadosDocumentacao[0]->conselhoProfissional),0,0);
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(35,5, utf8_decode('Orgão Emissor: '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(120,5, utf8_decode($dadosDocumentacao[0]->orgaoEmissorConselhoProf),0,1);
         $this->pdf->SetFont('Courier','B',12);
         $this->pdf->Cell(31,5, utf8_decode('Nº Registro: '),0,0);
         $this->pdf->SetFont('Courier','',11);
