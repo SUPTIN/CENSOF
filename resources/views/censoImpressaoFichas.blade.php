@@ -49,6 +49,14 @@
                         </div>  
                       </div>
                       <div class="row">
+                        <div class="col-sm-6">
+                          <b>Carga Horária:</b> {{$dadosBase[0]->cargaHorariaBase}}
+                        </div>  
+                        <div class="col-sm-6">
+                          <b>Horário/dias Trabalhados:</b> {{$dadosBase[0]->horarioTrabBase}}
+                        </div>  
+                      </div>
+                      <div class="row">
                         <div class="col-sm-12">
                           <h5><b>Dados Pessoais</b></h5>
                         </div>
