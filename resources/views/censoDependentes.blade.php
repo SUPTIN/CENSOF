@@ -65,15 +65,6 @@
                           </a>
                         </div>
                       </div> 
-
-                      <div class="row" align="justify">
-                        <div class="col-sm-12"> 
-                          <br>
-                          <p align="center"> Atenção: Observar as regras para os campos </p>
-                             <p> - Dependente para fins de Dedução de Imposto de renda?</p>
-                              <p>- Dependente para fins de Recebimento de Salário Família?</p>
-                        </div>
-                      </div> 
                 </div>
             </div>
       </div>
