@@ -40,6 +40,7 @@ Route::get('{id}/novoDocumento', 'censoController@novoUpDocumento');
 Route::post('{id}/insereArq', 'censoController@insereArquivo');
 Route::get('{id}/viewArquivo', 'censoController@viewArquivo');
 Route::get('{id}/delArquivo', 'censoController@delArquivo');
+Route::get('{id}/arquivosRegras', 'censoController@arquivosRegras');
 
 Route::get('semPermissao', 'censoController@semPermissao');
 
