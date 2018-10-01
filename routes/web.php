@@ -22,6 +22,9 @@ Route::post('{id}/eC', 'censoController@insereEnderecoContatos');
 Route::get('{id}/documentacao', 'censoController@documentacao');
 Route::post('{id}/doc', 'censoController@insereDocumentacao');
 
+Route::get('{id}/vincEmpregaticio', 'censoController@vincEmpreg');
+Route::post('{id}/iVinculo', 'censoController@insereVincEmpreg');
+
 Route::get('{id}/dependentes', 'censoController@dependentes');
 Route::get('{id}/novoDependente', 'censoController@novoDependente');
 Route::get('{id}/editDependente', 'censoController@editDependente');

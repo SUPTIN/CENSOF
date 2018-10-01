@@ -18,6 +18,7 @@ use App\dadosBase;
 use App\dadosPessoais;
 use App\enderecoContatos;
 use App\documentacao;
+use App\vinculoEmpregaticio;
 use App\dependente;
 use App\escolaridade;
 use App\pais;
@@ -31,6 +32,7 @@ class censoController extends Controller
 	private $dadosPessoais;
 	private $enderecoContatos;
 	private $documentacao;
+    private $vinculoEmpregaticio;
 	private $dependente;
 	private $escolaridade;
 	private $pais;
@@ -41,11 +43,12 @@ class censoController extends Controller
     protected $pdf;
 
 
-	public function __construct(dadosBase $dadosBase, dadosPessoais $dadosPessoais, enderecoContatos $enderecoContatos, documentacao $documentacao, dependente $dependente, escolaridade $escolaridade, pais $pais, estado $estado, cidade $cidade, \App\Pdf $pdf, arquivos $arquivos){
+	public function __construct(dadosBase $dadosBase, dadosPessoais $dadosPessoais, enderecoContatos $enderecoContatos, documentacao $documentacao, vinculoEmpregaticio $vinculoEmpregaticio, dependente $dependente, escolaridade $escolaridade, pais $pais, estado $estado, cidade $cidade, \App\Pdf $pdf, arquivos $arquivos){
 		$this->dadosBase = $dadosBase;
 		$this->dadosPessoais = $dadosPessoais;
 		$this->enderecoContatos = $enderecoContatos;
 		$this->documentacao = $documentacao;
+        $this->vinculoEmpregaticio = $vinculoEmpregaticio;
 		$this->dependente = $dependente;
 		$this->escolaridades = $escolaridade;
 		$this->paises = $pais;
@@ -105,9 +108,7 @@ class censoController extends Controller
         }else{
             $infoPessoais = $infoPessoais[0];    
             return view('censoDadosPessoaisUpdate', compact('escolaridades','paises', 'estados', 'cidades', 'infoBase','infoPessoais')); 
-        }
-
-        
+        }    
     }
 
     public function insereDadosPessoais(Request $request){
@@ -226,8 +227,7 @@ class censoController extends Controller
             }
         } else{
             return view('semPermissao');
-        }
-        
+        }        
     }
 
     public function  insereDocumentacao(Request $request){ 
@@ -298,9 +298,71 @@ class censoController extends Controller
         }else{
         	documentacao::where('idDadosBase',$idDadosBase)->first()->update($dados);  	
         }
-        $caminho = $idDadosBase.'/dependentes';
-    	//return redirect()->to($caminho);
-        return view('censoDependentesRegras', compact('idDadosBase'));
+        $caminho = $idDadosBase.'/vincEmpregaticio';
+    	return redirect()->to($caminho);
+
+    }
+
+    public function vincEmpreg(Request $request){ 
+        $idDadosBase = $request->id;
+        $usuario = Auth::user()->id;
+
+        $vincEmpreg = vinculoEmpregaticio::where(function($query) use($idDadosBase){
+           if($idDadosBase)
+                $query->where('idDadosBase', '=', $idDadosBase);
+        })->get();
+
+        if ( $usuario == $idDadosBase){
+            if (empty($vincEmpreg[0])){
+                return view('censoVinculoEmpregaticio', compact( 'idDadosBase'));
+            }else{
+                $vincEmpreg = $vincEmpreg[0];
+                return view('censoVinculoEmpregaticioUpdate', compact( 'idDadosBase', 'vincEmpreg'));
+            }
+        } else{
+            return view('semPermissao');
+        }      
+    }
+
+    public function insereVincEmpreg(Request $request){ 
+        $dados = $request->all();
+        $idDadosBase = $request->id;
+        $dados['idDadosBase'] = $idDadosBase;
+        $vincEmpreg = vinculoEmpregaticio::where(function($query) use($idDadosBase){
+            if($idDadosBase)
+                $query->where('idDadosBase', '=', $idDadosBase);
+        })->get();  
+        $this->validate($request, $this->vinculoEmpregaticio->rules, $this->vinculoEmpregaticio->messages);
+
+        if (($request->qualVinculo == "") || ($request->qualVinculo == "NÃO PREENCHIDO.")){
+                $dados['qualVinculo'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->orgaoEmpregaticio == "") || ($request->orgaoEmpregaticio == "NÃO PREENCHIDO.")){
+                $dados['orgaoEmpregaticio'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->cargoVinculo == "") || ($request->cargoVinculo == "NÃO PREENCHIDO.")){
+                $dados['cargoVinculo'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->cargaHorariaVinculo == "") || ($request->cargaHorariaVinculo == "NÃO PREENCHIDO.")){
+                $dados['cargaHorariaVinculo'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->turnoVinculo == "") || ($request->turnoVinculo == "NÃO PREENCHIDO.")){
+                $dados['turnoVinculo'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->horarioDiasTrabVinculo == "") || ($request->horarioDiasTrabVinculo == "NÃO PREENCHIDO.")){
+                $dados['horarioDiasTrabVinculo'] = 'NÃO PREENCHIDO.';
+        }
+        if (($request->cargoGratificado == "") || ($request->cargoGratificado == "NÃO PREENCHIDO.")){
+                $dados['cargoGratificado'] = 'NÃO PREENCHIDO.';
+        }
+
+        if(empty($vincEmpreg[0])){
+            $insert = $this->vinculoEmpregaticio->create($dados);
+        }else{
+            vinculoEmpregaticio::where('idDadosBase',$idDadosBase)->first()->update($dados);   
+        }
+        $caminho = $idDadosBase.'/dependenteRegras';
+        return redirect()->to($caminho);
     }
 
     public function dependenteRegras(Request $request){ 
