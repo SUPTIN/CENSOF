@@ -31,6 +31,38 @@
                           <label style="font-size:10px;color:red;"> * Campo de preenchimento Obrigatório.</label>
                         </div>
                       </div>
+
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <h4>Vínculo Prefeitura Municipal de Santa Maria de Jetibá:</h4>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-sm-12">
+                         Possui cargo ou função gratificada? <label style="font-size:15px;color:red;">*</label>
+                          <select id="funcaoGratificada" name="funcaoGratificada" onchange="possuiGratificacao()" class="form-control">
+                          <option value=""></option>
+                           <option {{ $vincEmpreg->funcaoGratificada == 'SIM' ? 'selected' : '' }} value="SIM">SIM</option>
+                           <option {{ $vincEmpreg->funcaoGratificada == 'NÃO' ? 'selected' : '' }} value="NÃO">NÃO</option>
+                         </select>
+                        </div>
+                      </div>
+
+                      <div class="row" id="campoQual" style="display: none">
+                        <div class="col-sm-12">
+                          Cargo gratificado:
+                          <input class="form-control" name="cargoGratificado" value="{{$vincEmpreg->cargoGratificado}}" style="text-transform:uppercase"/>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <br/>
+                          <h4>Outro vínculo:</h4>
+                        </div>
+                      </div>
+
                       <div class="row">
                         <div class="col-sm-8">
                           Possui vínculo empregatício em outro Orgão? <label style="font-size:15px;color:red;">*</label>
@@ -77,24 +109,6 @@
                         <div class="col-sm-6">
                           Horário e dias trabalhados:
                           <input class="form-control" name="horarioDiasTrabVinculo" value="{{$vincEmpreg->horarioDiasTrabVinculo}}" style="text-transform:uppercase" />
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-sm-12">
-                         Possui cargo ou função gratificada? <label style="font-size:15px;color:red;">*</label>
-                          <select id="funcaoGratificada" name="funcaoGratificada" onchange="possuiGratificacao()" class="form-control">
-                          <option value=""></option>
-                           <option {{ $vincEmpreg->funcaoGratificada == 'SIM' ? 'selected' : '' }} value="SIM">SIM</option>
-                           <option {{ $vincEmpreg->funcaoGratificada == 'NÃO' ? 'selected' : '' }} value="NÃO">NÃO</option>
-                         </select>
-                        </div>
-                      </div>
-
-                      <div class="row" id="campoQual" style="display: none">
-                        <div class="col-sm-12">
-                          Cargo gratificado:
-                          <input class="form-control" name="cargoGratificado" value="{{$vincEmpreg->cargoGratificado}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
 
