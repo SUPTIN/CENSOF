@@ -8,7 +8,7 @@
                 <div class="panel-body">
                       <div class="row">
                         <h4>Censo Funcional - Endereço e Contatos </h4>
-                        <h6>Passo 2 de 5</h6> 
+                        <h6>Passo 2 de 6</h6> 
                       </div>
 
                       <form method="post" action="eC">

@@ -8,7 +8,7 @@
                 <div class="panel-body">
                       <div class="row">
                         <h4>Censo Funcional - Dependentes</h4>
-                        <h6>Passo 4 de 5</h6>
+                        <h6>Passo 4 de 6</h6>
                       </div>
 
                       <div class="row">
