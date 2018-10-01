@@ -34,13 +34,13 @@
                       <div class="row">
                         <div class="col-sm-8">
                           Possui vínculo empregatício em outro Orgão? <label style="font-size:15px;color:red;">*</label>
-                          <select name="vinculoEmpregaticio" class="form-control">
+                          <select name="vinculoEmpregaticio" id="vinculoEmpregaticio" onchange="optionVE()" class="form-control">
                             <option value=" "> </option>
                            <option {{ old('vinculoEmpregaticio') == 'SIM' ? 'selected' : '' }} value="SIM">SIM</option>
                            <option {{ old('vinculoEmpregaticio') == 'NÃO' ? 'selected' : '' }} value="NÃO">NÃO</option>
                          </select>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4" id="campoQualV" style="display: none">
                           Qual?
                           <select name="qualVinculo" class="form-control">
                             <option value=" "> </option>
@@ -52,13 +52,13 @@
                         </div>
                       </div>
 
-                      <div class="row">
+                      <div class="row" id="campoOrgaoV" style="display: none">
                         <div class="col-sm-12">
                           Órgão empregatício:
                           <input class="form-control" name="orgaoEmpregaticio" value="{{old('orgaoEmpregaticio')}}" style="text-transform:uppercase" />
                         </div>
                       </div>
-                      <div class="row">
+                      <div class="row" id="campoCargoV" style="display: none">
                         <div class="col-sm-6">
                           Cargo:
                           <input class="form-control" name="cargoVinculo" value="{{old('cargoVinculo')}}" style="text-transform:uppercase" />
@@ -68,12 +68,12 @@
                           <input class="form-control" name="cargaHorariaVinculo" value="{{old('cargaHorariaVinculo')}}" style="text-transform:uppercase" />
                         </div>
                       </div>
-                      <div class="row">
+                      <div class="row" id="campoTurnoV" style="display: none"i>
                         <div class="col-sm-6">
                           Turno:
                           <input class="form-control" name="turnoVinculo" value="{{old('turnoVinculo')}}" style="text-transform:uppercase" />
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-6" id="campoDiasV" style="display: none">
                           Horário e dias trabalhados:
                           <input class="form-control" name="horarioDiasTrabVinculo" value="{{old('horarioDiasTrabVinculo')}}" style="text-transform:uppercase" />
                         </div>
@@ -82,7 +82,7 @@
                       <div class="row">
                         <div class="col-sm-12">
                          Possui cargo ou função gratificada? <label style="font-size:15px;color:red;">*</label>
-                          <select id="funcaoGratificada" name="funcaoGratificada" class="form-control">
+                          <select id="funcaoGratificada" name="funcaoGratificada" onchange="possuiGratificacao()" class="form-control">
                           <option value=""></option>
                            <option {{ old('funcaoGratificada') == 'SIM' ? 'selected' : '' }} value="SIM">SIM</option>
                            <option {{ old('funcaoGratificada') == 'NÃO' ? 'selected' : '' }} value="NÃO">NÃO</option>
@@ -90,7 +90,7 @@
                         </div>
                       </div>
 
-                      <div class="row" >
+                      <div class="row" id="campoQual" style="display: none">
                         <div class="col-sm-12">
                           Cargo gratificado:
                           <input class="form-control" name="cargoGratificado" value="{{old('cargoGratificado')}}" style="text-transform:uppercase"/>
@@ -118,15 +118,51 @@
      
      <script type="text/javascript">
 
-        function possuiTipoDeficiencia(){
-         var $possuiDeficiencia = document.getElementById("possuiDeficiencia").value;
-         if ($possuiDeficiencia == 'SIM'){
+        function optionVE(){
+            var $vinculoEmpregaticio = document.getElementById("vinculoEmpregaticio").value;
+            if ($vinculoEmpregaticio == 'SIM'){
+               $qualVinculo = '';
+               $orgaoEmpregaticio = '';
+               $cargoVinculo = '';
+               $cargaHorariaVinculo = '';
+               $horarioDiasTrabVinculo = '';
+               $turnoVinculo = '';
+               $('#campoQualV').show();
+               $('#campoOrgaoV').show();
+               $('#campoCargoV').show();
+               $('#campoTurnoV').show();
+               $('#campoDiasV').show();
+            }else{
+               $('#campoQualV').hide();
+               $('#campoOrgaoV').hide();
+               $('#campoCargoV').hide();
+               $('#campoTurnoV').hide();
+               $('#campoDiasV').hide();
+               $qualVinculo = 'NÃO NECESSÁRIO';
+               $orgaoEmpregaticio = 'NÃO NECESSÁRIO';
+               $cargoVinculo = 'NÃO NECESSÁRIO';
+               $cargaHorariaVinculo = 'NÃO NECESSÁRIO';
+               $horarioDiasTrabVinculo = 'NÃO NECESSÁRIO';
+               $turnoVinculo = 'NÃO NECESSÁRIO';
+            }
+        }
+
+        function possuiGratificacao(){
+         var $funcaoGratificada = document.getElementById("funcaoGratificada").value;
+         if ($funcaoGratificada == 'SIM'){
            $('#campoQual').show();
          }else{
            $('#campoQual').hide();
-           $qualDeficiencia = 'NÃO NECESSÁRIO.'
+           $cargoGratificado = 'NÃO NECESSÁRIO';
          }
         }
+
+
+        $(document).ready(function(){
+         possuiGratificacao();
+         optionVE();
+         
+       });
 
      </script>
    </div>
