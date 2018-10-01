@@ -13,33 +13,25 @@
                       <div class="row" align="justify">
                         <div class="col-sm-12"> 
                           <br>
-                          <p style="color:red;"> Atenção:Observar as regras abaixo antes de marcar "SIM" nos campos </p>
+                          <p style="color:red;"> Atenção: Observar as regras abaixo antes de Anexar os Documentos. </p>
+
+                          <p> <b>Para comprovação dos dados declarados é obrigatório anexar ao formulário do Censo Funcional cópia dos documentos comprobatórios abaixo:</b></p>
                           <ul>
-                             <li> Dependente para fins de Dedução de Imposto de renda?</li>
-                             <li> Dependente para fins de Recebimento de Salário Família?</li> 
-                          </ul>
-                          <p> <b>Imposto de Renda:</b> Quem pode ser dependente de acordo com a legislação tributária?</p>
-                          <ol>
-                            <li> Companheiro(a) com quem o contribuiinte tenha filho(a) ou viva há mais de 5 anos, ou cônjugue, que, no ano anterior tenham recebido rendimentos, tributáveis ou não, até o limite estabelecido;</li>
-                            <li> Filho(a) ou enteado(a), até 21 anos de idade, ou, em qualquer idade, quando incapacitdo física ou mentalmente para o trabalho;</li>
-                            <li> Filho(a) ou enteado(a), se ainda estiverem cursando estabelecimento de ensino superior ou escola técnica de segundo grau, até 24 anos de idade;</li>
-                            <li> Irmão(ã), neto(a) ou bisneto(a), sem arrimo dos pais, de quem o contribuinte detenha a guarda judicial, até 21 anos, ou em qualquer idade, quando incapacitado física ou mentalmente para trabalho;</li>
-                            <li> Irmão(ã), neto(a) ou bisneto(a), sem arrimo dos pais, com idade de 21 anos até 24 anos, se ainda estiver cursando estabelecimento de ensino superior ou escola técnica de segundo grau, desde que o contribuinte tenha detido sua guarda judicial até os 21 anos;</li>
-                            <li> Pais, avós e bisavós que, no ano anterior tenham recebido rendimentos, tributáveis ou não, até o limite estabelecido;</li>
-                            <li> Menor pobre até 21 anos que o contribuinte crie e eduque e de quem detenha a guarda judicial;</li>
-                            <li> Pessoa absolutamente incapaz, da qual o contribuinte seja tutor ou curador.</li>
-                          </ol>
-                          <b><p> Atenção: </p>
-                          <ul>
-                            <li> No caso de filhos de pais separados, o contribuinte poderá considerar como dependentes os que ficarem sob sua guarda em cumprimento de decisão judicial ou acordo homologado judicialmente.</li>
-                            <li> O responsável pelo pagamento da pensão alimentícia não poderá efetuar a dedução do valor correspondente a dependente.</li>
-                            <li> É vedada a dedução concomitante de um mesmo dependnete comun, no caso de contribuintes cônjuges/companheiros.</li>
-                          </ul></b>
-                          <br/>
-                          <p><b>Salário Família:</b></p>
-                          <p> Para ter direito ao salário-família o empregado precisa ter remuneração de até R$ 1319,18 (este valor é calculado considerando o total bruto de proventos de um mês completo).</p>
-                          <p> É pago pelo número de filhos ou equiparados, até 14 anos de idades ou inválido de qualquer idade.</p>
-                          <p> Equiparam-se aos filhos, mediante comprovação de dependência econômica, o enteado e o menor que esteja sob tutela do empregado. Em caso de marcação do campo, é necessária a comprovação por meio de cópia da Caderneta de Vacinação dos Filhos de 0 a 14 anos de idade e Comprovante de escolaridade dos filhos entre 07 e 14 anos de idade.</p>
+                            <li> Carteira de Identidade - RG;</li>
+                            <li> Cadastro de Pessoa Física (CPF);</li>
+                            <li> Carteira de Trabalho (Páginas: Foto e qualificação civil);</li>
+                            <li> Título de Eleitor;</li>
+                            <li> Certidão de Nascimento ou Certidão de Casamento, ou com as respectivas averbações (se separado judicialmente ou divorciado);</li>
+                            <li> Comprovante de Residência Atualizado;</li>
+                            <li> <b>Extrato de inscrição </b> do PIS/PASP emitido pela Caixa Econômica Federal e/ou Banco do Brasil;</li>
+                            <li> Histórico, Diploma ou Certificado de conclusão do Curso correspondente à escolaridade exigida para o cargo;</li>
+                            <li> Certificado de Reservista ou documento equivalente - Lei nº 4.375 de 17/08/1964, se do sexo masculino;</li>
+                            <li> Certificado profissional no Conselho Regional respectivo, para as profissões regulamentadas e sujeitas à fiscalização do exercício profissional e <b> comprovante de quitação anual atualizado</b>;</li>
+                            <li> Carteira Nacional de Habilitação - CNH para os Cargos em que o Edital assim o exigir;</li>
+                            <li> Para os cargos que exigirem a Carteira Nacional de Habilitação, apresentar Certidão de "Nada Consta" na CNH, emitida pelo DETRAN;</li>
+                            <li> <b>Certidão de Nascimento</b> e <b>CPF</b> dos filhos menores de 21 anos de idade.</li>
+
+                          
                         </div>
                       </div> 
 
