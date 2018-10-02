@@ -600,6 +600,11 @@ class censoController extends Controller
     	        $dadosPessoais[0]['escolaridade'] = $escolaridade[0]['descricaoEscolaridade']; 
             }
 
+            $vinculoEmpregaticio = vinculoEmpregaticio::where(function($query) use($idDadosBase){
+                if($idDadosBase)
+                    $query->where('idDadosBase', '=', $idDadosBase);
+                })->get();
+
     	    $dadosEndContato = enderecoContatos::where(function($query) use($idDadosBase){
     		    if($idDadosBase)
     			    $query->where('idDadosBase', '=', $idDadosBase);
@@ -667,7 +672,7 @@ class censoController extends Controller
                 return view('semPermissao');
             }
 
-    	    return view('censoImpressaoFichas', compact('dadosBase', 'dadosPessoais', 'dadosEndContato', 'dadosDocumentacao', 'dadosDependente', 'tArquivos'));
+    	    return view('censoImpressaoFichas', compact('dadosBase', 'dadosPessoais', 'dadosEndContato', 'vinculoEmpregaticio', 'dadosDocumentacao', 'dadosDependente', 'tArquivos'));
         } else{
              return view('semPermissao');
         }  

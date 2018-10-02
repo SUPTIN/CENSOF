@@ -58,6 +58,58 @@
                       </div>
                       <div class="row">
                         <div class="col-sm-12">
+                          <h5><b>Vínculo Empregatício - PMSMJ</b></h5>
+                        </div>
+                      </div>
+
+                     <div class="row">
+                        <div class="col-sm-6">
+                          <b>Cargo/Função gratificada: </b>{{$vinculoEmpregaticio[0]->funcaoGratificada}}
+                        </div>  
+                        <div class="col-sm-6">
+                          <b>Cargo: </b>{{$vinculoEmpregaticio[0]->cargoGratificado}}
+                        </div>  
+                      </div>
+
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <h5><b>Outro Vínculo Empregatício</b></h5>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <b>Vínculo Empregatício: </b>{{$vinculoEmpregaticio[0]->vinculoEmpregaticio}}
+                        </div>  
+                        <div class="col-sm-6">
+                          <b>Qual: </b>{{$vinculoEmpregaticio[0]->qualVinculo}}
+                        </div>  
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <b>Órgão: </b>{{$vinculoEmpregaticio[0]->orgaoEmpregaticio}}
+                        </div>   
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <b>Cargo: </b>{{$vinculoEmpregaticio[0]->cargoVinculo}}
+                        </div> 
+                        <div class="col-sm-6">
+                          <b>Carga Hor.: </b>{{$vinculoEmpregaticio[0]->cargaHorariaVinculo}}
+                        </div>  
+                      </div>
+                       <div class="row">
+                        <div class="col-sm-6">
+                          <b>Turno: </b>{{$vinculoEmpregaticio[0]->turnoVinculo}}
+                        </div> 
+                        <div class="col-sm-6">
+                          <b>Hor./Dias Trabalhados: </b>{{$vinculoEmpregaticio[0]->horarioDiasTrabVinculo}}
+                        </div>  
+                      </div>
+
+
+                      <div class="row">
+                        <div class="col-sm-12">
                           <h5><b>Dados Pessoais</b></h5>
                         </div>
                       </div>
