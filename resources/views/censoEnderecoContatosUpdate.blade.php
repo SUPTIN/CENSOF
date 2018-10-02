@@ -163,7 +163,7 @@
            var $telCelular = document.getElementById("telCelular").value;
            if (($telCelular != '') || ($telCelular == 'NÃO PREENCHIDO.')){
              var $telCelular = $("#telCelular");
-             $telCelular.mask('( 00 ) 0 0000 0000',{reverse: true});
+             $telCelular.mask('00 - 0 0000 0000',{reverse: true});
            }else{
              $telCelular = 'NÃO PREENCHIDO.'
            }
@@ -172,7 +172,7 @@
           $(document).ready(function(){
             if (($telResidencial != '') || ($telResidencial == 'NÃO PREENCHIDO.')){
               var $telResidencial = $("#telResidencial");
-              $telResidencial.mask('( 00 ) 0000 0000',{reverse: true});
+              $telResidencial.mask('00 - 0000 0000',{reverse: true});
             }
             if (($email != '') || ($email != 'NÃO PREENCHIDO.')){
               var $email = $("#email");
@@ -183,7 +183,7 @@
               });
             }
             var $telCelular = $("#telCelular");
-            $telCelular .mask('( 00 ) 0 0000 0000',{reverse: true});
+            $telCelular .mask('00 - 0 0000 0000 ',{reverse: true});
             telResidencial();
             telCelular();
           });
