@@ -47,8 +47,7 @@
                            <option value="CERT. DE NASCIMENTO" {{ old('tipoDocumento') == 'CERT. DE NASCIMENTO' ? 'selected' : '' }}>CERT. DE NASCIMENTO</option>
                            <option value="CERT. DE CASAMENTO" {{ old('tipoDocumento') == 'CERT. DE CASAMENTO' ? 'selected' : '' }}>CERT. DE CASAMENTO</option>
                            <option value="TÍTULO DE ELEITOR" {{ old('tipoDocumento') == 'TÍTULO DE ELEITOR' ? 'selected' : '' }}>TÍTULO DE ELEITOR</option>
-                           <option value="COMP. ÚLTIMA VOTAÇÃO" {{ old('tipoDocumento') == 'COMP. ÚLTIMA VOTAÇÃO' ? 'selected' : '' }}>COMP. ÚLTIMA VOTAÇÃO</option>
-                           <option value="CTPS" {{ old('tipoDocumento') == 'CTPS' ? 'selected' : '' }}>CTPS</option>
+                           <option value="CARTEIRA DE TRABALHO" {{ old('tipoDocumento') == 'CARTEIRA DE TRABALHO' ? 'selected' : '' }}>CARTEIRA DE TRABALHO</option>
                            <option value="CERT. DE RESERVISTA" {{ old('tipoDocumento') == 'CERT. DE RESERVISTA' ? 'selected' : '' }}>CERT. DE RESERVISTA</option>
                            <option value="CNH" {{ old('tipoDocumento') == 'CNH' ? 'selected' : '' }}>CNH</option>
                            <option value="PIS/PASEP" {{ old('tipoDocumento') == 'PIS/PASEP' ? 'selected' : '' }}>PIS/PASEP</option>
