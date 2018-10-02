@@ -64,7 +64,7 @@
 
                      <div class="row">
                         <div class="col-sm-6">
-                          <b>Cargo/Função gratificada: </b>{{$vinculoEmpregaticio[0]->funcaoGratificada}}
+                          <b>Cargo/Função gratificada? </b>{{$vinculoEmpregaticio[0]->funcaoGratificada}}
                         </div>  
                         <div class="col-sm-6">
                           <b>Cargo: </b>{{$vinculoEmpregaticio[0]->cargoGratificado}}
@@ -79,7 +79,7 @@
 
                       <div class="row">
                         <div class="col-sm-6">
-                          <b>Vínculo Empregatício: </b>{{$vinculoEmpregaticio[0]->vinculoEmpregaticio}}
+                          <b>Vínculo Empregatício? </b>{{$vinculoEmpregaticio[0]->vinculoEmpregaticio}}
                         </div>  
                         <div class="col-sm-6">
                           <b>Qual: </b>{{$vinculoEmpregaticio[0]->qualVinculo}}

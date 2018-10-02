@@ -723,6 +723,55 @@ class censoController extends Controller
         $this->pdf->SetFont('Courier','',11);
         $this->pdf->Cell(0,5, strtoupper(utf8_decode($dadosBase[0]->horarioTrabBase)),0,1);
 
+        $vinculoEmpregaticio = vinculoEmpregaticio::where(function($query) use($idDadosBase){
+            if($idDadosBase)
+                $query->where('idDadosBase', '=', $idDadosBase);
+        })->get();
+        $this->pdf->Ln(2);
+        $this->pdf->SetFont('Courier','BI',15);
+        $this->pdf->Cell(10,5,utf8_decode('Vínculo Empregatício - PMSMJ'),0,1);
+        $this->pdf->Ln(1);
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(60,5, utf8_decode('Cargo/Função gratificada? '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(58, 5, utf8_decode($vinculoEmpregaticio[0]->funcaoGratificada),0,0);
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(15,5, utf8_decode('Cargo: '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(60, 5, utf8_decode($vinculoEmpregaticio[0]->cargoGratificado),0,1);
+
+        $this->pdf->Ln(2);
+        $this->pdf->SetFont('Courier','BI',15);
+        $this->pdf->Cell(10,5,utf8_decode('OUtro Vínculo Empregatício'),0,1);
+        $this->pdf->Ln(1);
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(55,5, utf8_decode('Vínculo Empregatício? '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(58, 5, utf8_decode($vinculoEmpregaticio[0]->vinculoEmpregaticio),0,0);
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(15,5, utf8_decode('Qual? '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(60, 5, utf8_decode($vinculoEmpregaticio[0]->qualVinculo),0,1);
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(20,5, utf8_decode('Órgão: '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(58, 5, utf8_decode($vinculoEmpregaticio[0]->orgaoEmpregaticio),0,1);
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(15,5, utf8_decode('Cargo: '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(60, 5, utf8_decode($vinculoEmpregaticio[0]->cargoVinculo),0,0);
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(30,5, utf8_decode('Carga Hor.: '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(60, 5, utf8_decode($vinculoEmpregaticio[0]->cargaHorariaVinculo),0,1);
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(15,5, utf8_decode('Turno: '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(60, 5, utf8_decode($vinculoEmpregaticio[0]->turnoVinculo),0,0);
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(30,5, utf8_decode('Dias Trab.: '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(60, 5, utf8_decode($vinculoEmpregaticio[0]->horarioDiasTrabVinculo),0,1);
 
         $this->pdf->Ln(2);
         $this->pdf->SetFont('Courier','BI',15);
