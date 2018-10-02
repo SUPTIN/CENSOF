@@ -742,7 +742,7 @@ class censoController extends Controller
 
         $this->pdf->Ln(2);
         $this->pdf->SetFont('Courier','BI',15);
-        $this->pdf->Cell(10,5,utf8_decode('OUtro Vínculo Empregatício'),0,1);
+        $this->pdf->Cell(10,5,utf8_decode('Outro Vínculo Empregatício'),0,1);
         $this->pdf->Ln(1);
         $this->pdf->SetFont('Courier','B',11);
         $this->pdf->Cell(55,5, utf8_decode('Vínculo Empregatício? '),0,0);
