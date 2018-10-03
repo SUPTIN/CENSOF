@@ -8,6 +8,15 @@
                 <div class="panel-heading">Login</div>
 
                 <div class="panel-body">
+                    <div class="form-group">
+                            <div align="center">
+                                <img src="imagens/logo.png"/>
+                            </div>
+                            <div >
+                              <br/>
+                            </div>     
+                    </div>
+
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
