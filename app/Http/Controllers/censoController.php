@@ -190,13 +190,13 @@ class censoController extends Controller
     	})->get();
 
         if (($request->complementoEC == "") || ($request->complementoEC == "NÃO PREENCHIDO.")){
-                $dados['complementoEC'] = 'NÃO PREENCHIDO.';
+                $dados['complementoEC'] = ' ';
             }
         if (($request->telResidencial == "")||($request->telResidencial == "NÃO PREENCHIDO.")){
-                $dados['telResidencial'] = 'NÃO PREENCHIDO.';
+                $dados['telResidencial'] = ' ';
             }
         if (($request->email == "")||($request->email == "NÃO PREENCHIDO.")){
-                $dados['email'] = 'NÃO PREENCHIDO.';
+                $dados['email'] = ' ';
             }
         $this->validate($request, $this->enderecoContatos->rules, $this->enderecoContatos->messages);
         if(empty($eC[0])){
