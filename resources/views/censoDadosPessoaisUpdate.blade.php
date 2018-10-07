@@ -173,7 +173,7 @@
                           </select>
                         </div>
                         <div class="col-sm-6">
-                          Área de Instrução: <label style="font-size:15px;color:red;">*</label>
+                          Área de Instrução: 
                           <input class="form-control" name="areaInstrucao" value="{{$infoPessoais->areaInstrucao}}" style="text-transform:uppercase"/>
                         </div>
                       </div>

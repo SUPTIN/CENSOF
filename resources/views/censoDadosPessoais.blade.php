@@ -38,17 +38,17 @@
                         </div>
                         <div class="col-sm-6">
                           Local de Trabalho: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" name="localTrabBase" value="{{$infoBase->localTrabBase}}" style="text-transform:uppercase" />
+                          <input class="form-control" name="localTrabBase" value="{{old('localTrabBase')}}" style="text-transform:uppercase" />
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-sm-6">
                           Carga Horária: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" name="cargaHorariaBase" value="{{$infoBase->cargaHorariaBase}}" style="text-transform:uppercase" />
+                          <input class="form-control" name="cargaHorariaBase" value="{{old('cargaHorariaBase')}}" style="text-transform:uppercase" />
                         </div>
                         <div class="col-sm-6">
                           Horário e dias trabalhados: <label style="font-size:15px;color:red;">*</label>
-                          <input class="form-control" name="horarioTrabBase" value="{{$infoBase->horarioTrabBase}}" style="text-transform:uppercase" />
+                          <input class="form-control" name="horarioTrabBase" value="{{old('horarioTrabBase')}}" style="text-transform:uppercase" />
                         </div>
                       </div>
                       <div class="row">
@@ -172,7 +172,7 @@
                           </select>
                         </div>
                         <div class="col-sm-6">
-                          Área de Instrução: <label style="font-size:15px;color:red;">*</label>
+                          Área de Instrução: 
                           <input class="form-control" name="areaInstrucao" value="{{old('areaInstrucao')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>
