@@ -342,25 +342,25 @@ class censoController extends Controller
         $this->validate($request, $this->vinculoEmpregaticio->rules, $this->vinculoEmpregaticio->messages);
 
         if (($request->qualVinculo == "") || ($request->qualVinculo == "NÃO PREENCHIDO.")){
-                $dados['qualVinculo'] = 'NÃO PREENCHIDO.';
+                $dados['qualVinculo'] = ' ';
         }
         if (($request->orgaoEmpregaticio == "") || ($request->orgaoEmpregaticio == "NÃO PREENCHIDO.")){
-                $dados['orgaoEmpregaticio'] = 'NÃO PREENCHIDO.';
+                $dados['orgaoEmpregaticio'] = ' ';
         }
         if (($request->cargoVinculo == "") || ($request->cargoVinculo == "NÃO PREENCHIDO.")){
-                $dados['cargoVinculo'] = 'NÃO PREENCHIDO.';
+                $dados['cargoVinculo'] = ' ';
         }
         if (($request->cargaHorariaVinculo == "") || ($request->cargaHorariaVinculo == "NÃO PREENCHIDO.")){
-                $dados['cargaHorariaVinculo'] = 'NÃO PREENCHIDO.';
+                $dados['cargaHorariaVinculo'] = ' ';
         }
         if (($request->turnoVinculo == "") || ($request->turnoVinculo == "NÃO PREENCHIDO.")){
-                $dados['turnoVinculo'] = 'NÃO PREENCHIDO.';
+                $dados['turnoVinculo'] = ' ';
         }
         if (($request->horarioDiasTrabVinculo == "") || ($request->horarioDiasTrabVinculo == "NÃO PREENCHIDO.")){
-                $dados['horarioDiasTrabVinculo'] = 'NÃO PREENCHIDO.';
+                $dados['horarioDiasTrabVinculo'] = ' ';
         }
         if (($request->cargoGratificado == "") || ($request->cargoGratificado == "NÃO PREENCHIDO.")){
-                $dados['cargoGratificado'] = 'NÃO PREENCHIDO.';
+                $dados['cargoGratificado'] = ' ';
         }
 
         if(empty($vincEmpreg[0])){
