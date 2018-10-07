@@ -92,11 +92,11 @@
 
                       <div class="row">
                         <div class="col-sm-6">
-                          Pis/PASEP: <label style="font-size:15px;color:red;">*</label>
+                          Pis/PASEP:
                           <input class="form-control" id="pisPasep" name="pisPasep" value="{{old('pisPasep')}}" style="text-transform:uppercase"/>
                         </div>
                         <div class="col-sm-6">
-                          Data de Cadastramento: <label style="font-size:15px;color:red;">*</label>
+                          Data de Cadastramento: 
                           <input class="form-control" id="dataCadPisPasep" name="dataCadPisPasep" value="{{old('dataCadPisPasep')}}" style="text-transform:uppercase"/>
                         </div>
                       </div>

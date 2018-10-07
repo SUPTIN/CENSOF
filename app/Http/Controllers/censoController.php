@@ -240,56 +240,63 @@ class censoController extends Controller
     	})->get();	
 
         if (($request->certMilitar == "") || ($request->certMilitar == "NÃO PREENCHIDO.")){
-                $dados['certMilitar'] = 'NÃO PREENCHIDO.';
+                $dados['certMilitar'] = ' ';
         }
         if (($request->certMilitarSituacao == "") || ($request->certMilitarSituacao == "NÃO PREENCHIDO.")){
-                $dados['certMilitarSituacao'] = 'NÃO PREENCHIDO.';
+                $dados['certMilitarSituacao'] = ' ';
         }
         if (($request->dataCertMilitar == "") || ($request->dataCertMilitar == "NÃO PREENCHIDO.")){
-                $dados['dataCertMilitar'] = 'NÃO PREENCHIDO.';
+                $dados['dataCertMilitar'] = ' ';
         }
         if (($request->tipoCertMilitar == "") || ($request->tipoCertMilitar == "NÃO PREENCHIDO.")){
-                $dados['tipoCertMilitar'] = 'NÃO PREENCHIDO.';
+                $dados['tipoCertMilitar'] = ' ';
         }
         if (($request->ufCertMilitar == "") || ($request->ufCertMilitar == "NÃO PREENCHIDO.")){
-                $dados['ufCertMilitar'] = 'NÃO PREENCHIDO.';
+                $dados['ufCertMilitar'] = ' ';
         }
         if (($request->numCNH == "") || ($request->numCNH == "NÃO PREENCHIDO.")){
-                $dados['numCNH'] = 'NÃO PREENCHIDO.';
+                $dados['numCNH'] = ' ';
         }
         if (($request->registroCNH == "") || ($request->registroCNH == "NÃO PREENCHIDO.")){
-                $dados['registroCNH'] = 'NÃO PREENCHIDO.';
+                $dados['registroCNH'] = ' ';
         }
         if (($request->categoriaCNH == "") || ($request->Categoria == "NÃO PREENCHIDO.")){
-                $dados['categoriaCNH'] = 'NÃO PREENCHIDO.';
+                $dados['categoriaCNH'] = ' ';
         }
         if (($request->dataEmissaoCNH == "") || ($request->dataEmissaoCNH == "NÃO PREENCHIDO.")){
                 $dados['dataEmissaoCNH'] = 'NÃO PREENCHIDO.';
         }
         if (($request->ufCNH == "") || ($request->ufCNH == "NÃO PREENCHIDO.")){
-                $dados['ufCNH'] = 'NÃO PREENCHIDO.';
+                $dados['ufCNH'] = ' ';
         }
         if (($request->dataValidadeCNH == "") || ($request->dataValidadeCNH == "NÃO PREENCHIDO.")){
-                $dados['dataValidadeCNH'] = 'NÃO PREENCHIDO.';
+                $dados['dataValidadeCNH'] = ' ';
         }
         if (($request->primeiraHabilitacao == "") || ($request->primeiraHabilitacao == "NÃO PREENCHIDO.")){
-                $dados['primeiraHabilitacao'] = 'NÃO PREENCHIDO.';
+                $dados['primeiraHabilitacao'] = ' ';
         }
         if (($request->conselhoProfissional == "") || ($request->conselhoProfissional == "NÃO PREENCHIDO.")){
-                $dados['conselhoProfissional'] = 'NÃO PREENCHIDO.';
+                $dados['conselhoProfissional'] = ' ';
         }
         if (($request->numConselhoProf == "") || ($request->numConselhoProf == "NÃO PREENCHIDO.")){
-                $dados['numConselhoProf'] = 'NÃO PREENCHIDO.';
+                $dados['numConselhoProf'] = ' ';
         }
         if (($request->dataEmissaoConselhoProf == "") || ($request->dataEmissaoConselhoProf == "NÃO PREENCHIDO.")){
-                $dados['dataEmissaoConselhoProf'] = 'NÃO PREENCHIDO.';
+                $dados['dataEmissaoConselhoProf'] = ' ';
         }
         if (($request->dataValidadeConselhoProf == "") || ($request->dataValidadeConselhoProf == "NÃO PREENCHIDO.")){
-                $dados['dataValidadeConselhoProf'] = 'NÃO PREENCHIDO.';
+                $dados['dataValidadeConselhoProf'] = ' ';
+        }
+        if (($request->pisPasep == "") || ($request->pisPasep == "NÃO PREENCHIDO.")){
+                $dados['pisPasep'] = ' ';
+        }
+        if (($request->dataCadPisPasep == "") || ($request->dataCadPisPasep == "NÃO PREENCHIDO.")){
+                $dados['dataCadPisPasep'] = ' ';
         }
         if ($request->cidadeVotacao == "0"){
-                $dados['cidadeVotacao'] = '';
+                $dados['cidadeVotacao'] = ' ';
         }
+
 
         $this->validate($request, $this->documentacao->rules, $this->documentacao->messages);
 
