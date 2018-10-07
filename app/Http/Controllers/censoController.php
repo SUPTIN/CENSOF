@@ -123,19 +123,19 @@ class censoController extends Controller
     	})->get();	
 
         if ($request->estadoCivil != "CASADO"){
-                $dados['dataCasamento'] = 'NÃO NECESSÁRIO.';
+                $dados['dataCasamento'] = ' ';
             }
         if ($request->nomeConjugue == ""){
-                $dados['nomeConjugue'] = 'NÃO NECESSÁRIO.';
+                $dados['nomeConjugue'] = ' ';
             }
         if ($request->estrangeiro == "NÃO"){
-                $dados['dataChegadaBrasil'] = 'NÃO NECESSÁRIO.';
+                $dados['dataChegadaBrasil'] = ' ';
             }
         if ($request->naturalizado == "NÃO"){
-                $dados['dataNaturalizado'] = 'NÃO NECESSÁRIO.';
+                $dados['dataNaturalizado'] = ' ';
             }
         if ($request->possuiDeficiencia == "NÃO"){
-                $dados['qualDeficiencia'] = 'NÃO NECESSÁRIO.';
+                $dados['qualDeficiencia'] = ' ';
             }
         $this->validate($request, $this->dadosPessoais->rules, $this->dadosPessoais->messages);
         $this->validate($request, $this->dadosBase->rules, $this->dadosBase->messages);
