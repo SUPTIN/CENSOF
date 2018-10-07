@@ -123,19 +123,19 @@ class censoController extends Controller
     	})->get();	
 
         if ($request->estadoCivil != "CASADO"){
-                $dados['dataCasamento'] = ' ';
+                $dados['dataCasamento'] = '.';
             }
         if ($request->nomeConjugue == ""){
-                $dados['nomeConjugue'] = ' ';
+                $dados['nomeConjugue'] = '.';
             }
         if ($request->estrangeiro == "NÃO"){
-                $dados['dataChegadaBrasil'] = ' ';
+                $dados['dataChegadaBrasil'] = '.';
             }
         if ($request->naturalizado == "NÃO"){
-                $dados['dataNaturalizado'] = ' ';
+                $dados['dataNaturalizado'] = '.';
             }
         if ($request->possuiDeficiencia == "NÃO"){
-                $dados['qualDeficiencia'] = ' ';
+                $dados['qualDeficiencia'] = '.';
             }
         $this->validate($request, $this->dadosPessoais->rules, $this->dadosPessoais->messages);
         $this->validate($request, $this->dadosBase->rules, $this->dadosBase->messages);
@@ -190,13 +190,13 @@ class censoController extends Controller
     	})->get();
 
         if (($request->complementoEC == "") || ($request->complementoEC == "NÃO PREENCHIDO.")){
-                $dados['complementoEC'] = ' ';
+                $dados['complementoEC'] = '.';
             }
         if (($request->telResidencial == "")||($request->telResidencial == "NÃO PREENCHIDO.")){
-                $dados['telResidencial'] = ' ';
+                $dados['telResidencial'] = '.';
             }
         if (($request->email == "")||($request->email == "NÃO PREENCHIDO.")){
-                $dados['email'] = ' ';
+                $dados['email'] = '.';
             }
         $this->validate($request, $this->enderecoContatos->rules, $this->enderecoContatos->messages);
         if(empty($eC[0])){
@@ -240,61 +240,61 @@ class censoController extends Controller
     	})->get();	
 
         if (($request->certMilitar == "") || ($request->certMilitar == "NÃO PREENCHIDO.")){
-                $dados['certMilitar'] = ' ';
+                $dados['certMilitar'] = '.';
         }
         if (($request->certMilitarSituacao == "") || ($request->certMilitarSituacao == "NÃO PREENCHIDO.")){
-                $dados['certMilitarSituacao'] = ' ';
+                $dados['certMilitarSituacao'] = '.';
         }
         if (($request->dataCertMilitar == "") || ($request->dataCertMilitar == "NÃO PREENCHIDO.")){
-                $dados['dataCertMilitar'] = ' ';
+                $dados['dataCertMilitar'] = '.';
         }
         if (($request->tipoCertMilitar == "") || ($request->tipoCertMilitar == "NÃO PREENCHIDO.")){
-                $dados['tipoCertMilitar'] = ' ';
+                $dados['tipoCertMilitar'] = '.';
         }
         if (($request->ufCertMilitar == "") || ($request->ufCertMilitar == "NÃO PREENCHIDO.")){
-                $dados['ufCertMilitar'] = ' ';
+                $dados['ufCertMilitar'] = '.';
         }
         if (($request->numCNH == "") || ($request->numCNH == "NÃO PREENCHIDO.")){
                 $dados['numCNH'] = ' ';
         }
         if (($request->registroCNH == "") || ($request->registroCNH == "NÃO PREENCHIDO.")){
-                $dados['registroCNH'] = ' ';
+                $dados['registroCNH'] = '.';
         }
         if (($request->categoriaCNH == "") || ($request->Categoria == "NÃO PREENCHIDO.")){
-                $dados['categoriaCNH'] = ' ';
+                $dados['categoriaCNH'] = '.';
         }
         if (($request->dataEmissaoCNH == "") || ($request->dataEmissaoCNH == "NÃO PREENCHIDO.")){
-                $dados['dataEmissaoCNH'] = 'NÃO PREENCHIDO.';
+                $dados['dataEmissaoCNH'] = '.';
         }
         if (($request->ufCNH == "") || ($request->ufCNH == "NÃO PREENCHIDO.")){
-                $dados['ufCNH'] = ' ';
+                $dados['ufCNH'] = '.';
         }
         if (($request->dataValidadeCNH == "") || ($request->dataValidadeCNH == "NÃO PREENCHIDO.")){
-                $dados['dataValidadeCNH'] = ' ';
+                $dados['dataValidadeCNH'] = '.';
         }
         if (($request->primeiraHabilitacao == "") || ($request->primeiraHabilitacao == "NÃO PREENCHIDO.")){
-                $dados['primeiraHabilitacao'] = ' ';
+                $dados['primeiraHabilitacao'] = '.';
         }
         if (($request->conselhoProfissional == "") || ($request->conselhoProfissional == "NÃO PREENCHIDO.")){
-                $dados['conselhoProfissional'] = ' ';
+                $dados['conselhoProfissional'] = '.';
         }
         if (($request->numConselhoProf == "") || ($request->numConselhoProf == "NÃO PREENCHIDO.")){
-                $dados['numConselhoProf'] = ' ';
+                $dados['numConselhoProf'] = '.';
         }
         if (($request->dataEmissaoConselhoProf == "") || ($request->dataEmissaoConselhoProf == "NÃO PREENCHIDO.")){
-                $dados['dataEmissaoConselhoProf'] = ' ';
+                $dados['dataEmissaoConselhoProf'] = '.';
         }
         if (($request->dataValidadeConselhoProf == "") || ($request->dataValidadeConselhoProf == "NÃO PREENCHIDO.")){
-                $dados['dataValidadeConselhoProf'] = ' ';
+                $dados['dataValidadeConselhoProf'] = '.';
         }
         if (($request->pisPasep == "") || ($request->pisPasep == "NÃO PREENCHIDO.")){
-                $dados['pisPasep'] = ' ';
+                $dados['pisPasep'] = '.';
         }
         if (($request->dataCadPisPasep == "") || ($request->dataCadPisPasep == "NÃO PREENCHIDO.")){
-                $dados['dataCadPisPasep'] = ' ';
+                $dados['dataCadPisPasep'] = '.';
         }
         if ($request->cidadeVotacao == "0"){
-                $dados['cidadeVotacao'] = ' ';
+                $dados['cidadeVotacao'] = '';
         }
 
 
@@ -342,25 +342,25 @@ class censoController extends Controller
         $this->validate($request, $this->vinculoEmpregaticio->rules, $this->vinculoEmpregaticio->messages);
 
         if (($request->qualVinculo == "") || ($request->qualVinculo == "NÃO PREENCHIDO.")){
-                $dados['qualVinculo'] = ' ';
+                $dados['qualVinculo'] = '.';
         }
         if (($request->orgaoEmpregaticio == "") || ($request->orgaoEmpregaticio == "NÃO PREENCHIDO.")){
-                $dados['orgaoEmpregaticio'] = ' ';
+                $dados['orgaoEmpregaticio'] = '.';
         }
         if (($request->cargoVinculo == "") || ($request->cargoVinculo == "NÃO PREENCHIDO.")){
-                $dados['cargoVinculo'] = ' ';
+                $dados['cargoVinculo'] = '.';
         }
         if (($request->cargaHorariaVinculo == "") || ($request->cargaHorariaVinculo == "NÃO PREENCHIDO.")){
-                $dados['cargaHorariaVinculo'] = ' ';
+                $dados['cargaHorariaVinculo'] = '.';
         }
         if (($request->turnoVinculo == "") || ($request->turnoVinculo == "NÃO PREENCHIDO.")){
-                $dados['turnoVinculo'] = ' ';
+                $dados['turnoVinculo'] = '.';
         }
         if (($request->horarioDiasTrabVinculo == "") || ($request->horarioDiasTrabVinculo == "NÃO PREENCHIDO.")){
-                $dados['horarioDiasTrabVinculo'] = ' ';
+                $dados['horarioDiasTrabVinculo'] = '.';
         }
         if (($request->cargoGratificado == "") || ($request->cargoGratificado == "NÃO PREENCHIDO.")){
-                $dados['cargoGratificado'] = ' ';
+                $dados['cargoGratificado'] = '.';
         }
 
         if(empty($vincEmpreg[0])){
@@ -654,7 +654,7 @@ class censoController extends Controller
     		       if($ufCertMilitarId)
     			        $query->where('estadoId', '=', $ufCertMilitarId);
     	           })->get();
-                if ($dadosDocumentacao[0]['ufCertMilitar'] != 'NÃO PREENCHIDO.'){
+                if ($dadosDocumentacao[0]['ufCertMilitar'] != '.'){
     	            $dadosDocumentacao[0]['ufCertMilitar'] = $ufCertMilitar[0]['estadoNome'];
                 }
 
@@ -663,7 +663,7 @@ class censoController extends Controller
     		       if($ufCNHId)
     			       $query->where('estadoId', '=', $ufCNHId);
     	           })->get();
-                if ($dadosDocumentacao[0]['ufCNH'] != 'NÃO PREENCHIDO.'){
+                if ($dadosDocumentacao[0]['ufCNH'] != '.'){
     	           $dadosDocumentacao[0]['ufCNH'] = $ufCNH[0]['estadoNome'];
                 }
             }
@@ -943,7 +943,7 @@ class censoController extends Controller
             if($ufCertMilitarId)
                 $query->where('estadoId', '=', $ufCertMilitarId);
         })->get();
-        if ($dadosDocumentacao[0]['ufCertMilitar'] != 'NÃO PREENCHIDO.'){
+        if ($dadosDocumentacao[0]['ufCertMilitar'] != '.'){
           $dadosDocumentacao[0]['ufCertMilitar'] = $ufCertMilitar[0]['estadoNome'];
         }
         $ufCNHId=$dadosDocumentacao[0]['ufCNH'];
@@ -951,7 +951,7 @@ class censoController extends Controller
             if($ufCNHId)
                 $query->where('estadoId', '=', $ufCNHId);
         })->get();
-        if ($dadosDocumentacao[0]['ufCNH'] != 'NÃO PREENCHIDO.'){
+        if ($dadosDocumentacao[0]['ufCNH'] != '.'){
            $dadosDocumentacao[0]['ufCNH'] = $ufCNH[0]['estadoNome'];
         }
 
@@ -1152,7 +1152,7 @@ class censoController extends Controller
         }
 
 
-        $this->pdf->Output(utf8_decode("Censo_2018_PMSMJ.pdf"),"D");
+        $this->pdf->Output(utf8_decode("Censo_2018_PMSMJ_".$dadosBase[0]->matriculaBase.".pdf"),"D");
         exit;
     
     }
