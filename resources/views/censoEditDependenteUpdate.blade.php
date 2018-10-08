@@ -10,7 +10,7 @@
                         <h4>Censo Funcional - Adicionando Dependente</h4>
                       </div>
 
-                      <form method="post" action="editDep">
+                      <form method="post" action="editDep" autocomplete="off">
                       <div class="row">
                         <div class="col-sm-12">
                           <input class="form-control" type="hidden" name="_token" value="{{ csrf_token()}}" style="text-transform:uppercase"/>

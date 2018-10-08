@@ -11,7 +11,7 @@
                         <h6>Passo 2 de 6</h6> 
                       </div>
 
-                      <form method="post" action="eC">
+                      <form method="post" action="eC" autocomplete="off">
                       <div class="row">
                         <div class="col-sm-12">
                           <input class="form-control" type="hidden" name="_token" value="{{ csrf_token()}}" />
