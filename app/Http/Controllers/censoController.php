@@ -1100,7 +1100,57 @@ class censoController extends Controller
         $this->pdf->Cell(10,5,utf8_decode($tArquivos),0,1);
         $this->pdf->Ln(1);
 
-        $this->pdf->Ln(2);
+        $this->pdf->Ln(1);
+        $this->pdf->SetFont('Courier','BI',15);
+        $this->pdf->Cell(10,5,utf8_decode('Endereço e Contatos'),0,1);
+        $this->pdf->Ln(1);
+        $dadosEndereco = enderecoContatos::where(function($query) use($idDadosBase){
+            if($idDadosBase)
+                $query->where('idDadosBase', '=' , $idDadosBase);
+        })->get();
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(21,5, utf8_decode('Endereço: '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(120,5, utf8_decode($dadosEndereco[0]->enderecoResidencialEC),0,0); 
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(16,5, utf8_decode('Número: '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(30,5, utf8_decode($dadosEndereco[0]->numeroEC),0,1);
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(29,5, utf8_decode('Complemento: '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(110,5, utf8_decode($dadosEndereco[0]->complementoEC),0,0); 
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(16,5, utf8_decode('Bairro: '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(45,5, utf8_decode($dadosEndereco[0]->bairroEC),0,1);
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(17,5, utf8_decode('Cidade: '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(120,5, utf8_decode($dadosEndereco[0]->cidadeEC),0,1); 
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(17,5, utf8_decode('Estado: '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(120,5, utf8_decode($dadosEndereco[0]->estadoEC),0,0); 
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(10,5, utf8_decode('CEP: '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(45,5, utf8_decode($dadosEndereco[0]->cep),0,1);
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(38,5, utf8_decode('Tel. Residencial: '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(80,5, utf8_decode($dadosEndereco[0]->telResidencial),0,0); 
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(31,5, utf8_decode('Tel. Celular: '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(50,5, utf8_decode($dadosEndereco[0]->telCelular),0,1);
+        $this->pdf->SetFont('Courier','B',11);
+        $this->pdf->Cell(14,5, utf8_decode('E-mail: '),0,0);
+        $this->pdf->SetFont('Courier','',11);
+        $this->pdf->Cell(100,5, utf8_decode($dadosEndereco[0]->email),0,1);
+
+
+        $this->pdf->Ln(1);
         $this->pdf->SetFont('Courier','BI',15);
         $this->pdf->Cell(10,5,utf8_decode('Dependentes'),0,1);
         $this->pdf->Ln(1);
